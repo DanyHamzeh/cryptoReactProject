@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'INTER BOLD';
+    src:  url('../assets/fonts//Inter-Bold.ttf'),
+}
+
+@font-face {
+    font-family: 'INTER MEDIUM';
+    src: url('../assets/fonts/Inter-Medium.ttf'),
+}
+
+@font-face {
+    font-family: 'INTER SUPER';
+    src: url('../assets/fonts/Inter-Light.ttf'),
+
+}
+
+// @font-face {
+//     font-family: 'GOTHAM LIGHT';
+//     src: url('../assets/fonts/gothamlight/gotham-light-demo.html'),
+//         url('../assets/fonts/gothamlight/gotham-light-webfont.eot'),
+//         url('../assets/fonts/gothamlight/gotham-light-webfont.svg'),
+//         url('../assets/fonts/gothamlight/gotham-light-webfont.ttf'),
+//         url('../assets/fonts/gothamlight/gotham-light-webfont.woff'),
+//         url('../assets/fonts/gothamlight/gotham-light-webfont.woff2')
+// }
+
+// @font-face {
+//     font-family: 'GOTHAM BOLD';
+//     src: url('../assets/fonts/gothambold/gotham-bold-demo.html'),
+//     url('../assets/fonts/gothambold/gotham-bold-webfont.eot'),
+//     url('../assets/fonts/gothambold/gotham-bold-webfont.svg'),
+//     url('../assets/fonts/gothambold/gotham-bold-webfont.ttf'),
+//     url('../assets/fonts/gothambold/gotham-bold-webfont.woff'),
+//     url('../assets/fonts/gothambold/gotham-bold-webfont.woff2')
+// }
+
+$boldfont: 'INTER BOLD';
+$lightfont: 'INTER MEDIUMT';
+$meduimfont: 'INTER SUPER';
+// $gothamfont: 'GOTHAM BOOK';
+// $italicfont: 'GOTHAM ITALIC';
+// Color Palette
+$black: #000000;
+$white: #ffffff;
+$mainColor:#021A2C;
+$profileMainColor: #F9D03C;
+$goldColor: #FCAF18;
+
+
+ 
+// Media queries
+$minimobile: "(max-width: 345px)";
+$smallmobile: "(max-width: 359px)";
+$mediummobile: "(max-width: 390px)";
+$mobile: "(max-width: 767px)";
+$mobileP: "(max-width: 479px)"; //Mobile - Portrait
+$mobileL: "(min-width: 480px) and (max-width: 767px)"; //Mobile - Landscape
+$nonMob: "(min-width: 768px)";
+$nonPortable: "(min-width: 992px)";
+$tablet: "(min-width: 768px) and (max-width: 991px)";
+$smallDesktop: "(min-width: 992px) and (max-width: 1199px)";
+$desktop: "(min-width: 1200px)";
+$largeDesktop: "(min-width: 1366px)";
+$mobTab: "(max-width: 991px)";
+$tabDesk: "(min-width: 768px) and (max-width: 1199px)";
+$nonDesk: "(max-width: 1199px)";
+$ipad: "(device-width: 768px) and (device-height: 1024px)";

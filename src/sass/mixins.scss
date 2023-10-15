@@ -1,0 +1,105 @@
+@mixin clearfix() {
+
+    &:before,
+    &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin fontawesome() {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin middle_align() {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+
+@mixin center_align() {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+}
+
+@mixin center_middle_align() {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+@mixin flex($direction: row, $wrap: nowrap, $justify_content: center, $justify_item: center, $align_items: center, $align_content: center) {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    flex-direction: $direction;
+    -webkit-flex-wrap: $wrap;
+    -ms-flex-wrap: $wrap;
+    flex-wrap: $wrap;
+
+    justify-content: $justify_content;
+    justify-items: $justify_item;
+    -webkit-align-content: $align_content;
+    -ms-flex-line-pack: $align_content;
+    align-content: $align_content;
+    -webkit-align-items: $align_items;
+    -ms-flex-align: $align_items;
+    align-items: $align_items;
+}
+
+@mixin flexOrderStyles($order) {
+    -webkit-order: $order;
+    -ms-order: $order;
+    order: $order;
+}
+
+@mixin box_shadow($horizontal: 0px, $vertical: 10px, $blur: 34px, $radius: -4px, $color: rgba(0, 0, 0, 0.2)) {
+    -webkit-box-shadow: $horizontal $vertical $blur $radius $color;
+    -moz-box-shadow: $horizontal $vertical $blur $radius $color;
+    box-shadow: $horizontal $vertical $blur $radius $color;
+}
+
+// Transition
+@mixin transitionStyles($property, $time, $function, $delay) {
+    -webkit-transition: $property $time $function $delay;
+    -o-transition: $property $time $function $delay;
+    -moz-transition: $property $time $function $delay;
+    transition: $property $time $function $delay;
+}
+
+// Transform
+@mixin transformStyles($value) {
+    -webkit-transform: $value;
+    -moz-transform: $value;
+    -ms-transform: $value;
+    -o-transform: $value;
+    transform: $value;
+}
+
+@mixin filterStyles($value) {
+    -webkit-filter: blur($value);
+    -moz-filter: blur($value);
+    -o-filter: blur($value);
+    -ms-filter: blur($value);
+    filter: blur($value);
+}

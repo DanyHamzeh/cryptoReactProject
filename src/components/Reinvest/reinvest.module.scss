@@ -1,0 +1,176 @@
+@import "../../sass/style.scss";
+
+.allContainer {
+  background-color: $mainColor;
+  width: 40%;
+  margin: auto;
+  border-radius: 20px;
+  padding: 10px 20px 120px 20px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 400px;
+  height: 60vh;
+  transform: translate(-50%, -50%);
+  // margin-top: 100px;
+  z-index: 10000;
+  position: fixed;
+
+  @media #{$mobile} {
+    width: 70%;
+    top: 350px;
+    width: 70%;
+    height: 40vh;
+  }
+  @media #{$tablet} {
+    width: 70%;
+    margin-top: 10px;
+    width: 70%;
+    height: 45vh;
+
+  }
+  // @media #{$largeDesktop} {
+  //   top: 480px;
+  // }
+}
+
+.titleClose {
+  @include flex;
+  margin: 15px;
+  @media #{$mobile} {
+    margin-bottom: 10px;
+  }
+}
+
+.title {
+  color: $white;
+  font-family: $boldfont;
+  font-size: 25px;
+  margin-left: 20px;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+}
+
+.closeSign {
+  color: $profileMainColor;
+  font-size: 35px;
+  position: absolute;
+  right: 8%;
+  font-family: $boldfont;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 20px;
+  }
+}
+
+.lineSeperate {
+  width: 90%;
+  margin: auto;
+  background-color: $white;
+  height: 2px;
+  margin-bottom: 100px;
+  @media #{$mobile} {
+    height: 1px;
+    margin-bottom: 50px;
+  }
+}
+
+.giftContainer {
+  width: 80%;
+  margin: auto;
+  @media #{$mobile} {
+    width: 90%;
+  }
+}
+
+.firtBox {
+  margin-bottom: 40px;
+  @media #{$mobile} {
+    margin-bottom: 10px;
+  }
+}
+
+.textGift {
+  color: $white;
+  font-size: 18px;
+  font-family: $meduimfont;
+  font-weight: 300;
+  margin-left: 20px;
+  text-align: center;
+  display: block;
+  @media #{$mobile} {
+    font-size: 12px;
+  }
+}
+
+.txtMessage{
+  margin-bottom: 50px;
+}
+
+.inputGift {
+  background-color: $white;
+  width: 100%;
+  margin: auto;
+  border-radius: 83px;
+  padding: 8px 0 8px 0;
+  text-align: center;
+  margin-top: 10px;
+  outline: none;
+  font-family: $boldfont;
+  font-size: 20px;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+}
+
+.btnsGift {
+  @include flex;
+}
+
+.btnSubmit {
+  background-color: $profileMainColor;
+  border-radius: 25px;
+  padding: 10px 25px 10px 25px;
+  color: $white;
+  font-family: $boldfont;
+  border-width: 0;
+  font-size: 15px;
+  font-family: $boldfont;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 10px;
+    max-width: 150px;
+    padding: 10px 15px 10px 15px;
+  }
+}
+
+.giftMessage {
+  font-size: 20px;
+  color: $profileMainColor;
+  width: 100%;
+  margin: auto;
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+}
+
+.messageLoaderCont {
+  @include flex;
+  margin-top: 30px;
+}
+
+.loaderPosition {
+  margin-top: 80px;
+  position: absolute;
+}
+
+.messageStyle {
+  color: red !important ;
+  @media #{$mobile,} {
+    font-size: 10px;
+  }
+}

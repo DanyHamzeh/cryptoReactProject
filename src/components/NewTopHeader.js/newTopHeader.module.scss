@@ -1,0 +1,327 @@
+@import "../../sass/style.scss";
+
+.HeaderStyle {
+  height: 100px;
+  width: 100%;
+  margin: auto;
+  background-color: $mainColor;
+  position: relative;
+  @include flex($justify-content: space-between);
+  z-index: 10;
+}
+
+.logo_trading {
+  height: 70px;
+  padding: 17px 0 17px 20px;
+  @media #{$mobile} {
+    height: 40px;
+  }
+  @media #{$minimobile} {
+    height: 30px;
+  }
+}
+
+.headerInfo {
+  padding-right: 50px;
+  display: flex;
+  @media #{$mobile} {
+  }
+  // @media #{$minimobile} {
+  //   padding-right: 80px;
+  // }
+}
+
+.languageStyle {
+  color: $profileMainColor;
+  font-family: $boldfont;
+  text-decoration: underline;
+  margin: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  // position: absolute;
+  // display: block;
+  @media #{$mobile} {
+    font-size: 12px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+  }
+}
+
+.testt {
+  margin-bottom: -521px;
+}
+
+.languageDownCont {
+  background-color: $profileMainColor;
+  // position: absolute;
+  // top: 60%;
+  width: 90%;
+}
+
+.languageDownContNew {
+  visibility: hidden;
+}
+
+.downLanguages {
+  // color: red;
+  display: block;
+  color: $white;
+  // padding: 5px 15px 0 15px;
+  font-size: 12px;
+  font-family: $boldfont;
+}
+
+.inputContainer {
+  border-radius: 20px;
+  padding: 5px 20px 10px 20px;
+  border-radius: 20px;
+}
+
+.lineSeperateNew {
+  height: 1px;
+  background-color: $white;
+  width: 100%;
+}
+
+.btReffferalStyle {
+  border-color: $profileMainColor;
+  border-width: 0;
+  margin: 10px;
+  font-size: 16px;
+  color: $profileMainColor;
+  font-family: $meduimfont;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 8px;
+    margin: 5px;
+  }
+  @media #{$minimobile} {
+    font-size: 5px;
+    padding: 8px 5px 8px 5px;
+    margin: 2px;
+  }
+}
+
+.refStyle {
+  height: 20px;
+  @media #{$mobile} {
+    margin: 5px 0 0 0;
+  }
+}
+
+.logInstyle {
+  color: white;
+  margin: 10px;
+  @media #{$mobile} {
+    margin: 5px;
+  }
+}
+
+.logInstyleText {
+  color: white;
+  font-weight: $meduimfont;
+  font-size: 15px;
+  @media #{$mobile} {
+    font-size: 8px;
+  }
+}
+
+.userStyle {
+  color: white;
+  font-weight: $boldfont;
+  font-size: 16px;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+}
+
+.mobileUserCont {
+  @include flex;
+  @media #{$mobile} {
+    flex-direction: column-reverse;
+  }
+}
+
+.refAllCont {
+  @include flex;
+  margin: 15px;
+  cursor: pointer;
+  @media #{$mobile} {
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+    padding: 0 20px 0 0;
+  }
+}
+.refAllContNew {
+  @include flex;
+  margin: 15px;
+  background-color: #f9d03c;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  position: relative;
+  cursor: pointer;
+  @media #{$mobile} {
+    height: 30px;
+    width: 30px;
+    margin: 0;
+  }
+}
+
+.smallProfile {
+  height: 30px;
+  margin-top: 10px;
+  @media #{$mobile} {
+    height: 20px;
+  }
+}
+
+.btnBurger {
+  margin: 10px;
+  @include flex;
+  @media #{$mobile} {
+    margin: 0;
+  }
+}
+
+.burgermenuContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 20px;
+  margin-top: 20px;
+  z-index: 100000;
+  @media #{$mobile} {
+    top: 5px;
+    right: 10px;
+    padding: 0 0 0 10px;
+  }
+  @media #{$minimobile} {
+  }
+
+  i {
+    background-color: $profileMainColor;
+    width: 40px;
+    height: 10px;
+    margin: 4px auto;
+    border-radius: 2px;
+    transition: all ease 0.5s;
+    cursor: pointer;
+    @media #{$mobile} {
+      width: 30px;
+      height: 8px;
+    }
+    @media #{$minimobile} {
+      width: 20px;
+      height: 5px;
+    }
+  }
+}
+
+.openbtn:nth-child(1) {
+  transform: rotate(55deg) translateY(25px) translateX(4px);
+  @media #{$mobile} {
+    transform: rotate(56deg) translateY(30px) translateX(4px);
+  }
+  @media #{$minimobile} {
+    transform: rotate(55deg) translateY(25px) translateX(-2px);
+  }
+}
+
+.openbtn:nth-child(2) {
+  opacity: 0;
+}
+
+.openbtn:nth-child(3) {
+  transform: rotate(-59deg) translateY(-25px) translateX(5px);
+  @media #{$mobile} {
+    transform: rotate(-59deg) translateY(-25px) translateX(-2px);
+  }
+  @media #{$minimobile} {
+    transform: rotate(-59deg) translateY(-25px) translateX(0px);
+  }
+}
+
+.closebtn:nth-child(1) {
+  transform: rotate(0) translateY(0);
+}
+
+.closebtn:nth-child(2) {
+  opacity: 1;
+}
+
+.closebtn:nth-child(3) {
+  transform: rotate(0) translateY(0);
+}
+
+.menulistVisible {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  left: 0;
+  right: 50%;
+  transition: 0.6s;
+  z-index: 1000;
+  height: 120vh;
+  margin-top: -90px;
+  background-image: url("../../assets//images//backgroundImage.png");
+  background-color: $mainColor;
+  @media #{$mobile} {
+    height: 100vh;
+  }
+  // @media #{$largeDesktop} {
+  //   height: 100vh;
+  // }
+  @media #{$tablet} {
+    height: 115vh;
+  }
+}
+.menulistHiden {
+  display: none;
+}
+
+.ul_list {
+  text-transform: uppercase;
+  list-style: none;
+  @include flex($justify-content: space-evenly, $align-items: 0);
+  padding: 105px 230px 0 140px;
+  @media #{$mobile} {
+    padding: 200px 20px 0 40px;
+  }
+  @media #{$tablet} {
+    padding: 150px 20px 0 40px;
+  }
+}
+
+.list_word {
+  text-decoration: none;
+  margin: 15px;
+  color: $white;
+  font-weight: 500;
+  font-size: 21px;
+  font-family: $boldfont;
+  letter-spacing: 10px;
+  @media #{$mobile} {
+    font-size: 12px;
+    letter-spacing: 0;
+    margin: 0;
+  }
+}
+
+.navigateTabs {
+  margin-bottom: 30px;
+}
+
+.lineSeperate {
+  height: 400px;
+  background-color: $white;
+  width: 1px;
+  position: absolute;
+  border-radius: 1px;
+  margin-left: -10px;
+  @media #{$mobile} {
+    height: 250px;
+  }
+}

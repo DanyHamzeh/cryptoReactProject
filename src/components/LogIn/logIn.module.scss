@@ -1,0 +1,242 @@
+@import "../../sass/style.scss";
+
+.allContainer {
+  background-color: $mainColor;
+  width: 50%;
+  margin: auto;
+  border-radius: 20px;
+  padding: 10px 20px 120px 20px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 420px;
+  transform: translate(-50%, -50%);
+  @media #{$mobile} {
+    width: 80%;
+    top: 400px;
+    padding: 10px 20px 250px 20px;
+
+  }
+  @media #{$tablet} {
+    width: 80%;
+    top: 520px;
+  }
+  @media #{$minimobile} {
+    width: 80%;
+    top: 390px;
+  }
+}
+
+.titleClose {
+  @include flex;
+  margin-bottom: 15px;
+  @media #{$mobile} {
+    margin-bottom: 8px;
+  }
+}
+
+.allcontInfo {
+  @include flex;
+  flex-direction: column;
+}
+
+
+
+.title {
+  color: $white;
+  font-family: $boldfont;
+  font-size: 25px;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+  @media #{$minimobile} {
+    font-size: 12px;
+  }
+  @media #{$tablet} {
+    font-size: 18px;
+  }
+}
+
+.closeSign {
+  color: $profileMainColor;
+  font-size: 35px;
+  position: absolute;
+  right: 8%;
+  font-family: $boldfont;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 20px;
+  }
+  @media #{$minimobile} {
+    font-size: 15px;
+  }
+  @media #{$tablet} {
+    font-size: 22px;
+  }
+}
+
+.lineSeperate {
+  width: 90%;
+  margin: auto;
+  background-color: $white;
+  height: 2px;
+  margin-bottom: 200px;
+  @media #{$mobile} {
+    height: 1px;
+    margin-bottom: 40px;
+  }
+}
+
+.inputAllCont {
+  margin-bottom: 80px;
+  @media #{$mobile} {
+    margin-bottom: 20px;
+
+  }
+}
+
+.textStyle {
+  color: $white;
+  display: block;
+  margin-left: 30px;
+  font-family: $boldfont;
+  @media #{$mobile} {
+    font-size: 10px;
+    margin-left: 10px;
+  }
+}
+
+.inputStyle {
+  border-radius: 83px;
+  width: 90%;
+  margin-left: 20px;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 8px;
+  font-size: medium;
+  font-family: $boldfont;
+  margin-bottom: 20px;
+  font-size: 20px;
+  @media #{$mobile} {
+    padding: 5px;
+    margin-left: 0;
+    font-size: 10px;
+  }
+}
+
+.eyeOpenStyle {
+  position: absolute;
+  right: 8%;
+  top: 46.5%;
+  cursor: pointer;
+  @media #{$mobile} {
+    right: 14%;
+    top: 26%;
+    width: 12px;
+  }
+  @media #{$minimobile} {
+    right: 14%;
+    top: 26.5%;
+    width: 13px;  }
+  @media #{$tablet} {
+    right: 8%;
+    top: 47%;
+    width: 25px;
+  }
+}
+
+.eyeOpenStyleNew {
+  position: absolute;
+  right: 8%;
+  top: 46.5%;
+  cursor: pointer;
+  @media #{$mobile} {
+    right: 14%;
+    top: 26%;
+    width: 12px;
+  }
+  @media #{$minimobile} {
+    right: 14%;
+    top: 26.5%;
+    width: 13px;
+
+  }
+  @media #{$tablet} {
+    right: 8%;
+    top: 46%;
+    width: 25px;
+  }
+}
+
+.btnLogin {
+  @include flex;
+  padding: 0 0 50px 0px;
+}
+
+.btnRejister {
+  background-color: $profileMainColor;
+  border-radius: 25px;
+  padding: 10px 130px 10px 130px;
+  border-color: $profileMainColor;
+  border-width: 0;
+  font-size: 15px;
+  color: $white;
+  font-family: $boldfont;
+  cursor: pointer;
+  margin-top: 30px;
+  @media #{$mobile} {
+    font-size: 10px;
+    padding: 8px 20px 8px 20px;
+    margin-top: 0;
+
+  }
+}
+
+.secureText {
+  color: $white;
+  font-family: $meduimfont;
+  font-weight: 300;
+  padding: 20px 0 0 0;
+  // display: block;
+  text-align: center;
+  cursor: pointer;
+  padding: 40px 0 0 0;
+  @media #{$mobile} {
+    font-size: 10px;
+    padding: 20px 0 0 0;
+  }
+}
+
+.btnText {
+  // @include flex;
+  // flex-direction: column;
+  position: absolute;
+}
+
+.Text {
+  @include flex;
+}
+
+.messageStyle {
+  color: red !important ;
+  position: absolute; 
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  @media #{$mobile,} {
+    font-size: 10px;
+    top: 72%;
+
+  }
+}
+
+.loaderPosition {
+  margin-top: 40px;
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, 65%);
+  @media #{$mobile,} {
+    transform: translate(-50%, 20%);
+  }
+}

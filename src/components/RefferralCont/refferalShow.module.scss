@@ -1,0 +1,78 @@
+@import "../../sass/style.scss";
+
+.allContainer {
+  background-color: $mainColor;
+  width: 40%;
+  margin: auto;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 320px;
+  transform: translate(-50%, -50%);
+  margin-top: 55px;
+  z-index: 10000;
+  @media #{$mobile} {
+    width: 80%;
+    margin-top: 120px;
+  }
+  @media #{$tablet} {
+    width: 80%;
+    margin-top: 120px;
+  }
+}
+
+.infoContainer {
+  padding: 200px 0 200px 0;
+}
+
+.closeSign {
+  color: $profileMainColor;
+  font-size: 35px;
+  position: absolute;
+  right: 5%;
+  font-family: $boldfont;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 20px;
+  }
+  @media #{$tablet} {
+    font-size: 22px;
+  }
+}
+
+.refferalStyle {
+  color: white;
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  font-family: $boldfont;
+  margin-bottom: 40px;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+}
+
+.btnStyle {
+  background-color: $profileMainColor;
+  border-radius: 25px;
+  padding: 10px 60px 10px 60px;
+  border-color: $profileMainColor;
+  border-width: 0;
+  font-size: 15px;
+  color: $white;
+  font-family: $boldfont;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 10px;
+    padding: 8px 20px 8px 20px;
+  }
+}
+
+.btnContainer {
+  @include flex;
+}
+
+.copyMessage{
+    color: red;
+}

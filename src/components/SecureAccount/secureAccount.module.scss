@@ -1,0 +1,353 @@
+@import "../../sass/style.scss";
+
+.allContainer {
+  background-color: $mainColor;
+  width: 90%;
+  margin: auto;
+  border-radius: 20px;
+  padding: 10px 20px 35px 20px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100000;
+  height: 700px;
+  top: 48%;
+  @media #{$mobile} {
+    width: 80%;
+    top: 50%;
+    height: 75vh;
+  }
+  @media #{$tablet} {
+    top: 45%;
+    width: 100%;
+  }
+}
+
+.titleClose {
+  @include flex;
+  margin-bottom: 15px;
+  @media #{$mobile} {
+    margin-bottom: 8px;
+  }
+}
+
+.title {
+  color: $white;
+  font-family: $boldfont;
+  font-size: 25px;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+  @media #{$minimobile} {
+    font-size: 12px;
+  }
+  @media #{$tablet} {
+    font-size: 15px;
+  }
+}
+
+.flashSign {
+  color: $profileMainColor;
+  font-size: 30px;
+  position: absolute;
+  right: 90%;
+  font-family: $boldfont;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 20px;
+  }
+  @media #{$minimobile} {
+    font-size: 20px;
+    right: 14%;
+  }
+}
+
+.lineSeperate {
+  width: 90%;
+  margin: auto;
+  background-color: $white;
+  height: 2px;
+  margin-bottom: 20px;
+  @media #{$mobile} {
+    height: 1px;
+    margin-bottom: 40px;
+  }
+}
+
+.inputAllCont {
+  margin-bottom: 100px;
+  @media #{$mobile} {
+    margin-bottom: 20px;
+  }
+}
+
+.textStyle {
+  color: $white;
+  display: block;
+  margin-left: 30px;
+  font-family: $boldfont;
+  @media #{$mobile} {
+    font-size: 10px;
+    margin-left: 10px;
+  }
+  @media #{$minimobile} {
+    font-size: 10px;
+  }
+}
+
+.inputStyle {
+  border-radius: 83px;
+  width: 90%;
+  margin-left: 20px;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-family: $boldfont;
+  margin-bottom: 20px;
+  @media #{$mobile} {
+    padding: 5px;
+    margin-left: 0;
+    font-size: 10px;
+  }
+  @media #{$minimobile} {
+    font-size: 10px;
+  }
+  @media #{$tablet} {
+    padding: 5px;
+  }
+}
+
+.inputStyleNew {
+  border-radius: 83px;
+  padding: 10px;
+  outline: none;
+  font-size: medium;
+  font-family: $boldfont;
+  background-color: $white;
+  cursor: pointer;
+  @media #{$mobile} {
+    padding: 5px;
+    margin-left: 0;
+    font-size: 10px;
+  }
+  @media #{$minimobile} {
+    font-size: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+  @media #{$tablet} {
+    width: 100%;
+  }
+}
+
+.inputStyleNewOpen {
+  border-radius: 20px;
+  padding: 15px;
+  outline: none;
+  font-size: medium;
+  font-family: $boldfont;
+  background-color: $white;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  cursor: pointer;
+  @media #{$mobile} {
+    padding: 10px;
+    margin-left: 0;
+    font-size: 10px;
+  }
+  @media #{$tablet} {
+    font-size: 14px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+    padding: 10px;
+  }
+}
+
+.firstBox {
+  width: 93%;
+  margin-left: 20px;
+  margin-bottom: 1.5px;
+  @media #{$mobile} {
+    margin-left: 0;
+  }
+  @media #{$tablet} {
+    width: 92%;
+  }
+}
+
+.secondBox {
+  width: 93%;
+  margin-left: 20px;
+  border-radius: 20px;
+  @media #{$mobile} {
+    margin-left: 0;
+  }
+  @media #{$tablet} {
+    width: 92%;
+  }
+}
+
+.secondBoxHide {
+  visibility: hidden;
+}
+
+.textInputStyleQuetion {
+  margin-top: 20px;
+  position: absolute;
+  width: 95%;
+  @media #{$mobile} {
+    width: 90%;
+  }
+  @media #{$tablet} {
+    text-align: center;
+    width: 92%;
+    font-size: 14px;
+  }
+}
+
+.textInputStyle {
+  position: absolute;
+  top: 50%;
+  width: 95%;
+  @media #{$mobile} {
+    width: 90%;
+    top: 44%;
+  }
+  @media #{$tablet} {
+    font-size: 14px;
+    top: 36%;
+  }
+}
+
+.textTest {
+  display: block;
+  background-color: $white;
+  padding: 20px 0 20px 10px;
+  font-family: $boldfont;
+  cursor: pointer;
+  &:hover {
+    background-color: $profileMainColor;
+  }
+  @media #{$mobile} {
+    margin-left: 0;
+    font-size: 10px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+  }
+  @media #{$tablet} {
+    width: 101.5%;
+  }
+}
+
+.iconClose {
+  color: $black;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 88%;
+  margin-top: -30px;
+  cursor: pointer;
+  font-family: $boldfont;
+  @media #{$mobile} {
+    left: 83%;
+    width: 12px;
+    margin-top: -22px;
+
+  }
+  @media #{$minimobile} {
+    left: 79%;
+    width: 15px;
+    height: 15px;
+    margin-top: -20px;
+  }
+}
+
+.lineSeperateNew {
+  width: 100%;
+  height: 1px;
+  background-color: $black;
+}
+
+.secureText {
+  color: $white;
+  font-family: $meduimfont;
+  font-weight: 300;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  font-size: 12px;
+  padding: 80px 0 0 0;
+  // margin-bottom: 20px;
+  // padding-bottom: 20px;
+  font-family: $boldfont;
+  @media #{$mobile} {
+    font-size: 9px;
+  }
+  @media #{$tablet} {
+    padding: 90px 0 0 0;
+  }
+}
+
+.btnRejister {
+  background-color: $profileMainColor;
+  border-radius: 25px;
+  padding: 10px 40px 10px 40px;
+  border-color: $profileMainColor;
+  border-width: 0;
+  font-size: 15px;
+  color: $white;
+  font-family: $boldfont;
+  cursor: pointer;
+  margin: auto;
+  @include center_middle_align;
+  @media #{$mobile,$tablet} {
+    font-size: 10px;
+    padding: 8px 20px 8px 20px;
+  }
+}
+
+.btnMessage {
+  margin-top: -20px;
+  padding-bottom: 20px;
+}
+
+.textBtnContainer {
+  padding-top: 330px;
+
+  @media #{$mobile} {
+    padding-top: 280px;
+  }
+}
+
+.messageLoaderCont {
+  @include flex;
+  margin-top: -140px;
+  @media #{$mobile} {
+    margin-top: -120px;
+  }
+  @media #{$tablet} {
+    margin-top: -140px;
+  }
+}
+
+.loaderPosition {
+  margin-top: 80px;
+  position: absolute;
+  @media #{$mobile} {
+    margin-top: 60px;
+  }
+}
+
+.messageStyle {
+  color: red !important ;
+  @media #{$mobile,} {
+    font-size: 10px;
+  }
+}

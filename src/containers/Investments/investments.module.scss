@@ -1,0 +1,242 @@
+@import "../../sass/style.scss";
+
+.investmentContainer {
+  background-color: $mainColor;
+  // height: 700px;
+  // padding: 10px 0 10px 0;
+
+  @media #{$mobile} {
+    padding: 30px 0 20px 0;
+  }
+  @media #{$tablet} {
+    padding: 20px 20px 160px 20px;
+  }
+  // @media #{$largeDesktop} {
+  //   padding: 10px 20px 750px 20px;
+  // }
+}
+
+.insideContainer {
+  width: 90%;
+  margin: auto;
+  background-color: #13293e;
+  padding: 10px 0 730px 25px;
+  border-radius: 20px;
+  @media #{$mobile} {
+    width: 90%;
+    padding: 10px 0 500px 10px;
+  }
+  @media #{$tablet} {
+    padding: 10px 0 820px 25px;
+  }
+  // @media #{$largeDesktop} {
+  //   padding: 10px 0 750px 25px;
+  // }
+}
+
+.allTable {
+  width: 90%;
+}
+
+.headerTitle {
+  color: $white;
+  font-family: $boldfont;
+  font-size: 18px;
+  @media #{$mobile} {
+    font-size: 7px;
+  }
+  @media #{$minimobile} {
+    font-size: 5px;
+  }
+  @media #{$tablet} {
+    font-size: 9px;
+  }
+}
+
+.headerCells {
+  text-align: center;
+  font-family: $meduimfont;
+  font-weight: 300;
+  font-size: 16px;
+  color: $white;
+  padding: 15px 0 15px 0;
+  @media #{$mobile} {
+    font-size: 7px;
+    padding: 15px 0 15px 0;
+  }
+  @media #{$minimobile} {
+    font-size: 5px;
+  }
+  @media #{$tablet} {
+    font-size: 11px;
+    padding: 15px 0 15px 0;
+  }
+}
+
+.headerCellsAlone {
+  text-align: center;
+  font-family: $meduimfont;
+  font-weight: 300;
+  font-size: 16px;
+  color: red;
+  padding: 15px 0 15px 0;
+  text-decoration: underline;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 7px;
+    padding: 0;
+  }
+}
+
+.lineSeperate {
+  background-color: $white;
+  height: 0.1px;
+  padding: 0 0 0 80px;
+  @media #{$mobile} {
+    padding: 0 0 0 10px;
+  }
+}
+
+.btnStyle {
+  background-color: $profileMainColor;
+  border-radius: 25px;
+  padding: 8px 5px 8px 5px;
+  border-color: $profileMainColor;
+  font-size: 12px;
+  color: $white;
+  font-family: $boldfont;
+  cursor: pointer;
+  margin-left: 3px;
+  border-width: 0;
+  margin-left: 5px;
+  @media #{$mobile} {
+    font-size: 6px;
+    padding: 0;
+    display: none;
+  }
+}
+
+.btnStyle1{
+  width: 100%;
+  max-width: 70%;
+  @media #{$mobile} {
+    font-size: 6px;
+    padding: 0;
+    display: none;
+  }
+  @media #{$tablet} {
+    max-width: 95%;
+  }
+}
+
+
+.btnMobile {
+  display: none;
+  @media #{$mobile} {
+    display: block;
+  }
+}
+
+.btnStyleMobile {
+  display: none;
+  @media #{$mobile} {
+    background-color: $profileMainColor;
+    border-radius: 25px;
+    padding: 5px 10px 5px 10px;
+    border-color: $profileMainColor;
+    font-size: 12px;
+    color: $white;
+    font-family: $boldfont;
+    cursor: pointer;
+    // margin-left: 3px;
+    border-width: 0;
+    font-size: 6px;
+    max-width: 50px;
+    display: block;
+    margin: 2px;
+  }
+  @media #{$minimobile} {
+    font-size: 6px;
+  }
+  @media #{$tablet} {
+    background-color: $profileMainColor;
+    border-radius: 25px;
+    padding: 5px 15px 5px 15px;
+    border-color: $profileMainColor;
+    font-size: 12px;
+    color: $white;
+    font-family: $boldfont;
+    cursor: pointer;
+    // margin-left: 3px;
+    border-width: 0;
+    font-size: 6px;
+    max-width: 60px;
+  }
+}
+
+.btnStyleMobile1 {
+  display: none;
+  @media #{$mobile} {
+    background-color: $profileMainColor;
+    border-radius: 25px;
+    padding: 5px 10px 5px 10px;
+    border-color: $profileMainColor;
+    font-size: 12px;
+    color: $white;
+    font-family: $boldfont;
+    cursor: pointer;
+    // margin-left: 3px;
+    border-width: 0;
+    font-size: 6px;
+    max-width: 50px;
+    display: block;
+    margin: 2px;
+    margin-top: 10px;
+  }
+  @media #{$minimobile} {
+    font-size: 6px;
+  }
+  @media #{$tablet} {
+    background-color: $profileMainColor;
+    border-radius: 25px;
+    padding: 5px 15px 5px 15px;
+    border-color: $profileMainColor;
+    font-size: 12px;
+    color: $white;
+    font-family: $boldfont;
+    cursor: pointer;
+    // margin-left: 3px;
+    border-width: 0;
+    font-size: 6px;
+    max-width: 60px;
+  }
+}
+
+.btnStylelarge {
+  @include flex;
+  height: 50px;
+  @media #{$mobile} {
+    height: 0px;
+  }
+  //  @media #{$tablet} {
+  //   height:80px;
+  //  }
+}
+
+
+
+.messageLoaderCont {
+  @include flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  position: absolute;
+}
+
+.Warning {
+  color: red;
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-family: $boldfont;
+  cursor: pointer;
+}

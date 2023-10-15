@@ -1,0 +1,19 @@
+@mixin btn($backgroundColor: $mainColor, $hoverBgColor: $backgroundColor, $width: 125px, $height: 27px, $fontSize: 14px) {
+    width: $width;
+    box-sizing: border-box;
+    padding: 0 10px;
+    display: block;
+    font-size: $fontSize;
+    color: $white;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: $mainColor;
+    height: $height;
+    line-height: 27px;
+    border: 2px solid $backgroundColor;
+    text-decoration: none;
+    border: 2px solid $backgroundColor;
+    
+}

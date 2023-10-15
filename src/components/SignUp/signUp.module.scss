@@ -1,0 +1,405 @@
+@import "../../sass/style.scss";
+
+.allContainer {
+  background-color: $mainColor;
+  width: 50%;
+  margin: auto;
+  border-radius: 20px;
+  padding: 10px 20px 10px 20px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 400px;
+  transform: translate(-50%, -50%);
+  @media #{$mobile} {
+    width: 80%;
+    top: 380px;
+  }
+  @media #{$tablet} {
+    width: 80%;
+    top: 500px;
+  }
+  @media #{$minimobile} {
+    width: 80%;
+    top: 360px;
+  }
+}
+
+.titleClose {
+  @include flex;
+  margin-bottom: 15px;
+  @media #{$mobile} {
+    margin-bottom: 8px;
+  }
+}
+
+.title {
+  color: $white;
+  font-family: $boldfont;
+  font-size: 25px;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+  @media #{$tablet} {
+    font-size: 18px;
+  }
+}
+
+.closeSign {
+  color: $profileMainColor;
+  font-size: 35px;
+  position: absolute;
+  right: 8%;
+  font-family: $boldfont;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 20px;
+  }
+  @media #{$tablet} {
+    font-size: 22px;
+  }
+}
+
+.lineSeperate {
+  width: 90%;
+  margin: auto;
+  background-color: $white;
+  height: 2px;
+  margin-bottom: 32px;
+  @media #{$mobile} {
+    height: 1px;
+    margin-bottom: 25px;
+  }
+}
+
+.textStyle {
+  color: $white;
+  display: block;
+  margin-left: 30px;
+  font-family: $boldfont;
+  // @include flex;
+  @media #{$mobile} {
+    font-size: 10px;
+    margin-left: 10px;
+  }
+}
+
+.textStyleInside {
+  color: $white;
+  margin-left: 5px;
+  font-family: $boldfont;
+  font-size: 10px;
+  @media #{$mobile} {
+    font-size: 6px;
+    display: block;
+    margin-left: 0;
+  }
+  @media #{$minimobile} {
+    font-size: 4px;
+    display: block;
+    margin-left: 0;
+  }
+}
+
+.inputStyle {
+  border-radius: 83px;
+  width: 90%;
+  margin-left: 20px;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-family: $boldfont;
+  @media #{$mobile,$minimobile} {
+    padding: 5px;
+    margin-left: 0;
+    font-size: 10px;
+  }
+}
+
+.inputStyleLast {
+  border-radius: 83px;
+  width: 90%;
+  margin-left: 20px;
+  padding: 10px;
+  outline: none;
+  // margin-bottom: 5px;
+  font-size: 20px;
+  font-family: $boldfont;
+  @media #{$mobile} {
+    padding: 5px;
+    margin-left: 0;
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+}
+
+.eyeOpenStyle {
+  position: absolute;
+  right: 8%;
+  top: 46.5%;
+  cursor: pointer;
+  @media #{$mobile} {
+    right: 13%;
+    top: 41.5%;
+    width: 12px;
+  }
+  @media #{$minimobile} {
+    right: 14%;
+    top: 41.5%;
+    width: 13px;
+  }
+  @media #{$tablet} {
+    right: 8%;
+    top: 45%;
+    width: 25px;
+  }
+  @media #{$largeDesktop} {
+    right: 9%;
+    top: 50%;
+  }
+}
+
+.eyeOpenStyleNew {
+  position: absolute;
+  right: 8%;
+  top: 46%;
+  cursor: pointer;
+  @media #{$mobile} {
+    right: 13%;
+    top: 41.5%;
+    width: 12px;
+  }
+  @media #{$minimobile} {
+    right: 14%;
+    top: 41.5%;
+    width: 13px;
+  }
+  @media #{$tablet} {
+    right: 8%;
+    top: 45%;
+    width: 25px;
+  }
+  @media #{$largeDesktop} {
+    right: 9%;
+    top: 50%;
+  }
+}
+
+.eyeCLoseStyle {
+  position: absolute;
+  right: 8%;
+  top: 56%;
+  cursor: pointer;
+  @media #{$mobile} {
+    right: 13%;
+    top: 50%;
+    width: 12px;
+  }
+  @media #{$minimobile} {
+    right: 13%;
+    top: 50.5%;
+    width: 13px;
+  }
+  @media #{$tablet} {
+    right: 8%;
+    top: 55%;
+    width: 25px;
+  }
+  @media #{$largeDesktop} {
+    right: 9%;
+    top: 60.5%;
+  }
+}
+
+.eyeCLoseStyleNew {
+  position: absolute;
+  right: 8%;
+  top: 56%;
+  cursor: pointer;
+  @media #{$mobile,} {
+    right: 13%;
+    top: 50%;
+    width: 12px;
+  }
+  @media #{$minimobile} {
+    right: 13%;
+    top: 50.5%;
+    width: 13px;
+  }
+  @media #{$tablet} {
+    right: 8%;
+    top: 55%;
+    width: 25px;
+  }
+  @media #{$largeDesktop} {
+    right: 9%;
+    top: 60.5%;
+  }
+}
+
+.checkInputStyle {
+  margin-left: 30px;
+  @include flex($justify-content: flex-start);
+  margin-bottom: 10px;
+  @media #{$mobile} {
+    margin-left: 0;
+  }
+}
+
+.checkBox {
+  width: 50px;
+  height: 50px;
+  background-color: $mainColor;
+  border-radius: 2px;
+  @media #{$mobile} {
+    width: 35px;
+    height: 35px;
+  }
+  @media #{$minimobile} {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.textBox {
+  color: $white;
+  margin-left: 10px;
+  font-family: $boldfont;
+  @media #{$mobile} {
+    font-size: 8px;
+  }
+  @media #{$minimobile} {
+    font-size: 5px;
+  }
+}
+
+.textBoxInside {
+  color: $profileMainColor;
+  text-align: center;
+  margin-left: 5px;
+  text-decoration: underline;
+  font-family: $boldfont;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+  }
+}
+
+.secureCont {
+  margin-bottom: 25px;
+}
+
+.secureText {
+  color: $white;
+  margin-left: 25px;
+  text-decoration: underline;
+  font-family: $meduimfont;
+  font-weight: 300;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+  @media #{$minimobile} {
+    @include flex;
+    font-size: 8px;
+    margin: 0;
+  }
+}
+
+.btnRejister {
+  background-color: $profileMainColor;
+  border-radius: 25px;
+  padding: 10px 60px 10px 60px;
+  border-color: $profileMainColor;
+  border-width: 0;
+  // margin: 10px;
+  font-size: 15px;
+  color: $white;
+  font-family: $boldfont;
+  cursor: pointer;
+  margin-bottom: 40px;
+  @include center_middle_align;
+  @media #{$mobile} {
+    font-size: 10px;
+    padding: 8px 20px 8px 20px;
+    margin-bottom: 30px;
+
+  }
+}
+
+.confirmContainer {
+  // text-align: center;
+  margin-top: -15px;
+}
+
+.confirmMessage {
+  color: $white;
+  font-weight: 300;
+  font-size: 15px;
+  font-family: $meduimfont;
+  margin: 20px;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+  }
+}
+
+.logInStyle {
+  color: $white;
+  font-weight: 300;
+  font-size: 15px;
+  font-family: $boldfont;
+  text-decoration: underline;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+  }
+}
+
+.messageStyle {
+  color: red !important ;
+  position: absolute;
+  top: 92%;
+  @include flex;
+  width: 100%;
+  margin: auto;
+  @media #{$mobile,} {
+    font-size: 8px;
+    width: 90%;
+  }
+  @media #{$minimobile} {
+    font-size: 6px;
+  }
+}
+
+.logInShow {
+  width: 200%;
+  margin: auto;
+  border-radius: 20px;
+  // padding: 10px 20px 90px 20px;
+  position: relative;
+  left: 50%;
+  top: -740px;
+  transform: translate(-50%, -50%);
+  @media #{$mobile} {
+    right: 25%;
+    width: 120%;
+    top: -580px;
+  }
+  @media #{$tablet} {
+    width: 140%;
+    top: -790px;
+  }
+  @media #{$minimobile} {
+    width: 120%;
+    top: -550px;
+  }
+}

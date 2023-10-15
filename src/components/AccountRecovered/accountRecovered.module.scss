@@ -1,0 +1,68 @@
+@import "../../sass/style.scss";
+
+
+.allContainer {
+    background-color: $mainColor;
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
+    padding: 80px 0 100px 0;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 320px;
+    transform: translate(-50%, -50%);
+    // margin-top: 180px;
+    @include flex;
+    flex-direction: column;
+    @media #{$mobile} {
+      width: 80%;
+      margin-top: -50px;
+      padding: 50px 15px 10px 15px;
+    }
+  }
+
+  .recoverImage{
+    margin-bottom: 20px;
+    @media #{$mobile} {
+        width: 30px;
+      }
+  }
+
+  .recoveryText{
+    font-size: 20px;
+    color: $white;
+    font-family: $boldfont;
+    font-weight: 700;
+    margin-bottom: 20px;
+    @media #{$mobile} {
+        font-size: 10px;
+        padding: 0;
+      }
+      @media #{$minimobile} {
+        font-size: 8px;
+        padding: 0;
+      }
+  }
+  .lineSeperate{
+    width: 85%;
+    margin: auto;
+    height:2px;
+    background-color: $white;
+    margin-bottom: 20px;
+    @media #{$mobile} {
+        height:1px;
+      }
+
+  }
+
+  .subTitle{
+    font-size: 18px;
+    color: $white;
+    font-family: $meduimfont;
+    font-weight: 300;
+    @media #{$mobile} {
+        font-size: 8px;
+        padding: 0;
+      }
+  }

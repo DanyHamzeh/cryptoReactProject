@@ -1,0 +1,391 @@
+@import "../../sass/style.scss";
+
+.allContainer {
+  background-color: $mainColor;
+
+  @media #{$mobile,$tablet} {
+    padding: 30px 0 280px 0;
+  }
+  @media #{$largeDesktop} {
+    padding: 10px 0 130px 0;
+  }
+}
+
+.insideContainer {
+  background-color: #13293e;
+  width: 95%;
+  margin: auto;
+  padding: 20px 0 510px 10px;
+  border-radius: 20px;
+  // @include flex;
+  @media #{$mobile} {
+    width: 80%;
+  }
+  // @media #{$largeDesktop} {
+  //   padding: 10px 0 130px 0;
+  // }
+}
+
+.smallProfile {
+  width: 30px;
+  margin: 20px;
+  @media #{$mobile} {
+    width: 10px;
+  }
+}
+
+.textTitle {
+  font-size: 25px;
+  color: $white;
+  font-family: $meduimfont;
+  font-weight: 300;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+}
+
+.imageTitle {
+  @include flex($justify-content: flex-start);
+  @media #{$mobile} {
+    width: 50%;
+    margin: auto;
+  }
+  @media #{$tablet} {
+    width: 20%;
+    margin: auto;
+  }
+}
+
+.imageInput {
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+  background-color: #f9d03c;
+  position: relative;
+  margin-left: 40px;
+  margin-bottom: 20px;
+  @media #{$mobile} {
+    margin-left: 0;
+    margin: auto;
+    margin-bottom: 20px;
+    height: 120px;
+    width: 120px;
+  }
+}
+
+.profilePic {
+  margin-top: -150px;
+  @media #{$mobile,$mobTab} {
+    margin-top: 0;
+  }
+}
+
+.largeProfile {
+  position: absolute;
+  top: 67%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  @media #{$mobile} {
+    width: 70px;
+  }
+}
+
+.infoTextMobile {
+  display: none;
+  @media #{$mobile} {
+    @include flex;
+    font-size: 10px;
+    color: $white;
+    font-family: $meduimfont;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  @media #{$minimobile} {
+    @include flex;
+    font-size: 10px;
+    color: $white;
+    font-family: $meduimfont;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+}
+.nameContainer {
+  margin-bottom: 20px;
+  display: block;
+  text-align: center;
+  @media #{$mobile} {
+    margin-bottom: 10px;
+  }
+}
+
+.nameProfile {
+  font-size: 20px;
+  color: $white;
+  font-family: $meduimfont;
+  font-weight: 500;
+  margin-left: 40px;
+  @media #{$mobile} {
+    @include flex;
+    font-size: 10px;
+    margin: auto;
+    width: 100%;
+  }
+}
+
+.infoUserContainer {
+  @include flex($justify-content: flex-start);
+  @media #{$mobile} {
+    display: block;
+  }
+}
+
+.infoImageUser {
+  @include flex($justify-content: flex-start);
+  @media #{$mobile,$mobTab} {
+    flex-direction: column-reverse;
+  }
+}
+
+// .profileInfo {
+//   // margin-left: 40px;
+//   // margin-bottom: 80px;
+//   @media #{$mobile} {
+//     margin: 0;
+//   }
+// }
+
+.spaceInfo {
+  margin: 60px;
+}
+
+.infoText {
+  font-size: 20px;
+  color: $white;
+  font-family: $meduimfont;
+  font-weight: 500;
+  margin-left: 40px;
+  margin: 20px;
+  display: block;
+  @media #{$mobile} {
+    @include flex;
+    font-size: 10px;
+  }
+}
+
+.infoTextName {
+  font-size: 20px;
+  color: $white;
+  font-family: $meduimfont;
+  font-weight: 500;
+  margin-left: 40px;
+  margin: 60px;
+  display: block;
+  @media #{$mobile} {
+    display: none;
+  }
+}
+
+.nameProfilePassword {
+  font-size: 20px;
+  color: $white;
+  font-family: $meduimfont;
+  font-weight: 500;
+  text-decoration: underline;
+  position: relative;
+  margin-left: 70px;
+  top: 250px;
+  cursor: pointer;
+  @media #{$mobile} {
+    @include flex;
+    font-size: 10px;
+    margin: 0;
+  }
+}
+
+.editPasswordCOntainer {
+  position: relative;
+  bottom: 300px;
+  width: 50%;
+  margin: auto;
+  // left: 23%;
+  z-index: 1000000;
+  @media #{$mobile} {
+    width: 100%;
+    margin: auto;
+    bottom: 500px;
+  }
+  @media #{$minimobile} {
+    width: 100%;
+    margin: auto;
+  }
+  @media #{$tablet} {
+    width: 60%;
+    margin: auto;
+    bottom: 450px;
+  }
+}
+
+.allContainerWallet {
+  width: 90%;
+  margin: auto;
+  display: block;
+}
+
+.titleStyle {
+  margin-bottom: 20px;
+}
+
+.titleAddres {
+  color: white;
+  font-family: $meduimfont;
+  font-size: 20px;
+  margin-left: 70px;
+  @media #{$mobile,$mobTab} {
+    @include flex;
+    font-size: 10px;
+    margin: 0;
+  }
+}
+
+.insideWalletContainer {
+  @include flex($justify-content: flex-start);
+  margin-top: 20px;
+  @media #{$mobile} {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.subTitle {
+  @include flex($justify-content: flex-start);
+  color: white;
+  font-family: $meduimfont;
+  font-size: 15px;
+  margin-left: 20px;
+  @media #{$mobile} {
+    margin-left: 0;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+}
+
+.inputStyle {
+  border-radius: 83px;
+  width: 90%;
+  padding: 10px;
+  outline: none;
+  font-size: 20px;
+  font-family: $boldfont;
+  @media #{$mobile} {
+    font-size: 10px;
+  }
+  @media #{$tablet} {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+}
+
+.inputStyleAddress {
+  border-radius: 83px;
+  width: 70%;
+  padding: 10px;
+  outline: none;
+  font-size: 20px;
+  font-family: $boldfont;
+  @media #{$mobile} {
+    width: 90%;
+    font-size: 10px;
+  }
+  @media #{$tablet} {
+    width: 100%;
+  }
+}
+
+.firstTitleInput {
+  width: 50%;
+  @media #{$mobile} {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.secondTitleInput {
+  width: 40%;
+  @media #{$mobile,$mobTab} {
+    width: 100%;
+  }
+  @media #{$tablet} {
+    width: 38%;
+  }
+}
+
+.plusSignCont {
+  position: absolute;
+  right: 5%;
+  top: 77%;
+  text-align: center;
+  cursor: pointer;
+  @media #{$mobile,$mobTab} {
+    position: relative;
+    margin-top: -90px;
+    display: block;
+    transform: translate(5%,-30%);
+  }
+}
+
+.plusSign {
+  color: white;
+  font-size: 50px;
+  font-family: $boldfont;
+  display: block;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.plusTitle {
+  color: white;
+  font-size: 12px;
+  margin: auto;
+  @media #{$mobile} {
+    font-size: 10px;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+.addressInfo {
+  @include flex;
+  margin-bottom: 20px;
+  @media #{$mobile} {
+    display: block;
+  }
+}
+
+.editInfoCont {
+  margin: 80px 0 -230px 0;
+}
+
+.btnRejister {
+  background-color: $profileMainColor;
+  border-radius: 25px;
+  padding: 10px 80px 10px 80px;
+  border-color: $profileMainColor;
+  border-width: 0;
+  font-size: 15px;
+  color: $white;
+  font-family: $boldfont;
+  cursor: pointer;
+  margin: 50px 0 0 0;
+  // @include center_middle_align;
+  // margin-bottom: 40px;
+  @media #{$mobile} {
+    font-size: 10px;
+    padding: 8px 20px 8px 20px;
+  }
+}
+
+.btnSaveAddres {
+  @include flex;
+}

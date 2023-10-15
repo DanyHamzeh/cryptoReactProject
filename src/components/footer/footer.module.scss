@@ -1,0 +1,26 @@
+@import "../../sass/style.scss";
+
+.footerStyle {
+  background-color: $mainColor;
+  margin-top: -5px;
+  height: 78px;
+  @media #{$largeDesktop} {
+    margin-top: 0px;
+  }
+}
+
+.footerTitle {
+  color: $white;
+  display: block;
+  text-align: center;
+  padding: 5px;
+  @media #{$mobile} {
+    font-size: 12px;
+    padding: 7px;
+  }
+  @media #{$minimobile} {
+    font-size: 10px;
+  }
+
+ 
+}

@@ -1,0 +1,104 @@
+@import "../../sass/style.scss";
+
+.termsConditionCont {
+  background-color: $mainColor;
+  @media #{$mobile,$tablet} {
+    padding: 30px 0 215px 0;
+  }
+  @media #{$largeDesktop} {
+    padding: 10px 0 120px 0;
+  }
+}
+
+.insideContainer {
+  width: 95%;
+  margin: auto;
+  background-color: #13293e;
+  padding: 10px 0 80px 20px;
+  border-radius: 20px;
+  @media #{$mobile} {
+    width: 80%;
+  }
+}
+
+.title {
+  display: block;
+  font-size: 25px;
+  color: $white;
+  font-family: $boldfont;
+  letter-spacing: 10px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  @media #{$mobile} {
+    font-size: 15px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+  @media #{$minimobile} {
+    font-size: 12px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+}
+
+.allParagraph {
+  margin-bottom: 20px;
+}
+
+.subTitle {
+  display: block;
+  font-size: 20px;
+  color: $white;
+  font-family: $boldfont;
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  @media #{$mobile} {
+    font-size: 12px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+  @media #{$minimobile} {
+    font-size: 10px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+}
+
+.paragraph {
+  font-size: 14px;
+  color: $white;
+  font-family: $meduimfont;
+  font-weight: 300;
+  margin-bottom: 6px;
+  display: block;
+  @media #{$mobile} {
+    font-size: 10px;
+    text-align: flex-start;
+    margin-bottom: 3px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+    text-align: flex-start;
+    margin-bottom: 3px;
+  }
+}
+
+.paragraphSecond {
+  font-size: 16px;
+  color: $white;
+  font-family: $meduimfont;
+  font-weight: 300;
+  display: block;
+  margin-bottom: 6px;
+  @media #{$mobile} {
+    font-size: 10px;
+    text-align: flex-start;
+    margin-bottom: 3px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+    text-align: flex-start;
+    margin-bottom: 3px;
+  }
+}

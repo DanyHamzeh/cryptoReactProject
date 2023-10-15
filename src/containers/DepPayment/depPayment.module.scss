@@ -1,0 +1,166 @@
+@import "../../sass/style.scss";
+
+.depositPayment {
+  position: absolute;
+  background-color: #13293e;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  width: 65%;
+  margin: auto;
+  padding: 20px 30px 80px 30px;
+  @media #{$mobile} {
+    padding: 20px 30px 40px 30px;
+  }
+  @media #{$tablet} {
+    padding: 20px 30px 80px 30px;
+  }
+}
+
+.addressContainer {
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-family: $boldfont;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-weight: 700;
+  color: $white;
+  @media #{$mobile} {
+    font-size: 10px;
+    @include flex;
+    letter-spacing: 0;
+  }
+  @media #{$tablet} {
+    @include flex;
+  }
+}
+
+.subTitle {
+  font-size: 18px;
+  font-family: $meduimfont;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 300;
+  color: $white;
+  @media #{$mobile} {
+    font-size: 10px;
+    @include flex;
+    letter-spacing: 0;
+  }
+  @media #{$tablet} {
+    @include flex;
+  }
+}
+
+.inputStyle {
+  border-radius: 83px;
+  width: 80%;
+  padding: 10px;
+  outline: none;
+  font-size: 20px;
+  font-family: $boldfont;
+  margin: 5px;
+  @media #{$mobile} {
+    padding: 5px;
+    // @include flex;
+    width: 100%;
+    font-size: 8px;
+  }
+  @media #{$tablet} {
+    @include flex;
+    width: 90%;
+    font-size: 15px;
+  }
+  @media #{$minimobile} {
+    padding: 5px;
+    width: 100%;
+    font-size: 7px;
+  }
+}
+
+.copyBtn {
+  background-color: $profileMainColor;
+  border-radius: 25px;
+  padding: 10px 15px 10px 15px;
+  border-color: $profileMainColor;
+  border-width: 0;
+  font-size: 15px;
+  color: $white;
+  font-family: $boldfont;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 10px;
+    padding: 8px 20px 8px 20px;
+  }
+  @media #{$tablet} {
+    font-size: 12px;
+    padding: 8px 60px 8px 60px;
+  }
+}
+
+.inputStyleSecond {
+  border-radius: 83px;
+  width: 70%;
+  padding: 10px;
+  outline: none;
+  font-size: medium;
+  font-family: $boldfont;
+  margin: 5px;
+  @media #{$mobile} {
+    padding: 5px;
+    margin-left: 0;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 10px;
+  }
+  @media #{$tablet} {
+    @include flex;
+    width: 90%;
+    font-size: 15px;
+
+  }
+}
+
+.subInput {
+  @media #{$mobile} {
+    @include flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  @media #{$tablet} {
+    @include flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+
+.messageLoaderCont {
+  @include flex;
+  margin-top: 20px;
+  @media #{$mobile,} {
+    margin-top: 10px;
+  }
+  @media #{$tablet,} {
+    margin-top: 0;
+  }
+}
+
+.loaderPosition {
+  margin-top: 80px;
+  position: absolute;
+  @media #{$mobile,} {
+    margin-top: 50px;
+  }
+}
+
+.messageStyle {
+  color: red !important ;
+  text-align: center;
+  @media #{$mobile,} {
+    font-size: 10px;
+  }
+}
