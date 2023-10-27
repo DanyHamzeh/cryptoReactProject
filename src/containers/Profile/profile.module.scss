@@ -2,12 +2,14 @@
 
 .allContainer {
   background-color: $mainColor;
+  padding: 10px 0 ;
 
-  @media #{$mobile,$tablet} {
-    padding: 30px 0 280px 0;
+
+  @media #{$mobile} {
+    padding: 10px 0 20px 0;
   }
-  @media #{$largeDesktop} {
-    padding: 10px 0 130px 0;
+  @media #{$tablet} {
+    padding: 10px 0 230px 0;
   }
 }
 
@@ -15,15 +17,15 @@
   background-color: #13293e;
   width: 95%;
   margin: auto;
-  padding: 20px 0 510px 10px;
+  padding: 20px 0 40px 10px;
   border-radius: 20px;
-  // @include flex;
   @media #{$mobile} {
     width: 80%;
+    padding: 10px 0 20px 10px;
   }
-  // @media #{$largeDesktop} {
-  //   padding: 10px 0 130px 0;
-  // }
+  @media #{$tablet} {
+    padding: 10px 0 100px 10px;
+  }
 }
 
 .smallProfile {
@@ -73,12 +75,12 @@
   }
 }
 
-.profilePic {
-  margin-top: -150px;
-  @media #{$mobile,$mobTab} {
-    margin-top: 0;
-  }
-}
+// .profilePic {
+//   // margin-top: -150px;
+//   @media #{$mobile,$mobTab} {
+//     margin-top: 0;
+//   }
+// }
 
 .largeProfile {
   position: absolute;
@@ -142,9 +144,12 @@
 
 .infoImageUser {
   @include flex($justify-content: flex-start);
-  @media #{$mobile,$mobTab} {
+  margin-bottom: 300px;
+  @media #{$nonDesk} {
     flex-direction: column-reverse;
+    margin-bottom: 100px;
   }
+  
 }
 
 // .profileInfo {
@@ -193,8 +198,8 @@
   font-weight: 500;
   text-decoration: underline;
   position: relative;
-  margin-left: 70px;
-  top: 250px;
+  // margin-left: 70px;
+  // top: 250px;
   cursor: pointer;
   @media #{$mobile} {
     @include flex;
@@ -364,7 +369,9 @@
 }
 
 .editInfoCont {
-  margin: 80px 0 -230px 0;
+  // margin: 80px 0 -70px 0;
+  // margin-top: 80px;
+ text-align: center;
 }
 
 .btnRejister {

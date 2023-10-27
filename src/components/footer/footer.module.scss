@@ -2,8 +2,10 @@
 
 .footerStyle {
   background-color: $mainColor;
-  margin-top: -5px;
-  height: 78px;
+  padding: 20px 20px ;
+
+  // margin-top: -5px;
+  // height: 78px;
   @media #{$largeDesktop} {
     margin-top: 0px;
   }

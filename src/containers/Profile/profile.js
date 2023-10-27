@@ -19,6 +19,7 @@ function Profile() {
   const [email, setEmail] = useState(null);
   const [errorCode, setErrorCode] = useState(null);
 
+
   const navigate = useNavigate();
 
   // const [inputValues, setInputValues] = useState([""]);
@@ -38,7 +39,6 @@ function Profile() {
       let getUserObject = {
         token: token || tokenLogin,
       };
-      console.log("first", getUserObject);
       axios
         .post(url, getUserObject)
         .then((response) => {
@@ -58,7 +58,7 @@ function Profile() {
               localStorage.removeItem("token");
               localStorage.removeItem("tokenLogin");
             }
-            console.log("second", url);
+            console.log("second", errorCode);
           }
         })
         .catch((error) => {
@@ -92,7 +92,7 @@ function Profile() {
             <span className={classes.textTitle}>{t("PROFILE")}</span>
           </div>
           <div className={classes.infoImageUser}>
-            <div className={classes.infoUserContainer}>
+            <div className={classes.infoUserContainer}> 
               <div className={classes.profileInfo}>
                 <div className={classes.spaceInfo}>
                   <span className={classes.infoText}>{t("fN")}</span>
@@ -129,41 +129,17 @@ function Profile() {
               </div>
             </div>
           </div>
-          {/* <div className={classes.titleStyle}>
-            <span className={classes.titleAddres}>WALLET ADRESSES</span>
-          </div> */}
-          {/* {inputValues.map((value, index) => (
-            <div className={classes.addressInfo}>
-              <div className={classes.firstTitleInput}>
-                <span className={classes.subTitle}>{t("address")}</span>
-                <input type="text" className={classes.inputStyle} />
-              </div>
-              <div className={classes.secondTitleInput}>
-                <span className={classes.subTitle}>{t("addressName")}</span>
-                <input type="text" className={classes.inputStyleAddress} />
-              </div>
-            </div>
-          ))} */}
-          {/* <div className={classes.btnSaveAddres}>
-            <button className={classes.btnRejister}>SAVE ADRESSES</button>
-          </div> */}
-          {/* <div className={classes.plusSignCont} onClick={addInput}>
-            <span className={classes.plusSign}>+</span>
-            <p className={classes.plusTitle}>ADD ADRESS</p>
-          </div> */}
           <div className={classes.editInfoCont}>
             <span
               className={classes.nameProfilePassword}
               onClick={handleClickSecureAccount}
             >
-              {t("ePassword")}{" "}
+              {t("ePassword")}
             </span>
           </div>
-          {/* <div className={classes.editPasswordCOntainer}> */}
           {showResetPAssword && (
             <ResetPassword onClose={handleClickSecureAccount} />
           )}
-          {/* </div> */}
         </div>
       </div>
       <Footer />

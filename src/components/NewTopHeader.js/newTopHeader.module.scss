@@ -181,9 +181,9 @@
 .btnBurger {
   margin: 10px;
   @include flex;
-  @media #{$mobile} {
-    margin: 0;
-  }
+  // @media #{$mobile} {
+  //   margin: 0;
+  // }
 }
 
 .burgermenuContainer {

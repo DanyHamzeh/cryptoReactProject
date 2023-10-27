@@ -2,15 +2,15 @@
 
 .howItWorksContainer {
   background-color: $mainColor;
-  @media #{$mobile} {
-    padding: 30px 0 215px 0;
+  @media #{$nonDesk} {
+    padding: 10px 0 10px 0;
   }
-  @media #{$largeDesktop} {
-    padding: 10px 0 50px 0;
-  }
-  @media #{$tablet} {
-    padding: 40px 0 220px 0;
-  }
+  // @media #{$largeDesktop} {
+  //   padding: 10px 0 50px 0;
+  // }
+  // @media #{$tablet} {
+  //   padding: 40px 0 220px 0;
+  // }
 }
 
 .insideContainer {

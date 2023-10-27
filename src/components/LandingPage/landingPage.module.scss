@@ -4,21 +4,21 @@
   width: 100%;
   margin: auto;
   background-color: $mainColor;
-  height: 790px;
+  height: 84vh;
   position: relative;
   background-image: url("../../assets//images/backgroundImage.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   // padding: 10px 0 200px 0;
-  @media #{$largeDesktop} {
-    height: 800px;
-  }
-  @media #{$tablet} {
-    height: 1210px;
-  }
-  @media #{$mobile} {
-    height: 790px;
-  }
+  // @media #{$largeDesktop} {
+  //   height: 800px;
+  // }
+  // @media #{$tablet} {
+  //   height: 1210px;
+  // }
+  // @media #{$nonDesk} {
+  //   height: 79vh;
+  // }
 
 }

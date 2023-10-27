@@ -11,27 +11,21 @@
   @media #{$tablet} {
     padding: 20px 20px 160px 20px;
   }
-  // @media #{$largeDesktop} {
-  //   padding: 10px 20px 750px 20px;
-  // }
 }
 
 .insideContainer {
   width: 90%;
   margin: auto;
   background-color: #13293e;
-  padding: 10px 0 730px 25px;
+  padding: 10px 0 755px 25px;
   border-radius: 20px;
   @media #{$mobile} {
     width: 90%;
-    padding: 10px 0 500px 10px;
+    padding: 10px 0 710px 10px;
   }
   @media #{$tablet} {
     padding: 10px 0 820px 25px;
   }
-  // @media #{$largeDesktop} {
-  //   padding: 10px 0 750px 25px;
-  // }
 }
 
 .allTable {
