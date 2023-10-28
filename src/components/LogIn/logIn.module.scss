@@ -13,9 +13,8 @@
   transform: translate(-50%, -50%);
   @media #{$mobile} {
     width: 80%;
-    top: 400px;
-    padding: 10px 20px 250px 20px;
-
+    top: 380px;
+    padding: 10px 20px 150px 20px;
   }
   @media #{$tablet} {
     width: 80%;
@@ -23,7 +22,7 @@
   }
   @media #{$minimobile} {
     width: 80%;
-    top: 330px;
+    top: 300px;
     padding: 10px 20px 120px 20px;
   }
 }
@@ -84,8 +83,9 @@
   margin-bottom: 110px;
   @media #{$mobile} {
     height: 1px;
-    margin-bottom: 40px;
+    margin-bottom: 100px;
   }
+
 }
 
 .inputAllCont {
@@ -132,13 +132,14 @@
   cursor: pointer;
   @media #{$mobile} {
     right: 14%;
-    top: 26%;
+    top: 39.5%;
     width: 12px;
   }
   @media #{$minimobile} {
     right: 14%;
-    top: 27.5%;
-    width: 13px;  }
+    top: 34%;
+    width: 13px;  
+  }
   @media #{$tablet} {
     right: 8%;
     top: 47%;
@@ -153,12 +154,12 @@
   cursor: pointer;
   @media #{$mobile} {
     right: 14%;
-    top: 26%;
+    top: 39.5%;
     width: 12px;
   }
   @media #{$minimobile} {
     right: 14%;
-    top: 27.5%;
+    top: 34%;
     width: 13px;
 
   }
@@ -226,8 +227,10 @@
   transform: translate(-50%, 100%);
   @media #{$mobile,} {
     font-size: 10px;
-    top: 72%;
-
+    top: 55%;
+  }
+  @media #{$minimobile} {
+    top: 52%;
   }
 }
 
@@ -237,7 +240,11 @@
   top: 56%;
   left: 50%;
   transform: translate(-50%, 65%);
-  @media #{$mobile,} {
+  @media #{$mobile} {
     transform: translate(-50%, 20%);
+    top: 48%;
+  }
+  @media #{$minimobile} {
+    top: 45%;
   }
 }

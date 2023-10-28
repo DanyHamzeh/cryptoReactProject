@@ -23,11 +23,6 @@ import swahiliTranslation from "./LanguagesFiles/SWAHILI.json";
 import hindiTranslation from "./LanguagesFiles/INDIAN.json";
 import axios from "axios";
 
-
-
-const { REACT_APP_API_ENDPOINT } = process.env;
-axios.defaults.baseURL = REACT_APP_API_ENDPOINT;
-
 i18n
   .use(XHRBackend) // Use the XHR backend to load translations (you may need to configure this further)
   .use(initReactI18next) // Initialize i18next for React
@@ -84,6 +79,11 @@ i18n
   });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const { REACT_APP_API_ENDPOINT } = process.env;
+axios.defaults.baseURL = REACT_APP_API_ENDPOINT;
+
+
 root.render(
   <I18nextProvider i18n={i18n}>
     <BrowserRouter>
