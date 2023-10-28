@@ -21,10 +21,12 @@ import koreanTranslation from "./LanguagesFiles/KOREAN.json";
 import japanesesTranslation from "./LanguagesFiles/JAPANESE.json";
 import swahiliTranslation from "./LanguagesFiles/SWAHILI.json";
 import hindiTranslation from "./LanguagesFiles/INDIAN.json";
+import axios from "axios";
 
 
 
-
+const { REACT_APP_API_ENDPOINT } = process.env;
+axios.defaults.baseURL = REACT_APP_API_ENDPOINT;
 
 i18n
   .use(XHRBackend) // Use the XHR backend to load translations (you may need to configure this further)
