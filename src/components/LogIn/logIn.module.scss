@@ -2,27 +2,29 @@
 
 .allContainer {
   background-color: $mainColor;
-  width: 50%;
+  // background-color: red;
+  width: 55%;
   margin: auto;
   border-radius: 20px;
-  padding: 10px 20px 85px 20px;
+  padding: 10px 20px 80px 20px;
   position: absolute;
   left: 50%;
   right: 50%;
-  top: 400px;
+  top: 425px;
   transform: translate(-50%, -50%);
+  // height: 90vh;
   @media #{$mobile} {
     width: 80%;
-    top: 380px;
-    padding: 10px 20px 150px 20px;
+    top: 340px;
+    padding: 10px 20px 90px 20px;
   }
   @media #{$tablet} {
-    width: 80%;
-    top: 520px;
+    width: 70%;
+    top: 390px;
   }
   @media #{$minimobile} {
     width: 80%;
-    top: 300px;
+    top: 350px;
     padding: 10px 20px 120px 20px;
   }
 }
@@ -111,10 +113,10 @@
   border-radius: 83px;
   width: 90%;
   margin-left: 20px;
-  padding: 10px;
+  padding: 8px;
   outline: none;
   margin-bottom: 8px;
-  font-size: medium;
+  font-size: 18px;
   font-family: $boldfont;
   margin-bottom: 20px;
   font-size: 20px;
@@ -127,52 +129,52 @@
 
 .eyeOpenStyle {
   position: absolute;
-  right: 8%;
-  top: 42%;
+  right: 10%;
+  top: 41%;
   cursor: pointer;
   @media #{$mobile} {
     right: 14%;
-    top: 39.5%;
+    top: 42.5%;
     width: 12px;
   }
   @media #{$minimobile} {
     right: 14%;
-    top: 34%;
+    top: 40.5%;
     width: 13px;  
   }
   @media #{$tablet} {
     right: 8%;
-    top: 47%;
+    top: 40%;
     width: 25px;
   }
 }
 
 .eyeOpenStyleNew {
   position: absolute;
-  right: 8%;
-  top: 42%;
+  right: 10%;
+  top: 41%;
   cursor: pointer;
   @media #{$mobile} {
     right: 14%;
-    top: 39.5%;
+    top: 42.5%;
     width: 12px;
   }
   @media #{$minimobile} {
     right: 14%;
-    top: 34%;
+    top: 40.5%;
     width: 13px;
 
   }
   @media #{$tablet} {
     right: 8%;
-    top: 46%;
+    top: 40%;
     width: 25px;
   }
 }
 
 .btnLogin {
   @include flex;
-  padding: 0 0 50px 0px;
+  padding: 0 0 70px 0px;
 }
 
 .btnRejister {
@@ -222,29 +224,31 @@
 .messageStyle {
   color: red !important ;
   position: absolute; 
-  top: 70%;
+  top: 73%;
   left: 50%;
   transform: translate(-50%, 100%);
   @media #{$mobile,} {
     font-size: 10px;
-    top: 55%;
+    top: 60%;
   }
   @media #{$minimobile} {
-    top: 52%;
+    top: 57%;
+    width: 50%;
+    font-size: 9px;
   }
 }
 
 .loaderPosition {
   // margin-top: 20px;
   position: absolute;
-  top: 56%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, 65%);
   @media #{$mobile} {
     transform: translate(-50%, 20%);
-    top: 48%;
+    top: 55%;
   }
   @media #{$minimobile} {
-    top: 45%;
+    top: 50%;
   }
 }

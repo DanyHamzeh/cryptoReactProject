@@ -2,7 +2,9 @@
 
 .allContainer {
   background-color: $mainColor;
-  width: 90%;
+  // background-color: green;
+
+  width: 96%;
   margin: auto;
   border-radius: 20px;
   padding: 10px 20px 35px 20px;
@@ -12,15 +14,20 @@
   transform: translate(-50%, -50%);
   z-index: 100000;
   height: 700px;
-  top: 48%;
+  top: 57%;
   @media #{$mobile} {
-    width: 80%;
-    top: 50%;
-    height: 75vh;
+    width: 93%;
+    top: 51%;
+    height: 61vh;
   }
   @media #{$tablet} {
-    top: 45%;
+    top: 58%;
     width: 100%;
+  }
+  @media #{$minimobile} {
+    width: 86%;
+    top: 56%;
+    height: 65vh;
   }
 }
 
@@ -102,20 +109,24 @@
   margin-left: 20px;
   padding: 10px;
   outline: none;
-  margin-bottom: 8px;
+  margin-top: -15px;
   font-size: 20px;
   font-family: $boldfont;
-  margin-bottom: 20px;
   @media #{$mobile} {
     padding: 5px;
     margin-left: 0;
     font-size: 10px;
+    margin-top: 55px;
+    width: 85%;
   }
   @media #{$minimobile} {
     font-size: 10px;
+    width: 85%;
   }
   @media #{$tablet} {
     padding: 5px;
+    width: 89%;
+    margin-top: 45px;
   }
 }
 
@@ -138,7 +149,7 @@
     text-align: center;
   }
   @media #{$tablet} {
-    width: 100%;
+    width: 97.5%;
   }
 }
 
@@ -174,7 +185,7 @@
     margin-left: 0;
   }
   @media #{$tablet} {
-    width: 92%;
+    width: 98%;
   }
 }
 
@@ -199,12 +210,17 @@
   position: absolute;
   width: 95%;
   @media #{$mobile} {
-    width: 90%;
+    width: 95%;
+    margin-top: 0;
   }
   @media #{$tablet} {
     text-align: center;
-    width: 92%;
+    width: 90%;
     font-size: 14px;
+  }
+  @media #{$minimobile} {
+    text-align: center;
+    width: 95%;
   }
 }
 
@@ -213,7 +229,7 @@
   top: 50%;
   width: 95%;
   @media #{$mobile} {
-    width: 90%;
+    width: 100%;
     top: 44%;
   }
   @media #{$tablet} {
@@ -253,16 +269,18 @@
   cursor: pointer;
   font-family: $boldfont;
   @media #{$mobile} {
-    left: 83%;
+    left: 89%;
     width: 12px;
     margin-top: -22px;
-
   }
   @media #{$minimobile} {
     left: 79%;
     width: 15px;
     height: 15px;
     margin-top: -20px;
+  }
+  @media #{$tablet} {
+    left: 95%;
   }
 }
 
@@ -289,6 +307,7 @@
   font-family: $boldfont;
   @media #{$mobile} {
     font-size: 9px;
+    padding: 50px 0 0 0;
   }
   @media #{$tablet} {
     padding: 90px 0 0 0;

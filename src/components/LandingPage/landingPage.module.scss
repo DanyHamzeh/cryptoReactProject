@@ -4,7 +4,7 @@
   width: 100%;
   margin: auto;
   background-color: $mainColor;
-  height: 84vh;
+  height: 90vh;
   position: relative;
   background-image: url("../../assets//images/backgroundImage.png");
   background-repeat: no-repeat;
@@ -14,9 +14,9 @@
   // @media #{$largeDesktop} {
   //   height: 800px;
   // }
-  // @media #{$tablet} {
-  //   height: 1210px;
-  // }
+  @media #{$tablet} {
+    height: 100vh;
+  }
   // @media #{$nonDesk} {
   //   height: 79vh;
   // }

@@ -2,7 +2,8 @@
 
 .allContainer {
   background-color: $mainColor;
-  width: 50%;
+  // background-color: red;
+  width: 55%;
   margin: auto;
   border-radius: 20px;
   padding: 10px 20px 10px 20px;
@@ -13,21 +14,21 @@
   transform: translate(-50%, -50%);
   @media #{$mobile} {
     width: 80%;
-    top: 380px;
+    top: 330px;
   }
   @media #{$tablet} {
-    width: 80%;
-    top: 500px;
+    width: 70%;
+    top: 400px;
   }
   @media #{$minimobile} {
     width: 80%;
-    top: 300px;
+    top: 330px;
   }
 }
 
 .titleClose {
   @include flex;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   @media #{$mobile} {
     margin-bottom: 8px;
   }
@@ -77,6 +78,7 @@
   display: block;
   margin-left: 30px;
   font-family: $boldfont;
+
   // @include flex;
   @media #{$mobile} {
     font-size: 10px;
@@ -88,7 +90,7 @@
   color: $white;
   margin-left: 5px;
   font-family: $boldfont;
-  font-size: 10px;
+  font-size: 8px;
   @media #{$mobile} {
     font-size: 6px;
     display: block;
@@ -105,10 +107,10 @@
   border-radius: 83px;
   width: 90%;
   margin-left: 20px;
-  padding: 10px;
+  padding: 8px;
   outline: none;
   margin-bottom: 8px;
-  font-size: 20px;
+  font-size: 18px;
   font-family: $boldfont;
   @media #{$mobile,$minimobile} {
     padding: 5px;
@@ -121,10 +123,9 @@
   border-radius: 83px;
   width: 90%;
   margin-left: 20px;
-  padding: 10px;
+  padding: 8px;
   outline: none;
-  // margin-bottom: 5px;
-  font-size: 20px;
+  font-size: 18px;
   font-family: $boldfont;
   @media #{$mobile} {
     padding: 5px;
@@ -136,105 +137,89 @@
 
 .eyeOpenStyle {
   position: absolute;
-  right: 8%;
-  top: 46.5%;
+  right: 10%;
+  top: 48%;
   cursor: pointer;
   @media #{$mobile} {
     right: 13%;
-    top: 41.5%;
+    top: 46%;
     width: 12px;
   }
   @media #{$minimobile} {
     right: 14%;
-    top: 41.5%;
+    top: 46.5%;
     width: 13px;
   }
   @media #{$tablet} {
     right: 8%;
-    top: 45%;
+    top: 47%;
     width: 25px;
-  }
-  @media #{$largeDesktop} {
-    right: 9%;
-    top: 50%;
   }
 }
 
 .eyeOpenStyleNew {
   position: absolute;
-  right: 8%;
-  top: 46%;
+  right: 10%;
+  top: 48%;
   cursor: pointer;
   @media #{$mobile} {
     right: 13%;
-    top: 41.5%;
+    top: 46%;
     width: 12px;
   }
   @media #{$minimobile} {
     right: 14%;
-    top: 41.5%;
+    top: 46.5%;
     width: 13px;
   }
   @media #{$tablet} {
     right: 8%;
-    top: 45%;
+    top: 47%;
     width: 25px;
-  }
-  @media #{$largeDesktop} {
-    right: 9%;
-    top: 50%;
   }
 }
 
 .eyeCLoseStyle {
   position: absolute;
-  right: 8%;
-  top: 56%;
+  right: 10%;
+  top: 58.5%;
   cursor: pointer;
   @media #{$mobile} {
     right: 13%;
-    top: 50%;
+    top: 55.5%;
     width: 12px;
   }
   @media #{$minimobile} {
     right: 13%;
-    top: 50.5%;
+    top: 56.5%;
     width: 13px;
   }
   @media #{$tablet} {
     right: 8%;
-    top: 55%;
+    top: 57.5%;
     width: 25px;
-  }
-  @media #{$largeDesktop} {
-    right: 9%;
-    top: 60.5%;
   }
 }
 
 .eyeCLoseStyleNew {
   position: absolute;
-  right: 8%;
-  top: 56%;
+  right: 10%;
+  top: 58.5%;
   cursor: pointer;
   @media #{$mobile,} {
     right: 13%;
-    top: 50%;
+    top: 55.5%;
     width: 12px;
   }
   @media #{$minimobile} {
     right: 13%;
-    top: 50.5%;
+    top: 56.5%;
     width: 13px;
   }
   @media #{$tablet} {
     right: 8%;
-    top: 55%;
+    top: 57.5%;
     width: 25px;
-  }
-  @media #{$largeDesktop} {
-    right: 9%;
-    top: 60.5%;
   }
 }
 
@@ -248,7 +233,7 @@
 }
 
 .checkBox {
-  width: 50px;
+  width: 35px;
   height: 50px;
   background-color: $mainColor;
   border-radius: 2px;
@@ -264,28 +249,37 @@
 
 .textBox {
   color: $white;
-  margin-left: 10px;
   font-family: $boldfont;
+  font-size: 14px;
+  display: block;
+  text-align: left;
+  margin-left: 5px;
   @media #{$mobile} {
-    font-size: 8px;
+    font-size: 12px;
   }
   @media #{$minimobile} {
-    font-size: 5px;
+    font-size: 7px;
   }
 }
 
 .textBoxInside {
   color: $profileMainColor;
   text-align: center;
-  margin-left: 5px;
+  // margin-left: 5px;
   text-decoration: underline;
   font-family: $boldfont;
+  font-size: 15px;
+  display: block;
+  text-align: left;
   @media #{$mobile} {
-    font-size: 10px;
+    font-size: 13px;
+    margin-left: 0;
+    text-align: center;
   }
   @media #{$minimobile} {
     font-size: 8px;
   }
+  
 }
 
 .secureCont {
@@ -326,7 +320,6 @@
     font-size: 10px;
     padding: 8px 20px 8px 20px;
     margin-bottom: 30px;
-
   }
 }
 
@@ -381,7 +374,7 @@
 }
 
 .logInShow {
-  width: 200%;
+  width: 180%;
   margin: auto;
   border-radius: 20px;
   // padding: 10px 20px 90px 20px;
