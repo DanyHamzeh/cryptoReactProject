@@ -26,9 +26,9 @@ function WithDraw(props) {
   const investHandler = () => {
     const investmentAmount = parseFloat(amount);
     if (isNaN(investmentAmount)) {
-      setMessage("PLEASE FILL EMPTY FIELDS");
+      setMessage(t("fillEmpty"));
     } else if (investmentAmount <= props.amountToUse) {
-      setMessage("INVESTMENT SHOULD BE MORE THAN YOUR BALANCE");
+      setMessage(t("investmentShouldBalance"));
     } else {
       if (token || tokenLogin) {
         let url = reinvestApi(selectedLanguage);

@@ -12,6 +12,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Loader from "../../components/Loader/Loader";
+import i18next from "i18next";
 
 function Investment(props) {
   const [showWarning, setShowWarning] = useState(false);
@@ -30,6 +31,17 @@ function Investment(props) {
   const tokenLogin = localStorage.getItem("tokenLogin"); // Check if the token exists
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
   const navigate = useNavigate();
+
+
+  useEffect(()=>{
+    i18next.init({
+      lng: selectedLanguage,
+      fallbackLng: 'ENGLISH',
+      interpolation: {
+        escapeValue: false,
+      },
+    });
+  },[])
 
   function handleClickWarning() {
     setShowWarning((prev) => !prev);

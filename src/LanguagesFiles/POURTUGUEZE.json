@@ -25,7 +25,7 @@
   "how15": "Investimentos:",
   "how16": "Todos os investimentos serão exibidos na página de Investimentos, gerando lucros diários que você poderá sacar (para valores acima de 10 USDT) ou reinvestir.Para iniciar um saque, clique em 'Retirar' e insira um endereço de destino ou selecione um dos endereços usados anteriormente.Para reinvestir, basta clicar em 'Reinvestir'.",
   "how17": "Para obter qualquer outra informação, entre em contato conosco por e-mail em contact@dailytradingbot.com",
-  "SIGN UP": "REGISTAR",
+  "signUp": "REGISTAR",
   "LOGIN": "INICIAR SESSÃO",
   "LANGUAGE": "IDIOMA",
   "contactUs": "Contacte-nos: contact@dailytradingbot.com",
@@ -148,5 +148,9 @@
   "Copied": "COPIADO",
   "address": "ENDEREÇO",
   "tAC": "TERMOS E CONDIÇÕES",
-  "menueClose": "Bem-vindo ao bot de negociação, entre em contato conosco em: contact@dailytradingbot.com, faça login para obter mais detalhes"
+  "menueClose": "Bem-vindo ao bot de negociação, entre em contato conosco em: contact@dailytradingbot.com, faça login para obter mais detalhes",
+  "minimumAmount": "O VALOR MÍNIMO DE RETIRADA É DE 10 USDT",
+  "investmentShould": "O INVESTIMENTO DEVE SER MAIS DE 100",
+  "investmentShouldBalance": "o investimento deve ser maior do que o seu saldo"
+
 }

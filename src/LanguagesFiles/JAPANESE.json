@@ -148,5 +148,9 @@
   "Copied": "コピー済み",
   "address": "住所",
   "tAC": "利用規約と条件",
-  "menueClose": "トレーディングボットへようこそ、詳細については: contact@dailytradingbot.com にお問い合わせください、詳細を表示するにはログインしてください"
+  "menueClose": "トレーディングボットへようこそ、詳細については: contact@dailytradingbot.com にお問い合わせください、詳細を表示するにはログインしてください",
+  "minimumAmount": "最低出金額は10 USDTです  ",
+  "investmentShould": "投資額は100以上である必要があります  ",
+  "investmentShouldBalance": "投資は残高を超える必要があります"
+
 }

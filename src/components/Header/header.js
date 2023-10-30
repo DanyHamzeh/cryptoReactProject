@@ -4,14 +4,23 @@ import LandingPage from "../LandingPage/landingPage";
 import Footer from "../footer/footer";
 import TopHeader from "../TopHeader/topHeader";
 import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import { useEffect } from "react";
 
-function Header(props) {
+function Header() {
   const { t } = useTranslation();
-  // const token = localStorage.getItem("token"); // Get the token from localStorage
+  const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
 
-  // useEffect(() => {
-  //   console.log("token", token);
-  // }, []);
+
+  useEffect(()=>{
+    i18next.init({
+      lng: selectedLanguage,
+      fallbackLng: 'ENGLISH',
+      interpolation: {
+        escapeValue: false,
+      },
+    });
+  },[])
 
   return (
     <>

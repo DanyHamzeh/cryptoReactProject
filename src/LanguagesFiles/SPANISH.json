@@ -148,5 +148,9 @@
   "Copied": "COPIADO",
   "address": "DIRECCIÓN",
   "tAC": "TÉRMINOS Y CONDICIONES",
-  "menueClose": "Bienvenido al bot de trading, contáctenos en: contact@dailytradingbot.com, inicie sesión para obtener más detalles"
+  "menueClose": "Bienvenido al bot de trading, contáctenos en: contact@dailytradingbot.com, inicie sesión para obtener más detalles",
+  "minimumAmount":"LA CANTIDAD MÍNIMA DE RETIRO ES 10 USDT",
+  "investmentShould":"LA INVERSIÓN DEBE SER MÁS DE 100",
+  "investmentShouldBalance": "la inversión debe ser mayor que su saldo"
+
 }

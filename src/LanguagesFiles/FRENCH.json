@@ -148,5 +148,10 @@
   "Copied": "COPIÉ",
   "address": "ADRESSE",
   "tAC": "CONDITIONS GÉNÉRALES",
-  "menueClose": "Bienvenue sur le bot de trading, contactez-nous : contact@dailytradingbot.com, connectez-vous pour obtenir plus de détails"
+  "menueClose": "Bienvenue sur le bot de trading, contactez-nous : contact@dailytradingbot.com, connectez-vous pour obtenir plus de détails",
+  "minimumAmount":"LE MONTANT MINIMUM DU RETRAIT EST DE 10 USDT",
+  "investmentShould":"L'INVESTISSEMENT DEVRAIT ÊTRE SUPÉRIEUR À 100",
+  "investmentShouldBalance": "l'investissement doit être supérieur à votre solde"
+
+
 }

@@ -25,7 +25,7 @@
   "how15": "投资：",
   "how16": "所有投资将显示在投资页面上，每天产生您可以提取（超过10 USDT的金额）或重新投资的利润。要启动提款，请单击“提款”并输入目标地址，或从先前使用过的地址中进行选择。要重新投资，只需单击“再投资”。",
   "how17": "有关其他信息，请通过电子邮件与我们联系 contact@dailytradingbot.com ",
-  "SIGN UP": "注册",
+  "signUp": "注册",
   "LOGIN": "登录",
   "LANGUAGE": "语言",
   "contactUs": "联系我们：contact@dailytradingbot.com",
@@ -148,5 +148,9 @@
 "Copied": "已复制",
 "address": "地址",
 "tAC": "条款和条件",
-"menueClose": "欢迎使用交易机器人，联系我们：contact@dailytradingbot.com，登录以获取更多详细信息"
+"menueClose": "欢迎使用交易机器人，联系我们：contact@dailytradingbot.com，登录以获取更多详细信息",
+"minimumAmount": "最低提款金額為 10 USDT",
+"investmentShould": "投資應大於100",
+"investmentShouldBalance": "投资应该超过您的余额"
+
 }

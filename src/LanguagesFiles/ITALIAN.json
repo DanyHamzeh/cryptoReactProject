@@ -25,7 +25,7 @@
   "how15": "Investimenti:",
   "how16": "Tutti gli investimenti saranno visualizzati nella pagina degli Investimenti, generando profitti giornalieri che potrete prelevare (per importi superiori a 10 USDT) o reinvestire.Per avviare un prelievo, cliccate su 'Preleva' ed inserite un indirizzo di destinazione o selezionate tra gli indirizzi precedentemente utilizzati.Per reinvestire, cliccate semplicemente su 'Reinvesti'.",
   "how17": "Per qualsiasi altra informazione, vi preghiamo di contattarci via email a contact@dailytradingbot.com",
-  "SIGN UP": "REGISTRATI",
+  "signUp": "REGISTRATI",
   "LOGIN": "ACCEDI",
   "LANGUAGE": "LINGUA",
   "contactUs": "Contattaci: contact@dailytradingbot.com",
@@ -148,5 +148,9 @@
   "Copied": "COPIATO",
   "address": "INDIRIZZO",
   "tAC": "TERMINI E CONDIZIONI",
-  "menueClose": "Benvenuti al bot di trading, contattateci su: contact@dailytradingbot.com, effettuate l'accesso per ottenere ulteriori dettagli"
+  "menueClose": "Benvenuti al bot di trading, contattateci su: contact@dailytradingbot.com, effettuate l'accesso per ottenere ulteriori dettagli",
+  "minimumAmount": "L'IMPORTO MINIMO DEL PRELIEVO È DI 10 USDT  ",
+  "investmentShould": "L'INVESTIMENTO DOVREBBE ESSERE PIÙ DI 100  ",
+  "investmentShouldBalance": "l'investimento dovrebbe essere superiore al tuo saldo"
+
 }

@@ -144,5 +144,9 @@
   "Copied": "KOYULDU",
   "address": "ADRES ",
   "tAC": "ŞARTLAR VE KOŞULLAR",
-  "menueClose": "Ticaret Bot'una hoş geldiniz, bize şu adresten ulaşabilirsiniz: contact@dailytradingbot.com, daha fazla bilgi almak için giriş yapın"
+  "menueClose": "Ticaret Bot'una hoş geldiniz, bize şu adresten ulaşabilirsiniz: contact@dailytradingbot.com, daha fazla bilgi almak için giriş yapın",
+  "minimumAmount":"MİNİMUM ÇEKİM MİKTARI 10 USDT",
+  "investmentShould":"YATIRIM 100 TL'DEN FAZLA OLMALI",
+  "investmentShouldBalance": "yatırım bakiyenizden fazla olmalı"
+
 }

@@ -148,6 +148,10 @@
 "Copied": "KOPIERT",
 "address": "ADRESSE",
 "tAC": "GESCHÄFTSBEDINGUNGEN",
-"menueClose": "Willkommen beim Trading-Bot, kontaktieren Sie uns unter: contact@dailytradingbot.com, melden Sie sich an, um weitere Details zu erhalten"
+"menueClose": "Willkommen beim Trading-Bot, kontaktieren Sie uns unter: contact@dailytradingbot.com, melden Sie sich an, um weitere Details zu erhalten",
+"minimumAmount":"Der Mindestauszahlungsbetrag beträgt 10 USDT",
+"investmentShould":"Die Investition sollte mehr als 100 betragen",
+"investmentShouldBalance": "die Investition sollte höher sein als Ihr Kontostand"
+
 
 }

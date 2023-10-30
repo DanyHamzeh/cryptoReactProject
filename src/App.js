@@ -16,24 +16,19 @@ function App() {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(window.location.search);
   const referralCode = queryParams.get("referralUrl");
-  const queryParams1 = new URLSearchParams(window.location.search);
-  const vipCodeUrl = queryParams1.get("vipCode");
-
-
 
   useEffect(() => {
-    if (referralCode  || vipCodeUrl) {
+    if (referralCode) {
       console.log(`User came with referral code code: ${referralCode}`);
-      console.log(`User came with referral code vip: ${vipCodeUrl}`);
       localStorage.setItem("referralCode", referralCode);
-      localStorage.setItem("vipCodeUrl", vipCodeUrl);
       localStorage.removeItem("token");
       localStorage.removeItem("tokenLogin");
     } else {
+      console.log("tessstttdann");
       localStorage.removeItem("referralCode");
-      localStorage.removeItem("vipCodeUrl");
     }
-  }, [referralCode, navigate,vipCodeUrl]);
+  }, [referralCode]);
+
 
   return (
     <div className="body">

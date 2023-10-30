@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../../components/footer/footer";
 import TopHeader from "../../components/TopHeader/topHeader";
 import classes from "./termsCondition.module.scss";
 import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 function TermsCondition() {
   const { t } = useTranslation();
+  const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
+
+  useEffect(() => {
+    i18next.init({
+      lng: selectedLanguage,
+      fallbackLng: "ENGLISH",
+      interpolation: {
+        escapeValue: false,
+      },
+    });
+  }, []);
 
   return (
     <div>
       <TopHeader />
       <div className={classes.landPage}>
         <div className={classes.termsConditionCont}>
-          <div className={classes.insideContainer}>
+          <div
+            className={
+              selectedLanguage === "ARABIC"
+                ? classes.insideContainerArabic
+                : classes.insideContainer
+            }
+          >
             <span className={classes.title}> {t("tAC")}</span>
             <span className={classes.paragraph}>{t("terms1")}</span>
             <span className={classes.subTitle}> {t("terms2")}</span>
@@ -74,7 +92,6 @@ function TermsCondition() {
             <span className={classes.paragraphSecond}>{t("sterms6")}</span>
             <span className={classes.paragraphSecond}> {t("sterms7")}</span>
             <span className={classes.paragraphSecond}>{t("sterms8")}</span>
-       
           </div>
         </div>
       </div>

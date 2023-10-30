@@ -47,14 +47,17 @@
 }
 
 .imageTitle {
-  @include flex($justify-content: flex-start);
+  @include flex($justify-content: center);
   @media #{$mobile} {
     width: 50%;
     margin: auto;
+    justify-content: center;
+
   }
   @media #{$tablet} {
     width: 20%;
     margin: auto;
+    justify-content: center;
   }
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "./withDraw.module.scss";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { withDrawApi, userWalletApi, userInvestmentApi } from "../../Api";
+import { withDrawApi, userWalletApi } from "../../Api";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import { useEffect } from "react";
@@ -12,12 +12,10 @@ import "../../sass/style.scss";
 function WithDraw(props) {
   const [errorCode, setErrorCode] = useState(null);
   const [amount, setAmount] = useState("");
-  const [address, setAddress] = useState("");
   const [loader, setLoader] = useState(false);
   const [message, setMessage] = useState("");
   const [addresses, setAddresses] = useState([]);
   const [selectedValue, setSelectedValue] = useState("");
-  const [invests, setInvests] = useState([]);
 
 
   const navigate = useNavigate();
@@ -120,9 +118,9 @@ function WithDraw(props) {
   const withDrawHandler = () => {
     const investmentAmount = parseFloat(amount);
     if (isNaN(investmentAmount) || selectedValue=== "") {
-      setMessage("PLEASE FILL EMPTY FIELDS");
+      setMessage(t("fillEmpty"));
     } else if (investmentAmount < 10) {
-      setMessage("MINIMUM AMOUNT OF WITHDRAW IS 10 USDT");
+      setMessage(t("minimumAmount"));
     } else {
       if (token || tokenLogin) {
         let url = withDrawApi(selectedLanguage);

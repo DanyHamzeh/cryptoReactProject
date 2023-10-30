@@ -148,5 +148,9 @@
   "Copied": "IMEKOPIWA",
   "address": "ANUANI",
   "tAC": "SHERIA NA MASHARTI",
-  "menueClose": "Karibu kwenye boti ya biashara, wasiliana nasi kupitia: contact@dailytradingbot.com, ingia ili kupata maelezo zaidi"
+  "menueClose": "Karibu kwenye boti ya biashara, wasiliana nasi kupitia: contact@dailytradingbot.com, ingia ili kupata maelezo zaidi",
+  "minimumAmount": "KIASI CHA CHINI YA RIWAYA NI 10 USDT  ",
+  "investmentShould": "UWEKEZAJI UWE ZAIDI YA 100 ",
+  "investmentShouldBalance": "uwekezaji unapaswa kuwa zaidi ya usawa wako"
+
 }

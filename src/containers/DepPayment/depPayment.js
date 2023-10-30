@@ -8,6 +8,7 @@ import { collectInvApi, depositeAddressApi } from "../../Api";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
+import i18next from "i18next";
 
 function DepPayment() {
   const [withDrawId, setWithDrawId] = useState("");
@@ -23,10 +24,19 @@ function DepPayment() {
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    i18next.init({
+      lng: selectedLanguage,
+      fallbackLng: 'ENGLISH',
+      interpolation: {
+        escapeValue: false,
+      },
+    });
+  },[])
+
   const withDrawHandler = (event) => {
     const inputValue = event.target.value;
 
-    // Use a regular expression to check if the input contains only letters (no numbers or special characters) or is empty
     if (/^[0-9]*$/.test(inputValue)) {
       setWithDrawId(inputValue);
     }

@@ -224,7 +224,7 @@
 .messageStyle {
   color: red !important ;
   position: absolute; 
-  top: 73%;
+  top: 68%;
   left: 50%;
   transform: translate(-50%, 100%);
   @media #{$mobile,} {
@@ -241,7 +241,7 @@
 .loaderPosition {
   // margin-top: 20px;
   position: absolute;
-  top: 60%;
+  top: 58%;
   left: 50%;
   transform: translate(-50%, 65%);
   @media #{$mobile} {

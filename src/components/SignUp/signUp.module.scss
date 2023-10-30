@@ -28,7 +28,7 @@
 
 .titleClose {
   @include flex;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   @media #{$mobile} {
     margin-bottom: 8px;
   }
@@ -138,7 +138,7 @@
 .eyeOpenStyle {
   position: absolute;
   right: 10%;
-  top: 48%;
+  top: 49%;
   cursor: pointer;
   @media #{$mobile} {
     right: 13%;
@@ -152,7 +152,7 @@
   }
   @media #{$tablet} {
     right: 8%;
-    top: 47%;
+    top: 48%;
     width: 25px;
   }
 }
@@ -160,7 +160,7 @@
 .eyeOpenStyleNew {
   position: absolute;
   right: 10%;
-  top: 48%;
+  top: 49%;
   cursor: pointer;
   @media #{$mobile} {
     right: 13%;
@@ -174,7 +174,7 @@
   }
   @media #{$tablet} {
     right: 8%;
-    top: 47%;
+    top: 48%;
     width: 25px;
   }
 }
@@ -182,7 +182,7 @@
 .eyeCLoseStyle {
   position: absolute;
   right: 10%;
-  top: 58.5%;
+  top: 59%;
   cursor: pointer;
   @media #{$mobile} {
     right: 13%;
@@ -196,7 +196,7 @@
   }
   @media #{$tablet} {
     right: 8%;
-    top: 57.5%;
+    top: 58.5%;
     width: 25px;
   }
 }
@@ -204,7 +204,7 @@
 .eyeCLoseStyleNew {
   position: absolute;
   right: 10%;
-  top: 58.5%;
+  top: 59%;
   cursor: pointer;
   @media #{$mobile,} {
     right: 13%;
@@ -218,7 +218,7 @@
   }
   @media #{$tablet} {
     right: 8%;
-    top: 57.5%;
+    top: 58.5%;
     width: 25px;
   }
 }
@@ -271,6 +271,7 @@
   font-size: 15px;
   display: block;
   text-align: left;
+  cursor: pointer;
   @media #{$mobile} {
     font-size: 13px;
     margin-left: 0;

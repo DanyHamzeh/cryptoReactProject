@@ -271,9 +271,6 @@
   @media #{$mobile} {
     height: 100vh;
   }
-  // @media #{$largeDesktop} {
-  //   height: 100vh;
-  // }
   @media #{$tablet} {
     height: 115vh;
   }
@@ -302,10 +299,10 @@
   font-weight: 500;
   font-size: 21px;
   font-family: $boldfont;
-  letter-spacing: 10px;
+  // letter-spacing: 10px;
   @media #{$mobile} {
     font-size: 12px;
-    letter-spacing: 0;
+    // letter-spacing: 0;
     margin: 0;
   }
 }

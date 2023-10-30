@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { getUserInfoApi } from "../../Api";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import i18next from "i18next";
 
 function Profile() {
   const [showResetPAssword, setShowResetPassword] = useState(false);
@@ -33,12 +34,24 @@ function Profile() {
   const tokenLogin = localStorage.getItem("tokenLogin"); // Check if the token exists
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
 
+  useEffect(()=>{
+    i18next.init({
+      lng: selectedLanguage,
+      fallbackLng: 'ENGLISH',
+      interpolation: {
+        escapeValue: false,
+      },
+    });
+  },[])
+
+
   useEffect(() => {
     if (token || tokenLogin) {
       let url = getUserInfoApi(selectedLanguage);
       let getUserObject = {
         token: token || tokenLogin,
       };
+      console.log(selectedLanguage);
       axios
         .post(url, getUserObject)
         .then((response) => {

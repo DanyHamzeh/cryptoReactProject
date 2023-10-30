@@ -24,13 +24,47 @@
   }
 }
 
+.insideContainerArabic{
+  width: 95%;
+  margin: auto;
+  background-color: #13293e;
+  padding: 10px 20px 10px 0;
+  border-radius: 20px;
+  @media #{$mobile} {
+    width: 80%;
+  }
+}
+
 .title {
   display: block;
   font-size: 25px;
   color: $white;
   font-family: $boldfont;
-  letter-spacing: 5px;
+  // letter-spacing: 5px;
   font-weight: 700;
+
+  margin-bottom: 20px;
+  @media #{$mobile} {
+    font-size: 15px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+  @media #{$minimobile} {
+    font-size: 12px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+}
+
+.titleArabic{
+  display: block;
+  font-size: 25px;
+  color: $white;
+  font-family: $boldfont;
+  // letter-spacing: 5px;
+  font-weight: 700;
+  direction: rtl;
+
   margin-bottom: 20px;
   @media #{$mobile} {
     font-size: 15px;
@@ -52,6 +86,29 @@
   letter-spacing: 1px;
   font-weight: 300;
   margin-bottom: 20px;
+  // direction: rtl;
+
+  @media #{$mobile} {
+    font-size: 12px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+  @media #{$minimobile} {
+    font-size: 10px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+}
+
+.subTitleArabic {
+  display: block;
+  font-size: 20px;
+  color: $white;
+  font-family: $boldfont;
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  direction: rtl;
   @media #{$mobile} {
     font-size: 12px;
     letter-spacing: 0;
@@ -87,7 +144,27 @@
   }
 }
 
-.paragraphSubTitle{
+.paragraphArabic{
+  font-size: 14px;
+  color: $white;
+  font-family: $meduimfont;
+  font-weight: 300;
+  margin-bottom: 6px;
+  display: block;
+  direction: rtl;
+  @media #{$mobile} {
+    font-size: 10px;
+    text-align: flex-start;
+    margin-bottom: 3px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+    text-align: flex-start;
+    margin-bottom: 3px;
+  }
+}
+
+.paragraphSubTitle {
   font-size: 16px;
   color: $white;
   font-family: $boldfont;
@@ -106,15 +183,41 @@
   }
 }
 
-.numberPercentageCont {
-  @include flex($justify-content:flex-start);
+.paragraphSubTitleArabic{
+  font-size: 16px;
+  color: $white;
+  font-family: $boldfont;
+  font-weight: 300;
+  margin-bottom: 6px;
+  display: block;
+  direction: rtl;
+
+  @media #{$mobile} {
+    font-size: 10px;
+    text-align: flex-start;
+    margin-bottom: 3px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+    text-align: flex-start;
+    margin-bottom: 3px;
+  }
 }
 
-.amountStyle{
+.numberPercentageCont {
+  @include flex($justify-content: flex-start);
+}
+
+.numberPercentageContArabic{
+  @include flex($justify-content: flex-end);
+
+}
+
+.amountStyle {
   text-align: center;
 }
 
-.amountStyle1{
+.amountStyle1 {
   text-align: center;
   margin-left: 80px;
 }

@@ -25,14 +25,27 @@ function SignUp(props) {
 
   const referralCodeFromLocalStorage = localStorage.getItem("referralCode");
   const [refferlNew, setRefferlNew] = useState(referralCodeFromLocalStorage);
-
-  const vipCodeStorage = localStorage.getItem("vipCodeUrl");
-
-
-
   const { t } = useTranslation();
 
+  const openLinkInNewTab = ( url ) => {
+    const newTab = window.open(url, '_blank', 'noopener,noreferrer');
+    if ( newTab ) newTab.opener = null;
+  }
 
+  const queryParams1 = new URLSearchParams(window.location.search);
+  const vipCodeUrl = queryParams1.get("vipCode");
+
+  useEffect(() => {
+    if (vipCodeUrl) {
+      console.log(`User came with referral code vip: ${vipCodeUrl}`);
+      localStorage.setItem("vipCodeUrl", vipCodeUrl);
+      localStorage.removeItem("token");
+      localStorage.removeItem("tokenLogin");
+    } else {
+      console.log("tessstttdann");
+      localStorage.removeItem("vipCodeUrl");
+    }
+  }, [vipCodeUrl]);
 
   function handleClickLogIn() {
     setShowLogIn((prev) => !prev);
@@ -53,7 +66,6 @@ function SignUp(props) {
   const firstNameHandler = (event) => {
     const inputValue = event.target.value;
 
-    // Use a regular expression to check if the input contains only letters (no numbers or special characters)
     if (/^[A-Za-z\s]*$/.test(inputValue)) {
       setFirstName(inputValue);
     }
@@ -104,7 +116,7 @@ function SignUp(props) {
   //   // console.log("hello", lastName);
   //   // console.log("hello", emailName);
   //   // console.log("hello", passwordName);
-  //   console.log("vipCodeStorage:", vipCodeStorage);
+  //   // console.log("vipCodeStorage:", vipCodeStorage);
   //   console.log("refferralCode :", refferralCode);
   // }, [
   //   refferlNew,
@@ -112,7 +124,7 @@ function SignUp(props) {
   //   // emailName,
   //   // passwordName,
   //   // confirmPassword,
-  //   vipCodeStorage,
+  //   // vipCodeStorage,
   //   refferralCode,
   // ]);
 
@@ -213,9 +225,8 @@ function SignUp(props) {
               : refferralCode
           }
           // readOnly={!!refferlNew}
-          readOnly={ refferlNew != null && refferlNew != "null" ? true: false}
+          readOnly={refferlNew != null && refferlNew != "null" ? true : false}
           // readOnly={false}
-
         />
       </div>
       <div className={classes.checkInputStyle}>
@@ -228,9 +239,9 @@ function SignUp(props) {
         />
         <span className={classes.textBox}>
           {t("iHaveRead")}
-          <Link to="/support" className={classes.textBoxInside}>
+          <span className={classes.textBoxInside} onClick={ () => openLinkInNewTab('http://localhost:3000/support')}>
             {t("tAC")}
-          </Link>
+          </span>
         </span>
       </div>
       <div className={classes.secureCont}>

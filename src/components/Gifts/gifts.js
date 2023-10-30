@@ -144,9 +144,9 @@ function Gifts(props) {
   const investHandler = () => {
     const investmentAmount = parseFloat(amount);
     if (isNaN(investmentAmount)) {
-      setMessage("PLEASE FILL EMPTY FIELDS");
+      setMessage(t("fillEmpty"));
     } else if (investmentAmount <= 100) {
-      setMessage("INVESTMENT SHOULD BE MORE THAN 100");
+      setMessage(t("investmentShould"));
     } else {
       if (token || tokenLogin) {
         let url = investGiftApi(selectedLanguage);
@@ -239,7 +239,6 @@ function Gifts(props) {
       padding: "2px 0 2px 0",
       margin: "auto",
       outline: "none",
-
     }),
     singleValue: (provided) => ({
       ...provided,
@@ -287,7 +286,7 @@ function Gifts(props) {
       <div className={classes.lineSeperate} />
       <div className={classes.giftContainer}>
         <div className={classes.firtBox}>
-          <span className={classes.textGift}> {t("balance")}</span>
+          <span className={classes.textGift}> {t("BALANCE")}</span>
           <div className={classes.inputGift}>{balanceAmount}</div>
         </div>
         <div className={classes.firtBox}>
@@ -301,7 +300,7 @@ function Gifts(props) {
         </div>
 
         <div className={classes.firtBox}>
-          <span className={classes.textGift}> {t("Address")}</span>
+          <span className={classes.textGift}> {t("address")}</span>
           <Creatable
             options={options}
             value={selectedValue} // Set the value of the Select component
@@ -310,12 +309,8 @@ function Gifts(props) {
           />
         </div>
         <div className={classes.textMessages}>
-          <span className={classes.giftMessage}>
-            Minimum amount of withdraw is 10 usdt
-          </span>
-          <span className={classes.giftMessage}>
-            investment should be more than 100
-          </span>
+          <span className={classes.giftMessage}>{t("minimumAmount")} </span>
+          <span className={classes.giftMessage}>{t("investmentShould")} </span>
         </div>
         <div className={classes.btnsGift}>
           <button className={classes.btnSubmit} onClick={withDrawHandler}>

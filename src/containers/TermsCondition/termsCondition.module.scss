@@ -21,14 +21,48 @@
   }
 }
 
+.insideContainerArabic{
+  width: 95%;
+  margin: auto;
+  background-color: #13293e;
+  padding: 10px 20px 80px 0x;
+  border-radius: 20px;
+  direction: rtl;
+  @media #{$mobile} {
+    width: 80%;
+  }
+}
+
 .title {
   display: block;
   font-size: 25px;
   color: $white;
   font-family: $boldfont;
-  letter-spacing: 10px;
+  // letter-spacing: 10px;
   font-weight: 700;
   margin-bottom: 40px;
+  @media #{$mobile} {
+    font-size: 15px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+  @media #{$minimobile} {
+    font-size: 12px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+}
+
+.titleArabic{
+  display: block;
+  font-size: 25px;
+  color: $white;
+  font-family: $boldfont;
+  // letter-spacing: 10px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  direction: rtl;
+
   @media #{$mobile} {
     font-size: 15px;
     letter-spacing: 0;

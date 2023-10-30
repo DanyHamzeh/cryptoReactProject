@@ -148,6 +148,9 @@
   "Copied":"COPIED",
   "address": "ADDRESS ",
   "tAC": "TERMS AND CONDITIONS ",
-  "menueClose":"Welcome to trading Bot contact us:contact@dailytradingbot.com ,log in to get more details"
+  "menueClose":"Welcome to trading Bot contact us:contact@dailytradingbot.com ,log in to get more details",
+  "minimumAmount":"Minimum amount of withdraw is 10 usdt",
+  "investmentShould":"investment should be more than 100",
+  "investmentShouldBalance":"investment should be more than yout balance"
 
 }

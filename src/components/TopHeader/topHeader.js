@@ -5,13 +5,14 @@ import LogIn from "../LogIn/logIn";
 import classes from "./topHeader.module.scss";
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Gifts from "../Gifts/gifts";
 import { useTranslation } from "react-i18next";
 
 import { useNavigate } from "react-router-dom";
 import { logoutApi } from "../../Api";
 import axios from "axios";
+import i18next from "i18next";
 
 function TopHeader() {
   const [mobilemenu, setmobilemenu] = useState("closed");
@@ -43,6 +44,7 @@ function TopHeader() {
     "SWAHILI",
   ];
 
+  const referralCodeFromLocalStorage = localStorage.getItem("referralCode");
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
@@ -55,24 +57,33 @@ function TopHeader() {
     localStorage.setItem("myLanguage", language);
   };
 
-  // const handleLogout = () => {
-  //   // Remove the token from localStorage
-  //   localStorage.removeItem("token");
+  const location = useLocation();
+  const isTermsAndConditionsPage = location.pathname === "/support";
 
-  //   // Navigate to the login page or another appropriate route after logout
-  //   // navigate('/'); // Redirect to the login page
-  // };
+  useEffect(() => {
+    i18next.init({
+      lng: selectedLanguage,
+      fallbackLng: "ENGLISH",
+      interpolation: {
+        escapeValue: false,
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    if (referralCodeFromLocalStorage) {
+      setShowSignup(true);
+    } else if (isTermsAndConditionsPage) {
+      setShowSignup(false);
+    }
+    console.log("sssssssssssssss", referralCodeFromLocalStorage);
+  }, [referralCodeFromLocalStorage, isTermsAndConditionsPage]);
 
   useEffect(() => {
     if (!selected || selected === "") {
       localStorage.setItem("myLanguage", defaultLanguage);
     }
   }, []);
-
-  // useEffect(() => {
-  //   console.log("sosos", selected);
-  //   console.log("bobo", changeLanguage);
-  // }, [selected, changeLanguage]);
 
   const onClickPicker = () => {
     if (showPicker) {
@@ -107,7 +118,6 @@ function TopHeader() {
     setShowGifts((prev) => !prev);
   }
 
-
   const logOutHandler = () => {
     if (token || tokenLogin) {
       let url = logoutApi(selectedLanguage);
@@ -138,6 +148,7 @@ function TopHeader() {
         <Link to="/">
           <img src={Logo} alt="app Logo" className={classes.logo_trading} />
         </Link>
+
         <div className={classes.listHeader}>
           <nav
             className={`${
@@ -193,9 +204,7 @@ function TopHeader() {
                 </div>
               </ul>
             ) : (
-              <span className={classes.noTokenMessage}>
-             {t("menueClose")}
-              </span>
+              <span className={classes.noTokenMessage}>{t("menueClose")}</span>
             )}
           </nav>
         </div>
@@ -205,77 +214,88 @@ function TopHeader() {
               <></>
             ) : (
               <>
-                <div className={classes.testt}>
-                  <div className={classes.languageCont}>
-                    <span
-                      className={classes.languageStyle}
-                      onClick={onClickPicker}
-                    >
-                      {t("LANGUAGE")}
-                    </span>
-                  </div>
-
-                  <div
-                    className={`${
-                      showPicker === "open"
-                        ? classes.languageDownCont
-                        : classes.languageDownContNew
-                    }`}
-                    style={{ borderRadius: "20px" }}
-                  >
-                    {options.map((option) => (
-                      <div
-                        key={option}
-                        onClick={(e) => {
-                          setSelected(option);
-                          setShowPicker("close");
-                          changeLanguage(option); // Call changeLanguage when an option is clicked
-                        }}
+                {!isTermsAndConditionsPage && (
+                  <div className={classes.testt}>
+                    <div className={classes.languageCont}>
+                      <span
+                        className={classes.languageStyle}
+                        onClick={onClickPicker}
                       >
-                        <div className={classes.inputContainer}>
-                          <span className={classes.downLanguages}>
-                            {option}
-                          </span>
-                          <div className={classes.lineSeperateNew} />
+                        {t("LANGUAGE")}
+                      </span>
+                    </div>
+
+                    <div
+                      className={`${
+                        showPicker === "open"
+                          ? classes.languageDownCont
+                          : classes.languageDownContNew
+                      }`}
+                      style={{ borderRadius: "20px" }}
+                    >
+                      {options.map((option) => (
+                        <div
+                          key={option}
+                          onClick={(e) => {
+                            setSelected(option);
+                            setShowPicker("close");
+                            changeLanguage(option); // Call changeLanguage when an option is clicked
+                          }}
+                        >
+                          <div className={classes.inputContainer}>
+                            <span className={classes.downLanguages}>
+                              {option}
+                            </span>
+                            <div className={classes.lineSeperateNew} />
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <button
-                  className={classes.btnStyle}
-                  onClick={handleClickSignUp}
-                >
-                  {t("signUp")}
-                </button>
+                {!isTermsAndConditionsPage && (
+                  <>
+                    <button
+                      className={classes.btnStyle}
+                      onClick={handleClickSignUp}
+                    >
+                      {t("signUp")}
+                    </button>
+                    <button
+                      className={classes.btnStyle}
+                      onClick={handleClickLogin}
+                    >
+                      {t("LOGIN")}
+                    </button>
+                  </>
+                )}
+
                 {showSignup && <SignUp onClose={handleClickSignUp} />}
-
-                <button className={classes.btnStyle} onClick={handleClickLogin}>
-                  {t("LOGIN")}
-                </button>
 
                 {showLogIn && <LogIn onClose={handleClickLogin} />}
               </>
             )}
           </div>
-          <div className={classes.burgermenuContainer} onClick={openmenu}>
-            <i
-              className={`${
-                btnstate === "open" ? classes.openbtn : classes.closebtn
-              }`}
-            ></i>
-            <i
-              className={`${
-                btnstate === "open" ? classes.openbtn : classes.closebtn
-              }`}
-            ></i>
-            <i
-              className={`${
-                btnstate === "open" ? classes.openbtn : classes.closebtn
-              }`}
-            ></i>
-          </div>
+          {!isTermsAndConditionsPage && (
+            <div className={classes.burgermenuContainer} onClick={openmenu}>
+              <i
+                className={`${
+                  btnstate === "open" ? classes.openbtn : classes.closebtn
+                }`}
+              ></i>
+              <i
+                className={`${
+                  btnstate === "open" ? classes.openbtn : classes.closebtn
+                }`}
+              ></i>
+              <i
+                className={`${
+                  btnstate === "open" ? classes.openbtn : classes.closebtn
+                }`}
+              ></i>
+            </div>
+          )}
         </div>
       </div>
     </div>
