@@ -6,13 +6,14 @@ import classes from "./topHeader.module.scss";
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Gifts from "../Gifts/gifts";
+// import Gifts from "../Gifts/gifts";
 import { useTranslation } from "react-i18next";
 
 import { useNavigate } from "react-router-dom";
 import { logoutApi } from "../../Api";
 import axios from "axios";
 import i18next from "i18next";
+import ProfileSmall from "../../assets/images/Group 231 (1).png";
 
 function TopHeader() {
   const [mobilemenu, setmobilemenu] = useState("closed");
@@ -20,30 +21,31 @@ function TopHeader() {
   const [menulist, setmenulist] = useState("hidden");
   const [showSignup, setShowSignup] = useState(false);
   const [showLogIn, setShowLogIn] = useState(false);
-  const [showGifts, setShowGifts] = useState(false);
+  // const [showGifts, setShowGifts] = useState(false);
   const [showPicker, setShowPicker] = useState("close");
+  const [dropDown, setDropDown] = useState("hidden");
+  const [dropDownUser, setDropDownUser] = useState("hidden");
   const [selected, setSelected] = useState(
     localStorage.getItem("myLanguage") || "ENGLISH"
   );
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
   const defaultLanguage = "ENGLISH";
   const options = [
-    "ENGLISH",
-    "FRENCH",
-    "ARABIC",
-    "TURKISH",
-    "SPANISH",
-    "GERMAN",
-    "PORTUGUESE",
-    "RUSSIAN",
-    "CHINESE",
-    "KOREAN",
-    "HINDI",
-    "ITALIAN",
-    "JAPANESE",
-    "SWAHILI",
+    { key: "ENGLISH", index: "ENGLISH", name: "ENGLISH" },
+    { key: "FRENCH", index: "FRENCH", name: "FRANÇAIS" },
+    { key: "ARABIC", index: "ARABIC", name: "العربية" },
+    { key: "TURKISH", index: "TURKISH", name: "TÜRKÇE" },
+    { key: "SPANISH", index: "SPANISH", name: "ESPAÑOL" },
+    { key: "GERMAN", index: "GERMAN", name: "DEUTSCH" },
+    { key: "PORTUGUESE", index: "PORTUGUESE", name: "PORTUGUÊS" },
+    { key: "RUSSIAN", index: "RUSSIAN", name: "РУССКИЙ" },
+    { key: "CHINESE", index: "CHINESE", name: "中国人" },
+    { key: "KOREAN", index: "KOREAN", name: "한국인" },
+    { key: "HINDI", index: "HINDI", name: "हिंदी" },
+    { key: "ITALIAN", index: "ITALIAN", name: "ITALIANO" },
+    { key: "JAPANESE", index: "JAPANESE", name: "日本語" },
+    { key: "SWAHILI", index: "SWAHILI", name: "KISWAHILI" },
   ];
-
   const referralCodeFromLocalStorage = localStorage.getItem("referralCode");
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -70,13 +72,22 @@ function TopHeader() {
     });
   }, []);
 
+  const openDropDown = () => {
+    setDropDown((currentValue) =>
+      currentValue === "visible" ? "hidden" : "visible"
+    );
+    setDropDownUser((currentValue) =>
+      currentValue === "visible" ? "hidden" : "visible"
+    );
+  };
+
   useEffect(() => {
     if (referralCodeFromLocalStorage) {
       setShowSignup(true);
     } else if (isTermsAndConditionsPage) {
       setShowSignup(false);
     }
-    console.log("sssssssssssssss", referralCodeFromLocalStorage);
+    // console.log("sssssssssssssss", referralCodeFromLocalStorage);
   }, [referralCodeFromLocalStorage, isTermsAndConditionsPage]);
 
   useEffect(() => {
@@ -114,9 +125,9 @@ function TopHeader() {
     setShowSignup((prev) => !prev);
   }
 
-  function handleClickGifts() {
-    setShowGifts((prev) => !prev);
-  }
+  // function handleClickGifts() {
+  //   setShowGifts((prev) => !prev);
+  // }
 
   const logOutHandler = () => {
     if (token || tokenLogin) {
@@ -166,26 +177,33 @@ function TopHeader() {
                       {t("howItWorks")}
                     </Link>
                   </li>
+                  <div className={classes.lineSeperateMobile} />
+
                   <li className={classes.navigateTabs}>
                     <Link to="/depPayment" className={classes.list_word}>
                       {t("depositePay")}
                     </Link>
                   </li>
+                  <div className={classes.lineSeperateMobile} />
+
                   <li className={classes.navigateTabs}>
-                    <Link
+                    <Link  to="/gifts" 
                       className={classes.list_word}
-                      onClick={handleClickGifts}
+                      // onClick={handleClickGifts}
                     >
                       {t("gifts")}
                     </Link>
                   </li>
-                  {showGifts && <Gifts onClose={handleClickGifts} />}
+                  <div className={classes.lineSeperateMobile} />
+
+                  {/* {showGifts && <Gifts onClose={handleClickGifts} />} */}
 
                   <li className={classes.navigateTabs}>
                     <Link to="/investment" className={classes.list_word}>
                       {t("INVESTMENTS")}
                     </Link>
                   </li>
+                  <div className={classes.lineSeperateMobile} />
                 </div>
 
                 <div className={classes.menueHiddenStyle}>
@@ -195,12 +213,14 @@ function TopHeader() {
                       {t("PROFILE")}
                     </Link>
                   </li>
+                  <div className={classes.lineSeperateMobile} />
 
                   <li className={classes.navigateTabs} onClick={logOutHandler}>
                     <Link to="/" className={classes.list_word}>
                       {t("signOut")}
                     </Link>
                   </li>
+                  <div className={classes.lineSeperateMobile} />
                 </div>
               </ul>
             ) : (
@@ -233,18 +253,18 @@ function TopHeader() {
                       }`}
                       style={{ borderRadius: "20px" }}
                     >
-                      {options.map((option) => (
+                      {options.map((option, index) => (
                         <div
-                          key={option}
-                          onClick={(e) => {
+                          key={option.index}
+                          onClick={(index) => {
                             setSelected(option);
                             setShowPicker("close");
-                            changeLanguage(option); // Call changeLanguage when an option is clicked
+                            changeLanguage(option.index); // Call changeLanguage when an option is clicked
                           }}
                         >
                           <div className={classes.inputContainer}>
                             <span className={classes.downLanguages}>
-                              {option}
+                              {option.name}
                             </span>
                             <div className={classes.lineSeperateNew} />
                           </div>
@@ -255,20 +275,35 @@ function TopHeader() {
                 )}
 
                 {!isTermsAndConditionsPage && (
-                  <>
-                    <button
-                      className={classes.btnStyle}
-                      onClick={handleClickSignUp}
+                  <div className={classes.mobileStyleBtn}>
+                    <div className={classes.refAllContNew} onClick={openDropDown}>
+                      <img
+                        src={ProfileSmall}
+                        alt=""
+                        className={classes.smallProfile}
+                      />
+                    </div>
+                    <div
+                      className={`${
+                        dropDownUser === "visible"
+                          ? classes.dropDownVisible
+                          : classes.dropDownHidden
+                      }`}
                     >
-                      {t("signUp")}
-                    </button>
-                    <button
-                      className={classes.btnStyle}
-                      onClick={handleClickLogin}
-                    >
-                      {t("LOGIN")}
-                    </button>
-                  </>
+                      <button
+                        className={classes.btnStyle}
+                        onClick={handleClickSignUp}
+                      >
+                        {t("signUp")}
+                      </button>
+                      <button
+                        className={classes.btnStyle}
+                        onClick={handleClickLogin}
+                      >
+                        {t("LOGIN")}
+                      </button>
+                    </div>
+                  </div>
                 )}
 
                 {showSignup && <SignUp onClose={handleClickSignUp} />}

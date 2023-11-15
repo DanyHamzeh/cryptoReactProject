@@ -23,6 +23,8 @@ function ForgetPassword(props) {
   const [userName, setUserName] = useState(null);
   const [message, setMessage] = useState("");
   const [loader, setLoader] = useState(false);
+  const [status, setStatus] = useState(null);
+
 
   const { t } = useTranslation();
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
@@ -93,8 +95,14 @@ function ForgetPassword(props) {
           if (response.data.status === 0) {
             setLoader(false);
             setUserName(response.data.message);
+            setStatus(response.data.status)
             handleClickRecovered();
             setMessage(null);
+            setEmail("");
+            setPassword("");
+            setVerifyPassword("");
+            setSecurityAnswer("");
+            setSelected("");
           } else {
             setLoader();
             setMessage(response.data.message);
@@ -105,6 +113,9 @@ function ForgetPassword(props) {
           setLoader(error.message);
           console.log("thhird", url);
         });
+    }
+    if(status === 0){
+      setStatus(-1)
     }
   };
 
@@ -134,7 +145,7 @@ function ForgetPassword(props) {
             className={classes.inputStyle}
             onChange={passwordHandler}
             value={password}
-          />
+          /> 
           {showPassword1 ? (
             <img
               src={eyeOpen}
@@ -247,7 +258,7 @@ function ForgetPassword(props) {
           )}
         </div>
         <div className={classes.messageLoaderCont}>
-          {message && <span className={classes.messageStyle}>{message}</span>}
+        {message && <span className={status == 0 ? classes.messageStyleFalse :classes.messageStyle}>{message}</span>}
           <div className={classes.loaderPosition}>{loader && <Loader />}</div>
         </div>
       </div>

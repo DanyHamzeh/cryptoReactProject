@@ -6,6 +6,9 @@ import NewTopHeader from "../../components/NewTopHeader.js/newTopHeader";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import i18next from "i18next";
+import { getUserInfoApi } from "../../Api";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function HowItWorks() {
   const { t } = useTranslation();
@@ -13,6 +16,9 @@ function HowItWorks() {
   const tokenLogin = localStorage.getItem("tokenLogin"); // Check if the token exists
   const vipCode = localStorage.getItem("vipCodeUrl");
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
+  const [isVip, setisVip] = useState(null);
+  const [errorCode, setErrorCode] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     i18next.init({
@@ -25,10 +31,44 @@ function HowItWorks() {
   }, []);
 
   useEffect(() => {
+    if (token || tokenLogin) {
+      let url = getUserInfoApi(selectedLanguage);
+      let getUserObject = {
+        token: token || tokenLogin,
+      };
+      console.log(selectedLanguage);
+      axios
+        .post(url, getUserObject)
+        .then((response) => {
+          if (response.data.status === 0) {
+            const user = response.data.user;
+            setisVip(user.isVip);
+            // setFirstName(user.firstName);
+
+            // setErrorCode(response.data.errorCode);
+          } else {
+            if (response.data.errorCode == "invalidUserToken") {
+              console.log("ana fetet");
+              navigate("/");
+              localStorage.removeItem("token");
+              localStorage.removeItem("tokenLogin");
+            }
+            console.log("second", errorCode);
+          }
+        })
+        .catch((error) => {
+          // setLoader(error.message);
+          console.log("thhird", error);
+        });
+    }
+  }, [token, tokenLogin, selectedLanguage, errorCode, navigate]);
+
+  useEffect(() => {
     console.log(token);
     console.log(tokenLogin);
     console.log("vipcode", vipCode);
-  }, [token, tokenLogin, vipCode]);
+    console.log("vipcode", isVip);
+  }, [token, tokenLogin, vipCode, isVip]);
 
   return (
     <div>
@@ -462,20 +502,24 @@ function HowItWorks() {
               }
             ></span>
             <div className={classes.allParagraph}>
-              <span
-                className={
-                  selectedLanguage === "ARABIC"
-                    ? classes.paragraphArabic
-                    : classes.paragraph
-                }
-              >
-                {t("how8")}
-              </span>
+              {isVip === true ? (
+                ""
+              ) : (
+                <span
+                  className={
+                    selectedLanguage === "ARABIC"
+                      ? classes.paragraphArabic
+                      : classes.paragraphVip
+                  }
+                >
+                  {t("how8")}
+                </span>
+              )}
             </div>
           </div>
           <div>
             <div className={classes.allParagraph}>
-              {vipCode ? (
+              {isVip === true ? (
                 <span className={classes.paragraphVip}>{t("how9")}</span>
               ) : (
                 ""

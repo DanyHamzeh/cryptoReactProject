@@ -42,7 +42,6 @@ function SignUp(props) {
       localStorage.removeItem("token");
       localStorage.removeItem("tokenLogin");
     } else {
-      console.log("tessstttdann");
       localStorage.removeItem("vipCodeUrl");
     }
   }, [vipCodeUrl]);
@@ -239,12 +238,12 @@ function SignUp(props) {
         />
         <span className={classes.textBox}>
           {t("iHaveRead")}
-          <span className={classes.textBoxInside} onClick={ () => openLinkInNewTab('http://localhost:3000/support')}>
+          <span className={classes.textBoxInside} onClick={ () => openLinkInNewTab('http://176.58.125.206/support')}>
             {t("tAC")}
           </span>
         </span>
       </div>
-      <div className={classes.secureCont}>
+      {/* <div className={classes.secureCont}> */}
         {showSecureAccount && (
           <SecureAccount
             onClose={handleClickSecureAccount}
@@ -257,7 +256,7 @@ function SignUp(props) {
             refferlNew={refferlNew}
           />
         )}
-      </div>
+      {/* </div> */}
       <button className={classes.btnRejister} onClick={checkInfo}>
         {t("cR")}{" "}
       </button>

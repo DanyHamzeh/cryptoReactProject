@@ -16,7 +16,7 @@ function WithDraw(props) {
   const [message, setMessage] = useState("");
   const [addresses, setAddresses] = useState([]);
   const [selectedValue, setSelectedValue] = useState("");
-
+  const [status, setStatus] = useState(null);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -82,7 +82,13 @@ function WithDraw(props) {
     setAmount(event.target.value);
   };
 
-
+  const balanceAmount = () => {
+    let total = 0;
+    if (amount) {
+      total = props.amountToUse - amount;
+    }
+    props.setAmountToUse(total);
+  };
 
   useEffect(() => {
     if (token || tokenLogin) {
@@ -97,8 +103,7 @@ function WithDraw(props) {
           if (response.data.status === 0) {
             setAddresses(response.data.address);
           } else {
-            setErrorCode(response.data.errorCode);
-            if (errorCode === "invalidUserToken") {
+            if (response.data.errorCode == "invalidUserToken") {
               console.log("ana fetet");
               navigate("/");
               localStorage.removeItem("token");
@@ -114,10 +119,9 @@ function WithDraw(props) {
     }
   }, []);
 
-
   const withDrawHandler = () => {
     const investmentAmount = parseFloat(amount);
-    if (isNaN(investmentAmount) || selectedValue=== "") {
+    if (isNaN(investmentAmount) || selectedValue === "") {
       setMessage(t("fillEmpty"));
     } else if (investmentAmount < 10) {
       setMessage(t("minimumAmount"));
@@ -127,23 +131,26 @@ function WithDraw(props) {
         setLoader(true);
         let withDrawObject = {
           token: token || tokenLogin,
-          amount: amount,
-          key: options.value,
+          amount: parseFloat(amount),
+          key: selectedValue.label,
           parentId: props.id,
           isGift: props.gift === "gift" ? true : false,
         };
-        // console.log("first", withDrawObject);
+        console.log("first", withDrawObject);
         axios
           .post(url, withDrawObject)
           .then((response) => {
             if (response.data.status === 0) {
               setLoader(false);
               setMessage(response.data.message);
+              setStatus(response.data.status);
+              setAmount("");
+              setSelectedValue("");
+              balanceAmount();
             } else {
               setMessage(response.data.message);
               setLoader();
-              setErrorCode(response.data.errorCode);
-              if (errorCode === "invalidUserToken") {
+              if (response.data.errorCode == "invalidUserToken") {
                 console.log("ana fetet");
                 navigate("/");
                 localStorage.removeItem("token");
@@ -157,6 +164,9 @@ function WithDraw(props) {
             console.log("thhird", error);
           });
       }
+    }
+    if (status === 0) {
+      setStatus(-1);
     }
   };
 
@@ -190,9 +200,7 @@ function WithDraw(props) {
           />
         </div>
         <div className={classes.txtMessage}>
-          <span className={classes.giftMessage}>
-            Minimum amount of withdraw is 10 usdt
-          </span>
+          <span className={classes.giftMessage}> {t("minimumAmount")} </span>
         </div>
 
         <div className={classes.btnsGift}>
@@ -202,7 +210,15 @@ function WithDraw(props) {
         </div>
       </div>
       <div className={classes.messageLoaderCont}>
-        {message && <span className={classes.messageStyle}>{message}</span>}
+        {message && (
+          <span
+            className={
+              status == 0 ? classes.messageStyleFalse : classes.messageStyle
+            }
+          >
+            {message}
+          </span>
+        )}
         <div className={classes.loaderPosition}> {loader && <Loader />}</div>
       </div>
     </div>

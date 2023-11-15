@@ -9,28 +9,20 @@
   position: absolute;
   left: 50%;
   right: 50%;
-  top: 410px;
-  height: 65vh;
+  top: 60%;
+  height: 60vh;
   transform: translate(-50%, -50%);
-  // margin-top: 100px;
   z-index: 10000;
-  position: fixed;
   @media #{$mobile} {
     width: 70%;
-    top: 360px;
+    top: 50%;
     width: 70%;
     height: 45vh;
-
   }
   @media #{$tablet} {
     width: 70%;
-    margin-top: 40px;
-    width: 70%;
-    height: 45vh;
   }
-  // @media #{$largeDesktop} {
-  //   top: 480px;
-  // }
+
 }
 
 .titleClose {
@@ -68,10 +60,10 @@
   margin: auto;
   background-color: $white;
   height: 2px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   @media #{$mobile} {
     height: 1px;
-    margin-bottom: 50px;
+    // margin-bottom: 50px;
   }
 }
 
@@ -84,7 +76,7 @@
 }
 
 .firtBox {
-  margin-bottom: 70px;
+  margin-bottom: 40px;
   @media #{$mobile} {
     margin-bottom: 10px;
   }
@@ -163,7 +155,7 @@
 
 .messageLoaderCont {
   @include flex;
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 .loaderPosition {
@@ -173,6 +165,13 @@
 
 .messageStyle {
   color: red !important ;
+  @media #{$mobile,} {
+    font-size: 10px;
+  }
+}
+
+.messageStyleFalse{
+  color: green !important ;
   @media #{$mobile,} {
     font-size: 10px;
   }

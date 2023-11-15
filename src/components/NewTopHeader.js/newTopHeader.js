@@ -19,7 +19,7 @@ function NewTopHeader() {
   const [mobilemenu, setmobilemenu] = useState("closed");
   const [btnstate, setbtnstate] = useState("");
   const [menulist, setmenulist] = useState("hidden");
-  const [showGifts, setShowGifts] = useState(false);
+  // const [showGifts, setShowGifts] = useState(false);
   const [userName, setUserName] = useState(null);
   const [refferalUrl, setRefferalUrl] = useState(null);
   const [showReferralCode, setShowRefferalCode] = useState(false);
@@ -49,9 +49,9 @@ function NewTopHeader() {
     setShowRefferalCode((prev) => !prev);
   }
 
-  function handleClickGifts() {
-    setShowGifts((prev) => !prev);
-  }
+  // function handleClickGifts() {
+  //   setShowGifts((prev) => !prev);
+  // }
 
   const logOutHandler = () => {
     if (token || tokenLogin) {
@@ -93,8 +93,7 @@ function NewTopHeader() {
             const user = response.data.user;
             setUserName(user.userName);
           } else {
-            setErrorCode(response.data.errorCode);
-            if (errorCode === "invalidUserToken") {
+            if (response.data.errorCode == "invalidUserToken") {
               console.log("ana fetet");
               navigate("/");
               localStorage.removeItem("token");
@@ -120,8 +119,7 @@ function NewTopHeader() {
           if (response.data.status === 0) {
             setRefferalUrl(response.data.message);
           } else {
-            setErrorCode(response.data.errorCode);
-            if (errorCode === "invalidUserToken") {
+            if (response.data.errorCode === "invalidUserToken") {
               console.log("ana fetet");
               navigate("/");
               localStorage.removeItem("token");
@@ -158,26 +156,33 @@ function NewTopHeader() {
                     {t("howItWorks")}
                   </Link>
                 </li>
+                <div className={classes.lineSeperateMobile} />
                 <li className={classes.navigateTabs}>
                   <Link to="/depPayment" className={classes.list_word}>
                     {t("depositePay")}
                   </Link>
                 </li>
+                <div className={classes.lineSeperateMobile} />
+
                 <li className={classes.navigateTabs}>
                   <Link
+                    to="/gifts"
                     className={classes.list_word}
-                    onClick={handleClickGifts}
+                    // onClick={handleClickGifts}
                   >
                     {t("gifts")}
                   </Link>
                 </li>
-                {showGifts && <Gifts onClose={handleClickGifts} />}
+                <div className={classes.lineSeperateMobile} />
+
+                {/* {showGifts && <Gifts onClose={handleClickGifts} />} */}
 
                 <li className={classes.navigateTabs}>
                   <Link to="/investment" className={classes.list_word}>
                     {t("INVESTMENTS")}
                   </Link>
                 </li>
+                <div className={classes.lineSeperateMobile} />
               </div>
 
               <div className={classes.menueHiddenStyle}>
@@ -187,12 +192,14 @@ function NewTopHeader() {
                     {t("PROFILE")}
                   </Link>
                 </li>
+                <div className={classes.lineSeperateMobile} />
 
                 <li className={classes.navigateTabs} onClick={logOutHandler}>
                   <Link to="/" className={classes.list_word}>
                     {t("signOut")}
                   </Link>
                 </li>
+                <div className={classes.lineSeperateMobile} />
               </div>
             </ul>
           </nav>

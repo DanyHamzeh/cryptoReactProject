@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Footer from "../../components/footer/footer";
 import LandingPage from "../../components/LandingPage/landingPage";
 import TopHeader from "../../components/TopHeader/topHeader";
@@ -14,32 +14,34 @@ function DepPayment() {
   const [withDrawId, setWithDrawId] = useState("");
   const [depositeAddress, setDepositeAddress] = useState(null);
   const [errorCode, setErrorCode] = useState(null);
-  const [isCopied, setIsCopied] = useState(false);
   const [loader, setLoader] = useState(false);
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState(null);
+
 
   const { t } = useTranslation();
   const token = localStorage.getItem("token"); // Check if the token exists
   const tokenLogin = localStorage.getItem("tokenLogin"); // Check if the token exists
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
   const navigate = useNavigate();
+  const [copyStatus, setCopyStatus] = useState(t("COPY"));
+  const textToCopyRef = useRef(null);
 
-  useEffect(()=>{
+  useEffect(() => {
     i18next.init({
       lng: selectedLanguage,
-      fallbackLng: 'ENGLISH',
+      fallbackLng: "ENGLISH",
       interpolation: {
         escapeValue: false,
       },
     });
-  },[])
+  }, []);
 
   const withDrawHandler = (event) => {
-    const inputValue = event.target.value;
-
-    if (/^[0-9]*$/.test(inputValue)) {
-      setWithDrawId(inputValue);
-    }
+    setWithDrawId( event.target.value);
+    // if (/^[a-zA-Z0-9]*$/.test(inputValue)) {
+    //   setWithDrawId(inputValue);
+    // }
   };
 
   useEffect(() => {
@@ -55,7 +57,7 @@ function DepPayment() {
           if (response.data.status === 0) {
             setDepositeAddress(response.data.depositAddress);
           } else {
-            if (errorCode === "invalidUserToken") {
+            if (response.data.errorCode == "invalidUserToken") {
               console.log("ana fetet");
               navigate("/");
               localStorage.removeItem("token");
@@ -69,27 +71,25 @@ function DepPayment() {
     }
   }, []);
 
-  const handleCopyClick = () => {
-    if (depositeAddress) {
-      // Copy the address to the clipboard
-      navigator.clipboard
-        .writeText(depositeAddress)
-        .then(() => {
-          setIsCopied(true); // Set the copied state to true
-          setTimeout(() => {
-            setIsCopied(false);
-          }, 10000);
-        })
-        .catch((error) => {
-          console.error("Error copying to clipboard: ", error);
-        });
+  const handleCopyClick = (e) => {
+    e.preventDefault();
+    if (textToCopyRef.current) {
+      const textToCopy = textToCopyRef.current.value;
+      const textArea = document.createElement("textarea");
+      textArea.value = textToCopy;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand(t("COPY"));
+      document.body.removeChild(textArea);
+      setCopyStatus(t("Copied"));
     }
   };
 
+  
   const confirmDeposite = () => {
     if (token || tokenLogin) {
       if (withDrawId.trim() === "") {
-        setMessage("PLEASE FILL EMPTY FIELDS");
+        setMessage(t("fillEmpty"));
       } else {
         let url = collectInvApi(selectedLanguage);
         setLoader(true);
@@ -104,10 +104,12 @@ function DepPayment() {
             if (response.data.status === 0) {
               setLoader(false);
               setMessage(response.data.message);
+              setStatus(response.data.status)
+              setWithDrawId("")
             } else {
               setLoader();
               setMessage(response.data.message);
-              if (errorCode === "invalidUserToken") {
+              if (response.data.errorCode == "invalidUserToken") {
                 console.log("ana fetet");
                 navigate("/");
                 localStorage.removeItem("token");
@@ -120,6 +122,9 @@ function DepPayment() {
             console.log("thhird", url);
           });
       }
+    }
+    if(status === 0){
+      setStatus(-1)
     }
   };
 
@@ -140,9 +145,18 @@ function DepPayment() {
                 className={classes.inputStyle}
                 value={depositeAddress || ""}
                 readOnly
+                ref={textToCopyRef}
+
               />
-              <button className={classes.copyBtn} onClick={handleCopyClick}>
-                {isCopied ? t("Copied") : t("COPY")}
+              <button
+                className={classes.copyBtn}
+                onClick={(e) => {
+                  handleCopyClick(e);
+                  e.stopPropagation(); // Prevent event propagation
+                }}
+                type="button" // Specify the button type as "button"
+              >
+                {copyStatus}
               </button>
             </div>
           </div>
@@ -161,7 +175,7 @@ function DepPayment() {
             </div>
           </div>
           <div className={classes.messageLoaderCont}>
-            {message && <span className={classes.messageStyle}>{message}</span>}
+          {message && <span className={status == 0 ? classes.messageStyleFalse :classes.messageStyle}>{message}</span>}
             <div className={classes.loaderPosition}>{loader && <Loader />}</div>
           </div>
         </div>

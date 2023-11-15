@@ -3,32 +3,30 @@
 .allContainer {
   background-color: $mainColor;
   // background-color: green;
-
-  width: 96%;
+  width: 95%;
   margin: auto;
   border-radius: 20px;
-  padding: 10px 20px 35px 20px;
+  padding: 20px 20px 15px 20px;
   position: absolute;
   left: 50%;
   right: 50%;
+  top: 340px;
   transform: translate(-50%, -50%);
-  z-index: 100000;
-  height: 700px;
-  top: 57%;
+  z-index: 100000000000000000;
   @media #{$mobile} {
     width: 93%;
-    top: 51%;
-    height: 61vh;
+    top: 280px;
+    padding: 10px 20px 60px 20px;
   }
   @media #{$tablet} {
-    top: 58%;
-    width: 100%;
+    top: 345px;
+    width: 93%;
   }
   @media #{$minimobile} {
-    width: 86%;
-    top: 56%;
-    height: 65vh;
+    width: 85%;
+    top: 290px;
   }
+
 }
 
 .titleClose {
@@ -50,7 +48,26 @@
     font-size: 12px;
   }
   @media #{$tablet} {
-    font-size: 15px;
+    font-size: 18px;
+  }
+}
+
+.closeSign {
+  color: $profileMainColor;
+  font-size: 35px;
+  position: absolute;
+  right: 8%;
+  font-family: $boldfont;
+  cursor: pointer;
+  @media #{$mobile} {
+    font-size: 20px;
+  }
+  @media #{$minimobile} {
+    font-size: 20px;
+    right: 14%;
+  }
+  @media #{$tablet} {
+    font-size: 22px;
   }
 }
 
@@ -66,9 +83,14 @@
   }
   @media #{$minimobile} {
     font-size: 20px;
-    right: 14%;
+    right: 80%;
   }
 }
+
+// .btnContainer{
+//   padding-bottom: 180px;
+// }
+
 
 .lineSeperate {
   width: 90%;
@@ -83,11 +105,12 @@
 }
 
 .inputAllCont {
-  margin-bottom: 100px;
+  margin-bottom: 30px;
   @media #{$mobile} {
-    margin-bottom: 20px;
+    margin-bottom: 80px;
   }
 }
+
 
 .textStyle {
   color: $white;
@@ -107,29 +130,21 @@
   border-radius: 83px;
   width: 90%;
   margin-left: 20px;
-  padding: 8px;
+  padding: 10px;
   outline: none;
-  margin-top: -15px;
-  font-size: 18px;
+  margin-bottom: 25px;
+  font-size: medium;
   font-family: $boldfont;
+  // margin-bottom: 20px;
   @media #{$mobile} {
     padding: 5px;
     margin-left: 0;
     font-size: 10px;
-    margin-top: 55px;
-    width: 85%;
   }
   @media #{$minimobile} {
     font-size: 10px;
-    width: 85%;
-  }
-  @media #{$tablet} {
-    padding: 5px;
-    width: 89%;
-    margin-top: 45px;
   }
 }
-
 .inputStyleNew {
   border-radius: 83px;
   padding: 10px;
@@ -145,17 +160,17 @@
   }
   @media #{$minimobile} {
     font-size: 10px;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
   }
   @media #{$tablet} {
-    width: 97.5%;
+    width: 100%;
   }
 }
 
 .inputStyleNewOpen {
   border-radius: 20px;
-  padding: 15px;
+  padding: 10px;
   outline: none;
   font-size: medium;
   font-family: $boldfont;
@@ -185,7 +200,7 @@
     margin-left: 0;
   }
   @media #{$tablet} {
-    width: 98%;
+    width: 92%;
   }
 }
 
@@ -210,38 +225,30 @@
   position: absolute;
   width: 95%;
   @media #{$mobile} {
-    width: 95%;
-    margin-top: 0;
+    width: 93%;
   }
   @media #{$tablet} {
     text-align: center;
-    width: 90%;
+    width: 92.5%;
     font-size: 14px;
   }
   @media #{$minimobile} {
-    text-align: center;
-    width: 95%;
+    width: 89%;
   }
 }
 
-.textInputStyle {
-  position: absolute;
-  top: 50%;
-  width: 95%;
+.textInputStyleAnswer {
+  position: relative;
+  top: 200px;
   @media #{$mobile} {
-    width: 100%;
-    top: 44%;
-  }
-  @media #{$tablet} {
-    font-size: 14px;
-    top: 36%;
+    top: 170px;
   }
 }
 
 .textTest {
   display: block;
   background-color: $white;
-  padding: 20px 0 20px 10px;
+  padding: 10px 0 10px 10px;
   font-family: $boldfont;
   cursor: pointer;
   &:hover {
@@ -255,7 +262,7 @@
     font-size: 8px;
   }
   @media #{$tablet} {
-    width: 101.5%;
+    width: 102%;
   }
 }
 
@@ -264,14 +271,14 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 88%;
+  left: 90%;
   margin-top: -30px;
   cursor: pointer;
   font-family: $boldfont;
   @media #{$mobile} {
-    left: 89%;
+    left: 84.5%;
     width: 12px;
-    margin-top: -22px;
+    margin-top: -20px;
   }
   @media #{$minimobile} {
     left: 79%;
@@ -280,7 +287,7 @@
     margin-top: -20px;
   }
   @media #{$tablet} {
-    left: 95%;
+    left: 93%;
   }
 }
 
@@ -301,23 +308,18 @@
   margin: auto;
   text-align: center;
   font-size: 12px;
-  padding: 80px 0 0 0;
-  // margin-bottom: 20px;
-  // padding-bottom: 20px;
-  font-family: $boldfont;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
   @media #{$mobile} {
-    font-size: 9px;
-    padding: 50px 0 0 0;
-  }
-  @media #{$tablet} {
-    padding: 90px 0 0 0;
+    font-size: 10px;
+    width: 100%;
   }
 }
 
 .btnRejister {
   background-color: $profileMainColor;
   border-radius: 25px;
-  padding: 10px 40px 10px 40px;
+  padding: 10px 130px 10px 130px;
   border-color: $profileMainColor;
   border-width: 0;
   font-size: 15px;
@@ -326,46 +328,43 @@
   cursor: pointer;
   margin: auto;
   @include center_middle_align;
-  @media #{$mobile,$tablet} {
+  // margin-bottom: 30px;
+  @media #{$mobile} {
     font-size: 10px;
     padding: 8px 20px 8px 20px;
   }
-}
-
-.btnMessage {
-  margin-top: -20px;
-  padding-bottom: 20px;
+  @media #{$tablet} {
+    font-size: 10px;
+    padding: 10px 45px 10px 40px;
+  }
 }
 
 .textBtnContainer {
-  padding-top: 330px;
-
+  padding-top: 170px;
   @media #{$mobile} {
-    padding-top: 280px;
+    padding-top: 90px;
   }
 }
 
 .messageLoaderCont {
   @include flex;
-  margin-top: -140px;
-  @media #{$mobile} {
-    margin-top: -120px;
-  }
-  @media #{$tablet} {
-    margin-top: -140px;
-  }
+  padding-bottom: 180px;
 }
 
 .loaderPosition {
   margin-top: 80px;
   position: absolute;
-  @media #{$mobile} {
-    margin-top: 60px;
-  }
 }
 
 .messageStyle {
   color: red !important ;
+  @media #{$mobile,} {
+    font-size: 10px;
+  }
+}
+
+.messageStyleFalse{
+  color: green !important ;
   @media #{$mobile,} {
     font-size: 10px;
   }

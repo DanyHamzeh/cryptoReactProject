@@ -5,22 +5,23 @@
   width: 30%;
   margin: auto;
   border-radius: 20px;
-  padding: 10px 0 10px 0;
+  padding: 10px 40px 10px 40px;
   position: absolute;
   left: 50%;
   right: 50%;
-  top: 200px;
+  top: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 180px;
-  position: fixed;
+  text-align: center;
   @media #{$mobile} {
-    width: 60%;
-    margin-top: 50px;
-    padding: 10px 15px 10px 15px;
+    width: 50%;
+    top: 45%;
+    // margin-top: 50px;
+    // padding: 10px 15px 10px 15px;
   }
   @media #{$minimobile} {
-    width: 70%;
-    top: 300px;
+    width: 60%;
+    top: 45%;
+    // top: 300px;
 
   }
   @media #{$tablet} {
@@ -40,7 +41,7 @@
   display: block;
   margin-bottom: 80px;
   @media #{$mobile} {
-    font-size: 8px;
+    font-size: 10px;
     padding: 0;
   }
 }
@@ -52,7 +53,7 @@
   font-family: $boldfont;
   margin-bottom: 150px;
   @media #{$mobile} {
-    font-size: 7px;
+    font-size: 10px;
     padding: 0;
   }
   @media #{$minimobile} {

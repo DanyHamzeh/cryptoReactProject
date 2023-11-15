@@ -63,9 +63,7 @@ function Profile() {
             setUserName(user.userName);
             // setErrorCode(response.data.errorCode);
           } else {
-            setErrorCode(response.data.errorCode);
-
-            if (errorCode === "invalidUserToken") {
+            if (response.data.errorCode == "invalidUserToken") {
               console.log("ana fetet");
               navigate("/");
               localStorage.removeItem("token");

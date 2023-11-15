@@ -25,10 +25,11 @@
   padding-right: 50px;
   display: flex;
   @media #{$mobile} {
+    padding-right: 20%;
   }
-  // @media #{$minimobile} {
-  //   padding-right: 80px;
-  // }
+  @media #{$minimobile} {
+    padding-right: 20%;
+  }
 }
 
 .languageStyle {
@@ -45,6 +46,7 @@
   }
   @media #{$minimobile} {
     font-size: 8px;
+    margin-right: 40px;
   }
 }
 
@@ -52,19 +54,18 @@
   margin-bottom: -440px;
   text-align: -webkit-center;
   @media #{$mobile} {
-    width: 35%;
-    margin-bottom: -435px
+    width: 60%;
+    margin-bottom: -480px;
   }
   @media #{$minimobile} {
-    width: 35%;
-    margin-bottom: -390px
+    width: 60%;
+    margin-bottom: -530px;
   }
 }
 
-.languageCont{
+.languageCont {
   @media #{$minimobile} {
-    width: 100%;
-
+    width: 70%;
   }
 }
 
@@ -72,7 +73,6 @@
   background-color: $profileMainColor;
   // position: absolute;
   // top: 60%;
-
 }
 
 .languageDownContNew {
@@ -89,15 +89,21 @@
   font-family: $boldfont;
   @media #{$minimobile} {
     font-size: 7px;
-    width: 50%;
+    width: 100%;
     margin: 0;
+  }
+  @media #{$mobile} {
+    font-size: 9px;
+    width: 100%;
+    margin: 0;
+    padding: 7px 7px 0px 0px;
   }
 }
 
 .inputContainer {
   padding: 5px 20px 10px 20px;
   @media #{$minimobile} {
-    padding: 9px 60px 10px 10px;
+    padding: 9px 0px 10px 0px;
   }
 }
 
@@ -105,6 +111,9 @@
   height: 1px;
   background-color: $white;
   width: 100%;
+  @media #{$minimobile} {
+    width: 80%;
+  }
 }
 
 .btnStyle {
@@ -119,13 +128,70 @@
   font-family: $boldfont;
   cursor: pointer;
   @media #{$mobile} {
-    font-size: 8px;
-    padding: 8px 4px 8px 4px;
+    font-size: 9px;
+    max-width: 180px;
+    width: 100%;
+    padding: 10px 30px 10px 30px;
+  }
+  @media #{$mobileP} {
+    font-size: 7px;
+    padding: 8px 8px 8px 5px;
   }
   @media #{$minimobile} {
     font-size: 5px;
-    padding: 8px 10px 8px 10px;
+    padding: 8px 15px 8px 15px;
     margin: 2px;
+  }
+}
+
+.mobileStyleBtn {
+  @media #{$mobile} {
+    display: block;
+  }
+}
+
+.refAllContNew {
+  display: none;
+  @media #{$mobile} {
+    @include flex;
+    margin: 15px;
+    background-color: #f9d03c;
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    position: relative;
+    cursor: pointer;
+  }
+}
+
+.smallProfile {
+  @media #{$mobile} {
+    height: 35px;
+    margin-top: 10px;
+  }
+}
+
+.dropDownVisible {
+  @include flex;
+  @media #{$mobile} {
+    @include flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 35vh;
+    top: 80px;
+    left: 0;
+    right: 50%;
+    transition: 0.6s;
+    background-color: $mainColor;
+    z-index: 10;
+  }
+}
+
+.dropDownHidden {
+  @include flex;
+  @media #{$mobile} {
+    display: none;
   }
 }
 
@@ -133,7 +199,7 @@
   margin-right: 5px;
   @include flex;
   @media #{$mobile} {
-    margin-right: 0;
+    margin-left: -10px;
   }
 }
 
@@ -143,16 +209,16 @@
   flex-direction: column;
   right: 20px;
   top: 25px;
-
   z-index: 100000;
   @media #{$mobile} {
     top: 30px;
   }
   @media #{$minimobile} {
+    top: 35px;
+    right: 8px;
   }
-  @media #{$tablet}{
+  @media #{$tablet} {
     top: 18px;
-
   }
 
   i {
@@ -170,6 +236,7 @@
     @media #{$minimobile} {
       width: 20px;
       height: 5px;
+      margin: 2px auto;
     }
   }
 }
@@ -180,7 +247,7 @@
     transform: rotate(56deg) translateY(30px) translateX(6px);
   }
   @media #{$minimobile} {
-    transform: rotate(55deg) translateY(25px) translateX(-2px);
+    transform: rotate(55deg) translateY(20px) translateX(-5px);
   }
 }
 
@@ -194,7 +261,7 @@
     transform: rotate(-59deg) translateY(-21px) translateX(-7px);
   }
   @media #{$minimobile} {
-    transform: rotate(-59deg) translateY(-25px) translateX(0px);
+    transform: rotate(-59deg) translateY(-22px) translateX(0px);
   }
 }
 
@@ -223,13 +290,11 @@
   background-image: url("../../assets//images//backgroundImage.png");
   background-color: $mainColor;
   @media #{$mobile} {
-    height: 100vh;
+    height: 90vh;
+    margin-top: -95px;
   }
-  // @media #{$largeDesktop} {
-  //   height: 100vh;
-  // }
   @media #{$tablet} {
-    height: 65vh;
+    height: 90vh;
   }
 }
 .menulistHiden {
@@ -242,10 +307,16 @@
   @include flex($justify-content: space-evenly, $align-items: 0);
   padding: 105px 230px 0 140px;
   @media #{$mobile} {
-    padding: 200px 20px 0 40px;
+    flex-direction: column;
+    padding: 40px 20px 0 0;
+    text-align: center;
+    width: 100%;
   }
   @media #{$tablet} {
     padding: 150px 20px 0 40px;
+  }
+  @media #{$minimobile} {
+    // padding: 100px 20px 0 40px;
   }
 }
 
@@ -256,16 +327,27 @@
   font-weight: 500;
   font-size: 25px;
   font-family: $boldfont;
-  // letter-spacing: 10px;
   @media #{$mobile} {
     font-size: 12px;
     letter-spacing: 0;
     margin: 0;
   }
+  @media #{$minimobile} {
+    margin: 5px;
+  }
+  &:hover,
+  &:active {
+    // background-color: $secondaryColor;
+    color: $profileMainColor;
+  }
 }
 
 .navigateTabs {
   margin-bottom: 30px;
+  @media #{$mobile} {
+    margin: 0;
+    padding: 20px 0 20px 0;
+  }
 }
 
 .lineSeperate {
@@ -276,8 +358,27 @@
   border-radius: 1px;
   margin-left: -10px;
   @media #{$mobile} {
-    height: 250px;
+    display: none;
   }
+  // @media #{$minimobile} {
+  //   display: none;
+  // }
+}
+
+.lineSeperateMobile {
+  display: none;
+  @media #{$mobile} {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+  }
+  // @media #{$minimobile} {
+  //   display: block;
+  //   width: 100%;
+  //   height: 1px;
+  //   background-color: white;
+  // }
 }
 
 .noTokenMessage {

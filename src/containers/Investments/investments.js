@@ -32,16 +32,15 @@ function Investment(props) {
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
   const navigate = useNavigate();
 
-
-  useEffect(()=>{
+  useEffect(() => {
     i18next.init({
       lng: selectedLanguage,
-      fallbackLng: 'ENGLISH',
+      fallbackLng: "ENGLISH",
       interpolation: {
         escapeValue: false,
       },
     });
-  },[])
+  }, []);
 
   function handleClickWarning() {
     setShowWarning((prev) => !prev);
@@ -52,10 +51,9 @@ function Investment(props) {
     setAmountToUse(amountToUse);
     setId(id);
     setGift(type);
+
     if (token || tokenLogin) {
       let url = userInvestmentApi(selectedLanguage);
-      // setLoader(true);
-
       let userInvestObject = {
         token: token || tokenLogin,
       };
@@ -67,18 +65,13 @@ function Investment(props) {
               return invest.parentInv;
             });
             setInvests(investments);
-
-            // setLoader(false);
           } else {
-            setErrorCode(response.data.errorCode);
-            if (errorCode === "invalidUserToken") {
+            if (response.data.errorCode == "invalidUserToken") {
               console.log("ana fetet");
               navigate("/");
               localStorage.removeItem("token");
               localStorage.removeItem("tokenLogin");
             }
-            // setLoader();
-
             console.log("second", url);
           }
         })
@@ -95,8 +88,6 @@ function Investment(props) {
     setId(id);
     if (token || tokenLogin) {
       let url = userInvestmentApi(selectedLanguage);
-      // setLoader(true);
-
       let userInvestObject = {
         token: token || tokenLogin,
       };
@@ -108,8 +99,6 @@ function Investment(props) {
               return invest.parentInv;
             });
             setInvests(investments);
-
-            // setLoader(false);
           } else {
             setErrorCode(response.data.errorCode);
             if (errorCode === "invalidUserToken") {
@@ -118,8 +107,6 @@ function Investment(props) {
               localStorage.removeItem("token");
               localStorage.removeItem("tokenLogin");
             }
-            // setLoader();
-
             console.log("second", url);
           }
         })
@@ -146,7 +133,6 @@ function Investment(props) {
               return invest.parentInv;
             });
             setInvests(investments);
-
             setLoader(false);
           } else {
             setErrorCode(response.data.errorCode);
@@ -193,11 +179,11 @@ function Investment(props) {
                 <th className={classes.lineSeperate}></th>
               </tr>
               {loader ? (
-             <tr>
-             <td className={classes.messageLoaderCont} colSpan="6">
-               {loader && <Loader />}
-             </td>
-           </tr>
+                <tr>
+                  <td className={classes.messageLoaderCont} colSpan="6">
+                    {loader && <Loader />}
+                  </td>
+                </tr>
               ) : (
                 <>
                   {invests.map((invest, index) => (
@@ -219,7 +205,7 @@ function Investment(props) {
                         )}
                       </td>
                       <td className={classes.headerCells}>
-                        {invest.dateCreated}
+                        {invest.dateCreatedStr}
                       </td>
                       <td className={classes.btnStylelarge}>
                         <button
@@ -266,6 +252,7 @@ function Investment(props) {
                             amountToUse={amountToUse}
                             id={id}
                             gift={gift}
+                            setAmountToUse={setAmountToUse}
                           />
                         )}
                         {showReinvest && (
@@ -273,6 +260,7 @@ function Investment(props) {
                             onClose={reinvestHandler}
                             amountToUse={amountToUse}
                             id={id}
+                            setAmountToUse={setAmountToUse}
                           />
                         )}
                       </td>

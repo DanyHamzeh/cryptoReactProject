@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from "./reinvest.module.scss";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { reinvestApi, userInvestmentApi } from "../../Api";
 import axios from "axios";
 import Loader from "../Loader/Loader";
-import Investment from "../../containers/Investments/investments";
+import { useEffect } from "react";
 
 function WithDraw(props) {
   const [errorCode, setErrorCode] = useState(null);
   const [amount, setAmount] = useState("");
   const [loader, setLoader] = useState(false);
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState(null);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -23,11 +24,20 @@ function WithDraw(props) {
     setAmount(event.target.value);
   };
 
+  const balanceAmount = () => {
+    let total = 0;
+    if (amount) {
+      total = props.amountToUse - amount;
+    }
+    props.setAmountToUse(total);
+  };
+
+
   const investHandler = () => {
     const investmentAmount = parseFloat(amount);
     if (isNaN(investmentAmount)) {
       setMessage(t("fillEmpty"));
-    } else if (investmentAmount <= props.amountToUse) {
+    } else if (investmentAmount > props.amountToUse) {
       setMessage(t("investmentShouldBalance"));
     } else {
       if (token || tokenLogin) {
@@ -36,7 +46,7 @@ function WithDraw(props) {
 
         let investObject = {
           token: token || tokenLogin,
-          amount: amount,
+          amount: parseFloat(amount),
           parentId: props.id,
         };
         console.log("first", investObject);
@@ -46,12 +56,13 @@ function WithDraw(props) {
             if (response.data.status === 0) {
               setLoader(false);
               setMessage(response.data.message);
-              <Investment amount={amount} />;
+              setStatus(response.data.status)
+              setAmount("");
+              balanceAmount();
             } else {
               setMessage(response.data.message);
               setLoader();
-              setErrorCode(response.data.errorCode);
-              if (errorCode === "invalidUserToken") {
+              if (response.data.errorCode == "invalidUserToken") {
                 console.log("ana fetet");
                 navigate("/");
                 localStorage.removeItem("token");
@@ -66,7 +77,12 @@ function WithDraw(props) {
           });
       }
     }
+    if(status === 0){
+      setStatus(-1)
+    }
   };
+
+
 
   return (
     <div className={classes.allContainer}>
@@ -96,7 +112,7 @@ function WithDraw(props) {
         </div>
       </div>
       <div className={classes.messageLoaderCont}>
-        {message && <span className={classes.messageStyle}>{message}</span>}
+        {message && <span className={status == 0 ? classes.messageStyleFalse :classes.messageStyle}>{message}</span>}
         <div className={classes.loaderPosition}> {loader && <Loader />}</div>
       </div>
     </div>

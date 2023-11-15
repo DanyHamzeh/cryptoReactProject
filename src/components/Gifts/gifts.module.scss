@@ -1,27 +1,23 @@
 @import "../../sass/style.scss";
 
 .allContainer {
-  background-color: $mainColor;
-  width: 40%;
-  margin: auto;
-  border-radius: 20px;
-  padding: 10px 20px 100px 20px;
   position: absolute;
+  background-color: #13293e;
+  top: 50%;
   left: 50%;
-  right: 50%;
-  top: 340px;
-  transform: translate(-50%, -50%);
-  margin-top: 55px;
-  z-index: 10000;
+  transform: translate(-50%, -40%);
+  border-radius: 20px;
+  width: 65%;
+  margin: auto;
+  padding: 20px 0 80px 0;
   @media #{$mobile} {
+    padding: 20px 0 90px 0;
     width: 80%;
-    margin-top: 50px;
   }
   @media #{$tablet} {
-    width: 70%;
-    margin-top: 120px;
-    width: 70%;
+    // padding: 20px 30px 80px 30px;
   }
+
 }
 
 .titleClose {
@@ -58,7 +54,7 @@
   margin: auto;
   background-color: $white;
   height: 2px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   @media #{$mobile} {
     height: 1px;
     margin-bottom: 40px;
@@ -74,7 +70,7 @@
 }
 
 .firtBox {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   @media #{$mobile} {
     margin-bottom: 20px;
   }
@@ -85,12 +81,13 @@
   font-size: 18px;
   font-family: $meduimfont;
   font-weight: 300;
-  margin-left: 20px;
+  padding-bottom: 10px;
   text-align: center;
   display: block;
   margin-bottom: 5px;
   @media #{$mobile} {
     font-size: 10px;
+    margin-bottom: 0;
   }
 }
 
@@ -108,7 +105,7 @@
   border-radius: 83px;
   padding: 8px 0 8px 0;
   text-align: center;
-  margin-top: 10px;
+  // margin-top: 10px;
   outline: none;
   font-family: $boldfont;
   font-size: 20px;
@@ -152,6 +149,9 @@
   @media #{$mobile} {
     font-size: 10px;
   }
+  @media #{$tablet} {
+    font-size: 14px;
+  }
   @media #{$minimobile} {
     font-size: 8px;
   }
@@ -174,24 +174,31 @@
   }
 }
 
-.firstBox{
-  position: absolute;
-  left: 82%;
-  top: 56.5%;
-  cursor: pointer;
+.messageStyleFalse{
+  color: green !important ;
+  @media #{$mobile,} {
+    font-size: 10px;
+  }
 }
 
-.firstBox {
-  width: 93%;
-  margin-left: 20px;
-  margin-bottom: 1.5px;
-  @media #{$mobile} {
-    margin-left: 0;
-  }
-  @media #{$tablet} {
-    width: 92%;
-  }
-}
+// .firstBox{
+//   position: absolute;
+//   left: 82%;
+//   top: 56.5%;
+//   cursor: pointer;
+// }
+
+// .firstBox {
+//   width: 93%;
+//   margin-left: 20px;
+//   margin-bottom: 1.5px;
+//   @media #{$mobile} {
+//     margin-left: 0;
+//   }
+//   @media #{$tablet} {
+//     width: 92%;
+//   }
+// }
 
 .secondBox {
   width: 93%; 

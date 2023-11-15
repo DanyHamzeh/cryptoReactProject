@@ -9,33 +9,16 @@ function RefferalContainer(props) {
 
 
   const handleCopyClick = (e) => {
-    // Prevent the button's default behavior (form submission)
     e.preventDefault();
-
-    // Ensure the ref is available before attempting to copy
     if (textToCopyRef.current) {
-      // Get the text to copy from the ref
       const textToCopy = textToCopyRef.current.textContent;
-
-      // Create a textarea element to hold the text temporarily
       const textArea = document.createElement("textarea");
       textArea.value = textToCopy;
-
-      // Append the textarea element to the DOM
       document.body.appendChild(textArea);
-
-      // Select the text in the textarea
       textArea.select();
-
-      // Copy the selected text to the clipboard
       document.execCommand(t("COPY"));
-
-      // Remove the textarea element from the DOM
       document.body.removeChild(textArea);
-
-      // Update the button text to indicate successful copying
       setCopyStatus( t("Copied") );
-
     }
   };
 
@@ -46,7 +29,7 @@ function RefferalContainer(props) {
       </span>
       <div className={classes.infoContainer}>
         <span className={classes.refferalStyle} ref={textToCopyRef}>
-          {props.refferalUrl}
+          {props.refferalUrl} 
         </span>
         <div className={classes.btnContainer}>
           <button

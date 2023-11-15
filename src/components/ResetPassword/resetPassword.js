@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import classes from "./resetPassword.module.scss";
 import eyeOpen from "../../assets/images/Vector (1).png";
 import eyeClose from "../../assets/images/Vector (2).png";
@@ -17,23 +17,26 @@ function ResetPassword(props) {
   const [loader, setLoader] = useState(false);
   const [message, setMessage] = useState("");
   const [errorCode, setErrorCode] = useState(null);
+  const [status, setStatus] = useState(null);
 
 
   const token = localStorage.getItem("token"); // Check if the token exists
+  const tokenLogin = localStorage.getItem("tokenLogin"); // Check if the token exists
+
   const { t } = useTranslation();
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
   const navigate = useNavigate();
 
   // useEffect(() => {
   //   console.log(token);
-  //   console.log(newPassword); 
+  //   console.log(newPassword);
   //   console.log(verifyPassword);
   //   console.log(oldPassword);
 
   // }, [token,verifyPassword,newPassword,oldPassword]);
 
   const handleClick = () => {
-    setShowPassword(!showPassword); 
+    setShowPassword(!showPassword);
   };
 
   const handleClick1 = () => {
@@ -60,39 +63,47 @@ function ResetPassword(props) {
     ) {
       setMessage(t("fillEmpty"));
     } else {
-      let url = editUserPasswordApi(selectedLanguage);
-      setLoader(true);
-      let editPasswordObject = {
-        password:newPassword,
-        oldPassword:oldPassword,
-        token:token,
-        verifyPassword:verifyPassword,
-      };
-      console.log("first", editPasswordObject);
-      axios
-        .post(url, editPasswordObject)
-        .then((response) => {
-          if (response.data.status === 0) {
-            setLoader(false); 
-            setMessage(response.data.message);
-            console.log("ahlann");
-          } else {
-            setLoader();
-            setMessage(response.data.message);
-            setErrorCode(response.data.errorCode);
-            if (errorCode === "invalidUserToken") {
-              console.log("ana fetet");
-              navigate("/");
-              localStorage.removeItem("token");
-              localStorage.removeItem("tokenLogin");
+      if (token || tokenLogin) {
+        let url = editUserPasswordApi(selectedLanguage);
+        setLoader(true);
+        let editPasswordObject = {
+          password: newPassword,
+          oldPassword: oldPassword,
+          token: token || tokenLogin,
+          verifyPassword: verifyPassword,
+        };
+        console.log("first", editPasswordObject);
+        axios
+          .post(url, editPasswordObject)
+          .then((response) => {
+            if (response.data.status === 0) {
+              setLoader(false);
+              setMessage(response.data.message);
+              setStatus(response.data.status)
+              setNewPassword("");
+              setOldPassword("");
+              setVerifyPassword("");
+              console.log("ahlann");
+            } else {
+              setLoader();
+              setMessage(response.data.message);
+              if (response.data.errorCode == "invalidUserToken") {
+                console.log("ana fetet");
+                navigate("/");
+                localStorage.removeItem("token");
+                localStorage.removeItem("tokenLogin");
+              }
+              console.log("second", response.data.message);
             }
-            console.log("second", response.data.message);
-          }
-        })
-        .catch((error) => {
-          setLoader(error.message);
-          console.log("thhird", url);
-        });
+          })
+          .catch((error) => {
+            setLoader(error.message);
+            console.log("thhird", url);
+          });
+      }
+    }
+    if(status === 0){
+      setStatus(-1)
     }
   };
 
@@ -136,7 +147,6 @@ function ResetPassword(props) {
               className={classes.eyeOpenStyleNew}
               onClick={handleClick1}
               alt=""
-
             />
           )}
         </div>
@@ -154,7 +164,6 @@ function ResetPassword(props) {
               className={classes.eyeCLoseStyle}
               onClick={handleClick}
               alt=""
-
             />
           ) : (
             <img
@@ -162,13 +171,12 @@ function ResetPassword(props) {
               className={classes.eyeCLoseStyleNew}
               onClick={handleClick}
               alt=""
-
             />
           )}
         </div>
       </div>
       <div className={classes.textBtnContainer}>
-      <span className={classes.secureText}>{t("passwordMust")}</span>
+        <span className={classes.secureText}>{t("passwordMust")}</span>
 
         <div onClick={confirmEditPassword}>
           <button className={classes.btnRejister}>{t("CONFIRM")}</button>
@@ -177,7 +185,13 @@ function ResetPassword(props) {
       <div className={classes.messageLoaderCont}>
         <div className={classes.loaderPosition}>{loader && <Loader />}</div>
         {message ? (
-          <span className={classes.messageStyle}>{message}</span>
+          <span
+            className={
+              status == 0 ? classes.messageStyleFalse : classes.messageStyle
+            }
+          >
+            {message}
+          </span>
         ) : (
           <></>
         )}

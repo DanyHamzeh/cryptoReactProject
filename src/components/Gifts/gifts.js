@@ -14,6 +14,9 @@ import Loader from "../Loader/Loader";
 // import Select from "react-select";
 import Creatable from "react-select/creatable";
 import "../../sass/style.scss";
+import TopHeader from "../TopHeader/topHeader";
+import Footer from "../footer/footer";
+import LandingPage from "../LandingPage/landingPage";
 
 function Gifts(props) {
   const [balanceAmount, setBalanceAmount] = useState(null);
@@ -24,6 +27,7 @@ function Gifts(props) {
   const [message, setMessage] = useState("");
   const [addresses, setAddresses] = useState([]);
   const [selectedValue, setSelectedValue] = useState("");
+  const [status, setStatus] = useState(null);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -44,12 +48,11 @@ function Gifts(props) {
     setSelectedValue(value);
   };
 
-  // useEffect(() => {
-  //   console.log(addresses);
-  //   console.log(selectedValue);
-  //   console.log(address);
-
-  // }, [addresses, selectedValue,address]);
+  useEffect(() => {
+    console.log("ssssss", addresses);
+    console.log("sdsdsd", selectedValue);
+    console.log("addd", selectedValue.label);
+  }, [addresses, selectedValue, address]);
 
   useEffect(() => {
     if (token || tokenLogin) {
@@ -94,8 +97,7 @@ function Gifts(props) {
           if (response.data.status === 0) {
             setBalanceAmount(response.data.balance);
           } else {
-            setErrorCode(response.data.errorCode);
-            if (errorCode === "invalidUserToken") {
+            if (response.data.errorCode == "invalidUserToken") {
               console.log("ana fetet");
               navigate("/");
               localStorage.removeItem("token");
@@ -124,8 +126,7 @@ function Gifts(props) {
           if (response.data.status === 0) {
             setBalanceAmount(response.data.balance);
           } else {
-            setErrorCode(response.data.errorCode);
-            if (errorCode === "invalidUserToken") {
+            if (response.data.errorCode == "invalidUserToken") {
               console.log("ana fetet");
               navigate("/");
               localStorage.removeItem("token");
@@ -142,7 +143,7 @@ function Gifts(props) {
   }, [token, tokenLogin, selectedLanguage, errorCode, navigate]);
 
   const investHandler = () => {
-    const investmentAmount = parseFloat(amount);
+    const investmentAmount = parseInt(amount);
     if (isNaN(investmentAmount)) {
       setMessage(t("fillEmpty"));
     } else if (investmentAmount <= 100) {
@@ -154,21 +155,25 @@ function Gifts(props) {
 
         let investObject = {
           token: token || tokenLogin,
-          amount: amount,
+          amount: parseFloat(amount),
         };
         console.log("first", investObject);
         axios
           .post(url, investObject)
           .then((response) => {
+            console.log("second", response.data.status);
+
             if (response.data.status === 0) {
               setLoader(false);
               setMessage(response.data.message);
+              setStatus(response.data.status);
+
+              setAmount("");
               onOpen();
             } else {
               setMessage(response.data.message);
               setLoader();
-              setErrorCode(response.data.errorCode);
-              if (errorCode === "invalidUserToken") {
+              if (response.data.errorCode == "invalidUserToken") {
                 console.log("ana fetet");
                 navigate("/");
                 localStorage.removeItem("token");
@@ -183,23 +188,27 @@ function Gifts(props) {
           });
       }
     }
+    if (status === 0) {
+      setStatus(-1);
+    }
   };
 
   const withDrawHandler = () => {
     const investmentAmount = parseFloat(amount);
     if (isNaN(investmentAmount) || selectedValue === "") {
-      setMessage("PLEASE FILL EMPTY FIELDS");
+      setMessage(t("fillEmpty"));
     } else if (investmentAmount < 10) {
-      setMessage("MINIMUM AMOUNT OF WITHDRAW IS 10 USDT");
+      setMessage(t("minimumAmount"));
     } else {
       if (token || tokenLogin) {
         let url = withDrawGiftApi(selectedLanguage);
         setLoader(true);
         let withDrawObject = {
           token: token || tokenLogin,
-          amount: amount,
-          key: options.value,
+          amount: parseFloat(amount),
+          key: selectedValue.label,
           gift: true,
+          parentId: 0,
         };
         console.log("first", withDrawObject);
         axios
@@ -208,12 +217,14 @@ function Gifts(props) {
             if (response.data.status === 0) {
               setLoader(false);
               setMessage(response.data.message);
+              setStatus(response.data.status);
               onOpen();
+              setAmount("");
+              setSelectedValue("");
             } else {
               setMessage(response.data.message);
               setLoader();
-              setErrorCode(response.data.errorCode);
-              if (errorCode === "invalidUserToken") {
+              if (response.data.errorCode == "invalidUserToken") {
                 console.log("ana fetet");
                 navigate("/");
                 localStorage.removeItem("token");
@@ -227,6 +238,9 @@ function Gifts(props) {
             console.log("thhird", error);
           });
       }
+    }
+    if (status === 0) {
+      setStatus(-1);
     }
   };
 
@@ -236,7 +250,7 @@ function Gifts(props) {
       width: "100%", // Set the desired width
       border: "1px solid #ccc",
       borderRadius: "83px",
-      padding: "2px 0 2px 0",
+      // padding: "2px 0 2px 0",
       margin: "auto",
       outline: "none",
     }),
@@ -276,55 +290,69 @@ function Gifts(props) {
   };
 
   return (
-    <div className={classes.allContainer}>
-      <div className={classes.titleClose}>
-        <span className={classes.title}>{t("gifts")}</span>
-        <span className={classes.closeSign} onClick={props.onClose}>
-          x
-        </span>
-      </div>
-      <div className={classes.lineSeperate} />
-      <div className={classes.giftContainer}>
-        <div className={classes.firtBox}>
-          <span className={classes.textGift}> {t("BALANCE")}</span>
-          <div className={classes.inputGift}>{balanceAmount}</div>
-        </div>
-        <div className={classes.firtBox}>
-          <span className={classes.textGift}> {t("AMOUNT")} </span>
-          <input
-            type="text"
-            className={classes.inputGift}
-            onChange={amountHandler}
-            value={amount}
-          />
-        </div>
+    <div>
+      <TopHeader />
+        <LandingPage />
+        <div className={classes.allContainer}>
+        <div className={classes.titleClose}>
+            <span className={classes.title}>{t("gifts")}</span>
+          </div>
+          <div className={classes.lineSeperate} />
+          <div className={classes.giftContainer}>
+            <div className={classes.firtBox}>
+              <span className={classes.textGift}> {t("BALANCE")}</span>
+              <div className={classes.inputGift}>{balanceAmount}</div>
+            </div>
+            <div className={classes.firtBox}>
+              <span className={classes.textGift}> {t("AMOUNT")} </span>
+              <input
+                type="text"
+                className={classes.inputGift}
+                onChange={amountHandler}
+                value={amount}
+              />
+            </div>
 
-        <div className={classes.firtBox}>
-          <span className={classes.textGift}> {t("address")}</span>
-          <Creatable
-            options={options}
-            value={selectedValue} // Set the value of the Select component
-            onChange={handleSelectChange}
-            styles={customStyles}
-          />
+            <div className={classes.firtBox}>
+              <span className={classes.textGift}> {t("address")}</span>
+              <Creatable
+                options={options}
+                value={selectedValue} // Set the value of the Select component
+                onChange={handleSelectChange}
+                styles={customStyles}
+              />
+            </div>
+            <div className={classes.textMessages}>
+              <span className={classes.giftMessage}>{t("minimumAmount")} </span>
+              <span className={classes.giftMessage}>
+                {t("investmentShould")}
+              </span>
+            </div>
+            <div className={classes.btnsGift}>
+              <button className={classes.btnSubmit} onClick={withDrawHandler}>
+                {t("WITHDRAW")}
+              </button>
+              <button className={classes.btnSubmit} onClick={investHandler}>
+                {t("INVEST")}
+              </button>
+            </div>
+          </div>
+          <div className={classes.messageLoaderCont}>
+            {message && (
+              <span
+                className={
+                  status == 0 ? classes.messageStyleFalse : classes.messageStyle
+                }
+              >
+                {message}
+              </span>
+            )}
+            <div className={classes.loaderPosition}>
+              {loader && <Loader />}
+            </div>
+          </div>
         </div>
-        <div className={classes.textMessages}>
-          <span className={classes.giftMessage}>{t("minimumAmount")} </span>
-          <span className={classes.giftMessage}>{t("investmentShould")} </span>
-        </div>
-        <div className={classes.btnsGift}>
-          <button className={classes.btnSubmit} onClick={withDrawHandler}>
-            {t("WITHDRAW")}
-          </button>
-          <button className={classes.btnSubmit} onClick={investHandler}>
-            {t("INVEST")}
-          </button>
-        </div>
-      </div>
-      <div className={classes.messageLoaderCont}>
-        {message && <span className={classes.messageStyle}>{message}</span>}
-        <div className={classes.loaderPosition}> {loader && <Loader />}</div>
-      </div>
+      <Footer />
     </div>
   );
 }
