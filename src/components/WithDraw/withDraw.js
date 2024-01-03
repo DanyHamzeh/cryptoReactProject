@@ -32,18 +32,33 @@ function WithDraw(props) {
   const customStyles = {
     control: (provided) => ({
       ...provided,
-      width: "100%", // Set the desired width
+      width: "100%",
       border: "1px solid #ccc",
       borderRadius: "83px",
-      padding: "2px 0 2px 0",
+      // padding: "2px 0 2px 0",
       margin: "auto",
       outline: "none",
+    }),
+    input: (provided) => ({
+      ...provided,
+      color: "#000000",
+      fontSize: "15px",
+      fontFamily: "$boldfont",
+      width: "100%",
+      zIndex: 100,
+      gridTemplateColumns:"0",
+      // display:"grid",
+      "@media (max-width: 768px)": {
+        fontSize: "10px",
+      },
     }),
     singleValue: (provided) => ({
       ...provided,
       color: "#000000",
       fontSize: "15px",
       fontFamily: "$boldfont",
+      zIndex: 100000,
+
       "@media (max-width: 768px)": {
         fontSize: "10px",
       },
@@ -51,6 +66,7 @@ function WithDraw(props) {
     dropdownIndicator: (provided) => ({
       ...provided,
       color: "#000000",
+      width: "100%", // Set the desired width
     }),
     menu: (provided) => ({
       ...provided,
@@ -73,6 +89,51 @@ function WithDraw(props) {
       },
     }),
   };
+
+  // const customStyles = {
+  //   control: (provided) => ({
+  //     ...provided,
+  //     width: "100%", // Set the desired width
+  //     border: "1px solid #ccc",
+  //     borderRadius: "83px",
+  //     padding: "2px 0 2px 0",
+  //     margin: "auto",
+  //     outline: "none",
+  //   }),
+  //   singleValue: (provided) => ({
+  //     ...provided,
+  //     color: "#000000",
+  //     fontSize: "15px",
+  //     fontFamily: "$boldfont",
+  //     "@media (max-width: 768px)": {
+  //       fontSize: "10px",
+  //     },
+  //   }),
+  //   dropdownIndicator: (provided) => ({
+  //     ...provided,
+  //     color: "#000000",
+  //   }),
+  //   menu: (provided) => ({
+  //     ...provided,
+  //     width: "100%",
+  //     backgroundColor: "#fff",
+  //     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+  //   }),
+
+  //   option: (provided) => ({
+  //     ...provided,
+  //     width: "100%",
+  //     backgroundColor: "#fff",
+  //     color: "black",
+  //     fontSize: "15px",
+  //     "&:hover": {
+  //       backgroundColor: "#F9D03C",
+  //     },
+  //     "@media (max-width: 768px)": {
+  //       fontSize: "10px",
+  //     },
+  //   }),
+  // };
 
   const handleSelectChange = (value) => {
     setSelectedValue(value);

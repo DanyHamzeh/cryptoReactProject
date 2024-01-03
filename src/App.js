@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Investment from "./containers/Investments/investments";
 import HowItWorks from "./containers/HowItWorks/howItworks";
 import TermsCondition from "./containers/TermsCondition/termsCondition";
@@ -44,7 +44,7 @@ function App() {
             navigate("/");
             localStorage.removeItem("token");
             localStorage.removeItem("tokenLogin");
-            if (response.data.errorCode == "invalidUserToken") {
+            if (response.data.errorCode === "invalidUserToken") {
               console.log("ana fetet");
               navigate("/");
               localStorage.removeItem("token");
@@ -84,10 +84,13 @@ function App() {
           <Route path="/gifts" element={<Gifts />} />
         </Routes>
       ) : (
-        <Routes>
-          <Route path="/" element={<Header />} />
-          <Route path="/support" element={<TermsCondition />} />
-        </Routes>
+        <>
+          {/* <Navigate to="/"  /> */}
+          <Routes>
+            <Route path="/" element={<Header />} />
+            <Route path="/support" element={<TermsCondition />} />
+          </Routes>
+        </>
       )}
     </div>
   );

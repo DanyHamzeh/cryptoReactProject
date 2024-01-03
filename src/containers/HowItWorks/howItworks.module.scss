@@ -22,15 +22,14 @@
   @media #{$mobile} {
     width: 80%;
     text-align: center;
-
   }
 }
 
-.insideContainerArabic{
+.insideContainerArabic {
   width: 95%;
   margin: auto;
   background-color: #13293e;
-  padding: 10px 20px 10px 0;
+  padding: 10px 20px 10px 20px;
   border-radius: 20px;
   @media #{$mobile} {
     width: 80%;
@@ -58,7 +57,7 @@
   }
 }
 
-.titleArabic{
+.titleArabic {
   display: block;
   font-size: 25px;
   color: $white;
@@ -146,7 +145,7 @@
   }
 }
 
-.paragraphArabic{
+.paragraphArabic {
   font-size: 20px;
   color: $white;
   font-family: $boldfont;
@@ -185,7 +184,7 @@
   }
 }
 
-.paragraphSubTitleArabic{
+.paragraphSubTitleArabic {
   font-size: 16px;
   color: $white;
   font-family: $boldfont;
@@ -210,12 +209,9 @@
   @include flex($justify-content: flex-start);
 }
 
-.numberPercentageContArabic{
+.numberPercentageContArabic {
   @include flex($justify-content: flex-end);
-
 }
-
-
 
 .amountStyle1 {
   // text-align: center;
@@ -229,6 +225,26 @@
   font-weight: 300;
   margin-bottom: 6px;
   display: block;
+  @media #{$mobile} {
+    font-size: 10px;
+    text-align: flex-start;
+    margin-bottom: 3px;
+  }
+  @media #{$minimobile} {
+    font-size: 8px;
+    text-align: flex-start;
+    margin-bottom: 3px;
+  }
+}
+
+.paragraphVipArabic {
+  font-size: 20px;
+  color: $white;
+  font-family: $boldfont;
+  font-weight: 300;
+  margin-bottom: 6px;
+  display: block;
+  direction: rtl;
   @media #{$mobile} {
     font-size: 10px;
     text-align: flex-start;

@@ -71,17 +71,36 @@ function DepPayment() {
     }
   }, []);
 
-  const handleCopyClick = (e) => {
+  // const handleCopyClick = (e) => {
+
+  //   e.preventDefault();
+  //   if (textToCopyRef.current) {
+  //     const textToCopy = textToCopyRef.current.value;
+  //     console.log("copyMessage",textToCopyRef.current.value);
+
+  //     const textArea = document.createElement("textarea");
+  //     textArea.value = textToCopy;
+  //     document.body.appendChild(textArea);
+  //     textArea.select();
+  //     // document.execCommand(t("COPY"));
+  //     // document.body.removeChild(textArea);
+  //     setCopyStatus(t("Copied"));
+  //   }
+  // };
+
+  const handleCopyClick = async (e) => {
     e.preventDefault();
+    
     if (textToCopyRef.current) {
       const textToCopy = textToCopyRef.current.value;
-      const textArea = document.createElement("textarea");
-      textArea.value = textToCopy;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand(t("COPY"));
-      document.body.removeChild(textArea);
-      setCopyStatus(t("Copied"));
+
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        setCopyStatus(t("Copied"));
+      } catch (err) {
+        console.error('Unable to copy text: ', err);
+        setCopyStatus(t("Copy failed"));
+      }
     }
   };
 
@@ -152,9 +171,9 @@ function DepPayment() {
                 className={classes.copyBtn}
                 onClick={(e) => {
                   handleCopyClick(e);
-                  e.stopPropagation(); // Prevent event propagation
+                  e.stopPropagation();
                 }}
-                type="button" // Specify the button type as "button"
+                type="button"
               >
                 {copyStatus}
               </button>

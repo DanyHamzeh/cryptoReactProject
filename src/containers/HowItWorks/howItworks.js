@@ -520,7 +520,15 @@ function HowItWorks() {
           <div>
             <div className={classes.allParagraph}>
               {isVip === true ? (
-                <span className={classes.paragraphVip}>{t("how9")}</span>
+                <span
+                  className={
+                    selectedLanguage === "ARABIC"
+                      ? classes.paragraphVipArabic
+                      : classes.paragraphVip
+                  }
+                >
+                  {t("how9")}
+                </span>
               ) : (
                 ""
               )}

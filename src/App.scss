@@ -3,3 +3,9 @@
 //   height: fit-content;
 
 // }
+
+body .css-qbdosj-Input {
+    ::before {
+      grid-template-columns: 0  !important;
+    }
+  }

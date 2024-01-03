@@ -238,7 +238,7 @@ function SignUp(props) {
         />
         <span className={classes.textBox}>
           {t("iHaveRead")}
-          <span className={classes.textBoxInside} onClick={ () => openLinkInNewTab('http://176.58.125.206/support')}>
+          <span className={classes.textBoxInside} onClick={ () => openLinkInNewTab('/support')}>
             {t("tAC")}
           </span>
         </span>

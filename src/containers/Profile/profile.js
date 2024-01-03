@@ -61,7 +61,6 @@ function Profile() {
             setLastName(user.lastName);
             setEmail(user.email);
             setUserName(user.userName);
-            // setErrorCode(response.data.errorCode);
           } else {
             if (response.data.errorCode == "invalidUserToken") {
               console.log("ana fetet");
@@ -69,7 +68,6 @@ function Profile() {
               localStorage.removeItem("token");
               localStorage.removeItem("tokenLogin");
             }
-            console.log("second", errorCode);
           }
         })
         .catch((error) => {
@@ -77,21 +75,7 @@ function Profile() {
           console.log("thhird", error);
         });
     }
-  }, [token, tokenLogin, selectedLanguage, errorCode, navigate]);
-
-  // const addInput = () => {
-  //   setInputValues([...inputValues, ""]);
-  // };
-
-  // const removeInput = (index) => {
-  //   if (inputValues.length === 1) {
-  //     // Ensure at least one input remains
-  //     return;
-  //   }
-  //   const newInputValues = [...inputValues];
-  //   newInputValues.splice(index, 1);
-  //   setInputValues(newInputValues);
-  // };
+  }, [token, tokenLogin, selectedLanguage, navigate]);
 
   return (
     <div>

@@ -13,6 +13,11 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../Loader/Loader";
 // import Select from "react-select";
 import Creatable from "react-select/creatable";
+// import Select from 'react-select';
+
+import "../../App.scss";
+// import "react-select/creatable/dist/";
+
 import "../../sass/style.scss";
 import TopHeader from "../TopHeader/topHeader";
 import Footer from "../footer/footer";
@@ -48,9 +53,34 @@ function Gifts(props) {
     setSelectedValue(value);
   };
 
+  // useEffect(() => {
+  //   const inputElement = document.querySelector('.css-qbdosj-Input');
+  //   if (inputElement) {
+  //     inputElement.style.setProperty('z-index','1000', 'important');
+  //   }
+  // }, []);
+
+  //   const StyledSelect = styled(Creatable)`
+  //     width: 100%;
+  //     input {
+  //         width: 100% !important;
+  //     }
+  // `;
+
+  // const handlePaste = (e) => {
+  //   // Handle paste event
+  //   const pastedText = e.clipboardData.getData("text");
+
+  //   // Example: Log the pasted text to the console
+  //   console.log("Pasted Text:", e.clipboardData.getData("text"));
+
+  //   // You can add your custom logic here to handle the pasted text
+  //   // For example, update the state or perform some other action
+  // };
+
   useEffect(() => {
-    console.log("ssssss", addresses);
-    console.log("sdsdsd", selectedValue);
+    console.log("addres", addresses);
+    console.log("value", selectedValue);
     console.log("addd", selectedValue.label);
   }, [addresses, selectedValue, address]);
 
@@ -97,7 +127,7 @@ function Gifts(props) {
           if (response.data.status === 0) {
             setBalanceAmount(response.data.balance);
           } else {
-            if (response.data.errorCode == "invalidUserToken") {
+            if (response.data.errorCode === "invalidUserToken") {
               console.log("ana fetet");
               navigate("/");
               localStorage.removeItem("token");
@@ -247,18 +277,33 @@ function Gifts(props) {
   const customStyles = {
     control: (provided) => ({
       ...provided,
-      width: "100%", // Set the desired width
+      width: "100%",
       border: "1px solid #ccc",
       borderRadius: "83px",
       // padding: "2px 0 2px 0",
       margin: "auto",
       outline: "none",
     }),
+    input: (provided) => ({
+      ...provided,
+      color: "#000000",
+      fontSize: "15px",
+      fontFamily: "$boldfont",
+      width: "100%",
+      zIndex: 100,
+      gridTemplateColumns:"0",
+      // display:"grid",
+      "@media (max-width: 768px)": {
+        fontSize: "10px",
+      },
+    }),
     singleValue: (provided) => ({
       ...provided,
       color: "#000000",
       fontSize: "15px",
       fontFamily: "$boldfont",
+      zIndex: 100000,
+
       "@media (max-width: 768px)": {
         fontSize: "10px",
       },
@@ -266,6 +311,7 @@ function Gifts(props) {
     dropdownIndicator: (provided) => ({
       ...provided,
       color: "#000000",
+      width: "100%", // Set the desired width
     }),
     menu: (provided) => ({
       ...provided,
@@ -292,66 +338,61 @@ function Gifts(props) {
   return (
     <div>
       <TopHeader />
-        <LandingPage />
-        <div className={classes.allContainer}>
+      <LandingPage />
+      <div className={classes.allContainer}>
         <div className={classes.titleClose}>
-            <span className={classes.title}>{t("gifts")}</span>
+          <span className={classes.title}>{t("gifts")}</span>
+        </div>
+        <div className={classes.lineSeperate} />
+        <div className={classes.giftContainer}>
+          <div className={classes.firtBox}>
+            <span className={classes.textGift}> {t("BALANCE")}</span>
+            <div className={classes.inputGift}>{balanceAmount}</div>
           </div>
-          <div className={classes.lineSeperate} />
-          <div className={classes.giftContainer}>
-            <div className={classes.firtBox}>
-              <span className={classes.textGift}> {t("BALANCE")}</span>
-              <div className={classes.inputGift}>{balanceAmount}</div>
-            </div>
-            <div className={classes.firtBox}>
-              <span className={classes.textGift}> {t("AMOUNT")} </span>
-              <input
-                type="text"
-                className={classes.inputGift}
-                onChange={amountHandler}
-                value={amount}
-              />
-            </div>
-
-            <div className={classes.firtBox}>
-              <span className={classes.textGift}> {t("address")}</span>
-              <Creatable
-                options={options}
-                value={selectedValue} // Set the value of the Select component
-                onChange={handleSelectChange}
-                styles={customStyles}
-              />
-            </div>
-            <div className={classes.textMessages}>
-              <span className={classes.giftMessage}>{t("minimumAmount")} </span>
-              <span className={classes.giftMessage}>
-                {t("investmentShould")}
-              </span>
-            </div>
-            <div className={classes.btnsGift}>
-              <button className={classes.btnSubmit} onClick={withDrawHandler}>
-                {t("WITHDRAW")}
-              </button>
-              <button className={classes.btnSubmit} onClick={investHandler}>
-                {t("INVEST")}
-              </button>
-            </div>
+          <div className={classes.firtBox}>
+            <span className={classes.textGift}> {t("AMOUNT")} </span>
+            <input
+              type="text"
+              className={classes.inputGift}
+              onChange={amountHandler}
+              value={amount}
+            />
           </div>
-          <div className={classes.messageLoaderCont}>
-            {message && (
-              <span
-                className={
-                  status == 0 ? classes.messageStyleFalse : classes.messageStyle
-                }
-              >
-                {message}
-              </span>
-            )}
-            <div className={classes.loaderPosition}>
-              {loader && <Loader />}
-            </div>
+          <div className={classes.firtBox}>
+            <span className={classes.textGift}> {t("address")}</span>
+            <Creatable
+              options={options}
+              value={selectedValue} // Set the value of the Select component
+              onChange={handleSelectChange}
+              styles={customStyles}
+            />
+          </div>
+          <div className={classes.textMessages}>
+            <span className={classes.giftMessage}>{t("minimumAmount")} </span>
+            <span className={classes.giftMessage}>{t("investmentShould")}</span>
+          </div>
+          <div className={classes.btnsGift}>
+            <button className={classes.btnSubmit} onClick={withDrawHandler}>
+              {t("WITHDRAW")}
+            </button>
+            <button className={classes.btnSubmit} onClick={investHandler}>
+              {t("INVEST")}
+            </button>
           </div>
         </div>
+        <div className={classes.messageLoaderCont}>
+          {message && (
+            <span
+              className={
+                status == 0 ? classes.messageStyleFalse : classes.messageStyle
+              }
+            >
+              {message}
+            </span>
+          )}
+          <div className={classes.loaderPosition}>{loader && <Loader />}</div>
+        </div>
+      </div>
       <Footer />
     </div>
   );
