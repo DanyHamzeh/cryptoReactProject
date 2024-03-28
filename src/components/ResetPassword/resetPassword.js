@@ -99,6 +99,9 @@ function ResetPassword(props) {
           .catch((error) => {
             setLoader(error.message);
             console.log("thhird", url);
+          })
+          .finally(() => {
+            setLoader(false); // Reset loading state after API call is completed
           });
       }
     }
@@ -178,8 +181,8 @@ function ResetPassword(props) {
       <div className={classes.textBtnContainer}>
         <span className={classes.secureText}>{t("passwordMust")}</span>
 
-        <div onClick={confirmEditPassword}>
-          <button className={classes.btnRejister}>{t("CONFIRM")}</button>
+        <div >
+          <button className={classes.btnRejister } onClick={confirmEditPassword} disabled={loader}>{t("CONFIRM")}</button>
         </div>
       </div>
       <div className={classes.messageLoaderCont}>

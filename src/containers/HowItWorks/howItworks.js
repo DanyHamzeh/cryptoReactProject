@@ -334,7 +334,61 @@ function HowItWorks() {
                         : classes.paragraph
                     }
                   >
+                    5.1%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
+                    5.2%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
+                    5.3%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
                     5.4%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
+                    5.5%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
+                    5.6%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
+                    5.7%
                   </span>
                   <span
                     className={
@@ -352,7 +406,52 @@ function HowItWorks() {
                         : classes.paragraph
                     }
                   >
+                    6%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
+                    6.1%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
                     6.2%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
+                    6.3%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
+                    6.5%
+                  </span>
+                  <span
+                    className={
+                      selectedLanguage === "ARABIC"
+                        ? classes.paragraphArabic
+                        : classes.paragraph
+                    }
+                  >
+                    6.6%
                   </span>
                   <span
                     className={
@@ -370,7 +469,7 @@ function HowItWorks() {
                         : classes.paragraph
                     }
                   >
-                    7.2%
+                    6.8%
                   </span>
                   <span
                     className={
@@ -379,106 +478,7 @@ function HowItWorks() {
                         : classes.paragraph
                     }
                   >
-                    7.7%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    8.3%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    8.9%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    9.6%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    10.3%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    11%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    11.9%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    12.8%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    13.8%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    14.8%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    15.9%
-                  </span>
-                  <span
-                    className={
-                      selectedLanguage === "ARABIC"
-                        ? classes.paragraphArabic
-                        : classes.paragraph
-                    }
-                  >
-                    17%
+                    7%
                   </span>
                 </div>
               </div>

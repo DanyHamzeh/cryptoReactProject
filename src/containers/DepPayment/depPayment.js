@@ -139,6 +139,9 @@ function DepPayment() {
           .catch((error) => {
             setLoader(error.message);
             console.log("thhird", url);
+          })
+          .finally(() => {
+            setLoader(false); // Reset loading state after API call is completed
           });
       }
     }
@@ -188,7 +191,7 @@ function DepPayment() {
                 onChange={withDrawHandler}
                 value={withDrawId}
               />
-              <button className={classes.copyBtn} onClick={confirmDeposite}>
+              <button className={classes.copyBtn} onClick={confirmDeposite}  disabled={loader}>
                 {t("CONFIRM")}
               </button>
             </div>

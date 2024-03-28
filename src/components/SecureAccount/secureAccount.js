@@ -88,6 +88,9 @@ function SecureAccount(props) {
         .catch((error) => {
           setLoader(error.message);
           console.log("thhird", url);
+        })
+        .finally(() => {
+          setLoader(false); // Reset loading state after API call is completed
         });
     }
   };
@@ -164,7 +167,7 @@ function SecureAccount(props) {
       </div>
       <div className={classes.textBtnContainer}>
         <div >
-          <button className={classes.btnRejister} onClick={completeSecurity}>
+          <button className={classes.btnRejister} onClick={completeSecurity}  disabled={loader}>
             {t("CSS")}
           </button>
         </div>
@@ -178,122 +181,5 @@ function SecureAccount(props) {
   );
 }
 
-//   return (
-//     <div className={classes.allContainer}>
-//       <div className={classes.titleClose}>
-//         <FontAwesomeIcon
-//           icon={faArrowLeft}
-//           className={classes.flashSign}
-//           onClick={props.onClose}
-//         />
-//         <span className={classes.title}>{t("SYA")}</span>
-//       </div>
-//       <div className={classes.lineSeperate} />
-
-//       <div className={classes.inputAllCont}>
-//         <div
-//           // className={classes.textInputStyleQuetion}
-//           className={`${classes.textInputStyleQuetion} ${[
-//             showPicker === "open"
-//               ? classes.textInputStyleQuetionNew
-//               : classes.textInputStyleQuetion,
-//           ]}`}
-//         >
-//           <div
-//             className={`${classes.firstBox} ${[
-//               showPicker === "open" ? classes.secondBox : classes.firstBox,
-//             ]}`}
-//             onClick={onClickPicker}
-//           >
-//             <div
-//               className={`${classes.inputStyleNew} ${[
-//                 showPicker === "open"
-//                   ? classes.inputStyleNewOpen
-//                   : classes.inputStyleNew,
-//               ]}`}
-//             >
-//               {selected || t("securityQuestion")}
-//             </div>
-//             <FontAwesomeIcon
-//               className={classes.iconClose}
-//               icon={faChevronDown}
-//             />
-//           </div>
-//           <div
-//             className={`${
-//               showPicker === "open" ? classes.secondBox : classes.secondBoxHide
-//             }`}
-//             style={{ borderRadius: "20px" }}
-//           >
-//             {options.map((option) => (
-//               <div
-//                 key={option}
-//                 onClick={(e) => {
-//                   setSelected(option);
-//                   setShowPicker("close");
-//                 }}
-//               >
-//                 <span className={classes.textTest}>{option}</span>
-//                 <div className={classes.lineSeperateNew} />
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//         <div className={classes.additionalSection}>
-//           <div className={classes.textInputStyle}>
-//             <input
-//               type="text"
-//               className={classes.inputStyle}
-//               placeholder={t("answerhere")}
-//               onChange={answerHandler}
-//               value={answerValue}
-//             />
-//           </div>
-
-//           {/* Add your button here */}
-//           <button className={classes.btnRejister} onClick={completeSecurity}>
-//           {t("CSS")}
-//           </button>
-
-//           {/* Add your text here */}
-//           <p className={classes.secureText}>{t("accountLost")}</p>
-//                   <div className={classes.messageLoaderCont}>
-//           {message && <span className={classes.messageStyle}>{message}</span>}
-//           <div className={classes.loaderPosition}> {loader && <Loader />}</div>
-//         </div>
-//         </div>
-//       </div>
-
-//       {/* <div className={classes.textInputStyle}>
-//           <input
-//             type="text"
-//             className={classes.inputStyle}
-//             placeholder={t("answerhere")}
-//             onChange={answerHandler}
-//             value={answerValue}
-//           />
-//           <button className={classes.btnRejister} onClick={completeSecurity}>
-//             {t("CSS")}
-//           </button>
-//           <span className={classes.secureText}>{t("accountLost")}</span>
-
-//         </div> */}
-//       {/* <div className={classes.textBtnContainer}>
-//         <div className={classes.btnMessage}>
-//           <button className={classes.btnRejister} onClick={completeSecurity}>
-//             {t("CSS")}
-//           </button>
-//         </div>
-//         <div>
-//           <span className={classes.secureText}>{t("accountLost")}</span>
-//         </div>
-//         <div className={classes.messageLoaderCont}>
-//           {message && <span className={classes.messageStyle}>{message}</span>}
-//           <div className={classes.loaderPosition}> {loader && <Loader />}</div>
-//         </div>
-//       </div> */}
-//     </div>
-//   );
-// }
 
 export default SecureAccount;

@@ -258,7 +258,7 @@ function SignUp(props) {
         )}
       {/* </div> */}
       <button className={classes.btnRejister} onClick={checkInfo}>
-        {t("cR")}{" "}
+        {t("cR")}
       </button>
       {message ? (
         <span className={classes.messageStyle}>{message}</span>

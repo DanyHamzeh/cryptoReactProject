@@ -24,6 +24,8 @@ function Investment(props) {
   const [amountToUse, setAmountToUse] = useState(null);
   const [id, setId] = useState(null);
   const [gift, setGift] = useState(null);
+  const [balance, setBalance] = useState(null);
+
   const [showBtn1, setShowBtn1] = useState("close");
 
   const { t } = useTranslation();
@@ -78,14 +80,17 @@ function Investment(props) {
         .catch((error) => {
           // setLoader(error.message);
           console.log("thhird", error);
+        })
+        .finally(() => {
+          setLoader(false); // Reset loading state after API call is completed
         });
     }
   }
 
-  function reinvestHandler(index, amountToUse, id) {
+  function reinvestHandler(index, id,balance) {
     setShowReinvest((prev) => !prev);
-    setAmountToUse(amountToUse);
     setId(id);
+    setBalance(balance)
     if (token || tokenLogin) {
       let url = userInvestmentApi(selectedLanguage);
       let userInvestObject = {
@@ -113,6 +118,9 @@ function Investment(props) {
         .catch((error) => {
           // setLoader(error.message);
           console.log("thhird", error);
+        })
+        .finally(() => {
+          setLoader(false); // Reset loading state after API call is completed
         });
     }
   }
@@ -154,6 +162,7 @@ function Investment(props) {
     }
   }, [token, tokenLogin, selectedLanguage, errorCode, navigate]);
 
+
   return (
     <div>
       <NewTopHeader />
@@ -165,6 +174,7 @@ function Investment(props) {
                 <th className={classes.headerTitle}>{t("InvestmentID")}</th>
                 <th className={classes.headerTitle}>{t("AMOUNT")}</th>
                 <th className={classes.headerTitle}>{t("BALANCE")}</th>
+                <th className={classes.headerTitle}>{t("BALANCEWithDraw")}</th>
                 <th className={classes.headerTitle}>{t("TYPE")}</th>
                 <th className={classes.headerTitle}>{t("waletType")}</th>
                 <th className={classes.headerTitle}>{t("DATE")}</th>
@@ -191,9 +201,10 @@ function Investment(props) {
                       <td className={classes.headerCells}>{invest.id}</td>
                       <td className={classes.headerCells}>{invest.amount}</td>
                       <td className={classes.headerCells}>{invest.balance}</td>
+                      <td className={classes.headerCells}>{invest.withdraw_only_balance}</td>
                       <td className={classes.headerCells}>{invest.type}</td>
                       <td className={classes.headerCells}>
-                        {invest.amount < 100 ? (
+                        {invest.amount <= 98 ? (
                           <span
                             className={classes.Warning}
                             onClick={handleClickWarning}
@@ -211,7 +222,7 @@ function Investment(props) {
                         <button
                           // className={classes.btnStyle}
                           className={`${classes.btnStyle} ${[
-                            invest.amount < 100 || showBtn1 === "open"
+                            invest.amount < 99 || showBtn1 === "open"
                               ? classes.btnStyle1
                               : classes.btnStyle,
                           ]}`}
@@ -223,10 +234,11 @@ function Investment(props) {
                               invest.type
                             )
                           }
+                          disabled={loader}
                         >
                           {t("WITHDRAW")}
                         </button>
-                        {invest.amount < 100 ? (
+                        {invest.amount < 99 ? (
                           ""
                         ) : (
                           <button
@@ -234,11 +246,11 @@ function Investment(props) {
                             onClick={() =>
                               reinvestHandler(
                                 index,
-                                invest.amountToUse,
                                 invest.id,
-                                invest.amount
+                                invest.balance,
                               )
                             }
+                            disabled={loader}
                           >
                             {t("REINVEST")}
                           </button>
@@ -258,9 +270,9 @@ function Investment(props) {
                         {showReinvest && (
                           <Reinvest
                             onClose={reinvestHandler}
-                            amountToUse={amountToUse}
                             id={id}
-                            setAmountToUse={setAmountToUse}
+                            setBalance={setBalance}
+                            balance={balance}
                           />
                         )}
                       </td>
@@ -268,7 +280,7 @@ function Investment(props) {
                         <button
                           // className={classes.btnStyleMobile}
                           className={`${classes.btnStyleMobile} ${[
-                            invest.amount < 100 || showBtn1 === "open"
+                            invest.amount < 99 || showBtn1 === "open"
                               ? classes.btnStyleMobile1
                               : classes.btnStyleMobile,
                           ]}`}
@@ -280,10 +292,11 @@ function Investment(props) {
                               invest.type
                             )
                           }
+                          disabled={loader}
                         >
                           {t("WITHDRAW")}
                         </button>
-                        {invest.amount < 100 ? (
+                        {invest.amount < 99 ? (
                           ""
                         ) : (
                           <button
@@ -291,11 +304,11 @@ function Investment(props) {
                             onClick={() =>
                               reinvestHandler(
                                 index,
-                                invest.amountToUse,
                                 invest.id,
-                                invest.amount
+                                invest.balance,
                               )
                             }
+                            disabled={loader}
                           >
                             {t("REINVEST")}
                           </button>

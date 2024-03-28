@@ -92,7 +92,6 @@ function Profile() {
                 <div className={classes.spaceInfo}>
                   <span className={classes.infoText}>{t("fN")}</span>
                   <span className={classes.infoTextMobile}>
-                    {/* AAAAAAAAAAAAAAAAAAAAAAAAAAAA */}
                     {firstName}
                   </span>
                 </div>

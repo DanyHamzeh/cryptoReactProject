@@ -27,9 +27,9 @@ function WithDraw(props) {
   const balanceAmount = () => {
     let total = 0;
     if (amount) {
-      total = props.amountToUse - amount;
+      total = props.balance - amount;
     }
-    props.setAmountToUse(total);
+    props.setBalance(total);
   };
 
 
@@ -37,7 +37,7 @@ function WithDraw(props) {
     const investmentAmount = parseFloat(amount);
     if (isNaN(investmentAmount)) {
       setMessage(t("fillEmpty"));
-    } else if (investmentAmount > props.amountToUse) {
+    } else if (investmentAmount > props.balance) {
       setMessage(t("investmentShouldBalance"));
     } else {
       if (token || tokenLogin) {
@@ -74,6 +74,9 @@ function WithDraw(props) {
           .catch((error) => {
             // setLoader(error.message);
             console.log("thhirdddddd", error);
+          })
+          .finally(() => {
+            setLoader(false); // Reset loading state after API call is completed
           });
       }
     }
@@ -82,13 +85,15 @@ function WithDraw(props) {
     }
   };
 
-
+useEffect(()=>{
+console.log(props.balance);
+},[props.balance])
 
   return (
     <div className={classes.allContainer}>
       <div className={classes.titleClose}>
         <span className={classes.title}>{t("BALANCE")}</span>
-        <span className={classes.title}>{props.amountToUse} USDT</span>
+        <span className={classes.title}>{props.balance} USDT</span>
         <span className={classes.closeSign} onClick={props.onClose}>
           x
         </span>
@@ -106,7 +111,7 @@ function WithDraw(props) {
         </div>
 
         <div className={classes.btnsGift}>
-          <button className={classes.btnSubmit} onClick={investHandler}>
+          <button className={classes.btnSubmit} onClick={investHandler} disabled={loader}>
             {t("INVEST")}
           </button>
         </div>

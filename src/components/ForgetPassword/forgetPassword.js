@@ -112,6 +112,9 @@ function ForgetPassword(props) {
         .catch((error) => {
           setLoader(error.message);
           console.log("thhird", url);
+        })
+        .finally(() => {
+          setLoader(false); // Reset loading state after API call is completed
         });
     }
     if(status === 0){
@@ -247,7 +250,7 @@ function ForgetPassword(props) {
       <div className={classes.textBtnContainer}>
         <span className={classes.secureText}>{t("passwordMust")}</span>
         <div>
-          <button className={classes.btnRejister} onClick={confirmHandler}>
+          <button className={classes.btnRejister} onClick={confirmHandler} disabled={loader}>
             {t("CONFIRM")}
           </button>
           {showAccountRecovered && (

@@ -140,6 +140,22 @@
   }
 }
 
+.btnSubmitSecond{
+  background-color: $mainColor;
+  border-radius: 25px;
+  padding: 5px 10px 5px 10px;
+  color: $white;
+  font-family: $boldfont;
+  border-width: 0;
+  font-size: 15px;
+  font-family: $boldfont;
+  cursor: pointer;
+}
+
+.selectCont{
+  padding: 0 20px ;
+}
+
 .giftMessage {
   font-size: 20px;
   color: $profileMainColor;

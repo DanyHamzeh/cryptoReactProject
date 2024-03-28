@@ -16,7 +16,6 @@ import Creatable from "react-select/creatable";
 // import Select from 'react-select';
 
 import "../../App.scss";
-// import "react-select/creatable/dist/";
 
 import "../../sass/style.scss";
 import TopHeader from "../TopHeader/topHeader";
@@ -39,6 +38,8 @@ function Gifts(props) {
   const token = localStorage.getItem("token"); // Check if the token exists
   const tokenLogin = localStorage.getItem("tokenLogin"); // Check if the token exists
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
+
+  const [showPicker, setShowPicker] = useState(false);
 
   const options = addresses.map((address, index) => ({
     value: `address_${index}`,
@@ -137,7 +138,6 @@ function Gifts(props) {
           }
         })
         .catch((error) => {
-          // setLoader(error.message);
           console.log("thhird", error);
         });
     }
@@ -172,7 +172,9 @@ function Gifts(props) {
     }
   }, [token, tokenLogin, selectedLanguage, errorCode, navigate]);
 
-  const investHandler = () => {
+  // const [selectedOption, setSelectedOption] = useState("");
+
+  const investHandler = (event) => {
     const investmentAmount = parseInt(amount);
     if (isNaN(investmentAmount)) {
       setMessage(t("fillEmpty"));
@@ -215,6 +217,9 @@ function Gifts(props) {
           .catch((error) => {
             // setLoader(error.message);
             console.log("thhird", error);
+          })
+          .finally(() => {
+            setLoader(false); // Reset loading state after API call is completed
           });
       }
     }
@@ -266,6 +271,9 @@ function Gifts(props) {
           .catch((error) => {
             // setLoader(error.message);
             console.log("thhird", error);
+          })
+          .finally(() => {
+            setLoader(false); // Reset loading state after API call is completed
           });
       }
     }
@@ -291,7 +299,7 @@ function Gifts(props) {
       fontFamily: "$boldfont",
       width: "100%",
       zIndex: 100,
-      gridTemplateColumns:"0",
+      gridTemplateColumns: "0",
       // display:"grid",
       "@media (max-width: 768px)": {
         fontSize: "10px",
@@ -372,10 +380,10 @@ function Gifts(props) {
             <span className={classes.giftMessage}>{t("investmentShould")}</span>
           </div>
           <div className={classes.btnsGift}>
-            <button className={classes.btnSubmit} onClick={withDrawHandler}>
+            <button className={classes.btnSubmit} onClick={withDrawHandler} disabled={loader}>
               {t("WITHDRAW")}
             </button>
-            <button className={classes.btnSubmit} onClick={investHandler}>
+            <button className={classes.btnSubmit} onClick={investHandler} disabled={loader}>
               {t("INVEST")}
             </button>
           </div>

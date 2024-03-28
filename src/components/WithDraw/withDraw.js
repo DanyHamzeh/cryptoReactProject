@@ -223,6 +223,9 @@ function WithDraw(props) {
           .catch((error) => {
             // setLoader(error.message);
             console.log("thhird", error);
+          })
+          .finally(() => {
+            setLoader(false); // Reset loading state after API call is completed
           });
       }
     }
@@ -230,6 +233,10 @@ function WithDraw(props) {
       setStatus(-1);
     }
   };
+
+  useEffect(()=>{
+console.log("sssss",props.amountToUse);
+  },[props.amountToUse])
 
   return (
     <div className={classes.allContainer}>
@@ -265,7 +272,7 @@ function WithDraw(props) {
         </div>
 
         <div className={classes.btnsGift}>
-          <button className={classes.btnSubmit} onClick={withDrawHandler}>
+          <button className={classes.btnSubmit} onClick={withDrawHandler} disabled={loader}>
             {t("WITHDRAW")}
           </button>
         </div>

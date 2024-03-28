@@ -63,14 +63,19 @@ function LogIn(props) {
           } else {
             setLoader();
             setMessage(response.data.message);
+            // console.log();
           }
         })
         .catch((error) => {
           setMessage(error.message);
           setLoader(false);
           console.log("thhird", url);
+        })
+        .finally(() => {
+          setLoader(false); // Reset loading state after API call is completed
         });
     }
+    
   };
 
   return (
@@ -119,8 +124,8 @@ function LogIn(props) {
         </div>
       </div>
       <div className={classes.allcontInfo}>
-        <div className={classes.btnLogin} onClick={logInHandle}>
-          <button className={classes.btnRejister}>{t("LOGIN")}</button>
+        <div className={classes.btnLogin} >
+          <button className={classes.btnRejister} onClick={logInHandle} disabled={loader}>{t("LOGIN")}</button>
         </div>
 
         {/* <div> */}
