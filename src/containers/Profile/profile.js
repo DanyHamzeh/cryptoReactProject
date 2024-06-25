@@ -11,6 +11,8 @@ import { getUserInfoApi } from "../../Api";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import i18next from "i18next";
+import { Helmet } from "react-helmet";
+import logo from "../../assets/images/logo.png";
 
 function Profile() {
   const [showResetPAssword, setShowResetPassword] = useState(false);
@@ -19,7 +21,6 @@ function Profile() {
   const [userName, setUserName] = useState(null);
   const [email, setEmail] = useState(null);
   const [errorCode, setErrorCode] = useState(null);
-
 
   const navigate = useNavigate();
 
@@ -34,16 +35,15 @@ function Profile() {
   const tokenLogin = localStorage.getItem("tokenLogin"); // Check if the token exists
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
 
-  useEffect(()=>{
+  useEffect(() => {
     i18next.init({
       lng: selectedLanguage,
-      fallbackLng: 'ENGLISH',
+      fallbackLng: "ENGLISH",
       interpolation: {
         escapeValue: false,
       },
     });
-  },[])
-
+  }, []);
 
   useEffect(() => {
     if (token || tokenLogin) {
@@ -78,66 +78,96 @@ function Profile() {
   }, [token, tokenLogin, selectedLanguage, navigate]);
 
   return (
-    <div>
-      <NewTopHeader />
-      <div className={classes.allContainer}>
-        <div className={classes.insideContainer}>
-          <div className={classes.imageTitle}>
-            <img src={profileSmall} alt="" className={classes.smallProfile} />
-            <span className={classes.textTitle}>{t("PROFILE")}</span>
-          </div>
-          <div className={classes.infoImageUser}>
-            <div className={classes.infoUserContainer}> 
-              <div className={classes.profileInfo}>
-                <div className={classes.spaceInfo}>
-                  <span className={classes.infoText}>{t("fN")}</span>
-                  <span className={classes.infoTextMobile}>
-                    {firstName}
-                  </span>
+    <>
+      <Helmet>
+        <title>Daily Trading Bot - Profile</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          key="description"
+          content="View and manage your profile information with Daily Trading Bot. Access your account details, transaction history, and other user-specific information."
+        />
+        <meta name="title" key="title" content="Daily Trading Bot - Profile" />
+        <meta
+          property="og:title"
+          key="og:title"
+          content="Daily Trading Bot - Profile"
+        />
+        <meta property="og:site_name" content="Daily Trading Bot" />
+        <meta property="og:locale" key="og:locale" content="en_US" />
+        <meta charSet="utf-8" />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content="View and manage your profile information with Daily Trading Bot. Access your account details, transaction history, and other user-specific information."
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={logo} // Assuming you have imported your logo as `logo`
+        />
+      </Helmet>
+      <div>
+        <NewTopHeader />
+        <div className={classes.allContainer}>
+          <div className={classes.insideContainer}>
+            <div className={classes.imageTitle}>
+              <img src={profileSmall} alt="" className={classes.smallProfile} />
+              <span className={classes.textTitle}>{t("PROFILE")}</span>
+            </div>
+            <div className={classes.infoImageUser}>
+              <div className={classes.infoUserContainer}>
+                <div className={classes.profileInfo}>
+                  <div className={classes.spaceInfo}>
+                    <span className={classes.infoText}>{t("fN")}</span>
+                    <span className={classes.infoTextMobile}>{firstName}</span>
+                  </div>
+                  <div className={classes.spaceInfo}>
+                    <span className={classes.infoText}>{t("lN")}</span>
+                    <span className={classes.infoTextMobile}>{lastName}</span>
+                  </div>
+                  <div className={classes.spaceInfo}>
+                    <span className={classes.infoText}>{t("eM")}</span>
+                    <span className={classes.infoTextMobile}>{email}</span>
+                  </div>
                 </div>
-                <div className={classes.spaceInfo}>
-                  <span className={classes.infoText}>{t("lN")}</span>
-                  <span className={classes.infoTextMobile}>{lastName}</span>
-                </div>
-                <div className={classes.spaceInfo}>
-                  <span className={classes.infoText}>{t("eM")}</span>
-                  <span className={classes.infoTextMobile}>{email}</span>
+                <div className={classes.profileInfo}>
+                  <span className={classes.infoTextName}>{firstName}</span>
+                  <span className={classes.infoTextName}>{lastName}</span>
+                  <span className={classes.infoTextName}>{email}</span>
                 </div>
               </div>
-              <div className={classes.profileInfo}>
-                <span className={classes.infoTextName}>{firstName}</span>
-                <span className={classes.infoTextName}>{lastName}</span>
-                <span className={classes.infoTextName}>{email}</span>
+              <div className={classes.profilePic}>
+                <div className={classes.imageInput}>
+                  <img
+                    src={profileLarge}
+                    alt=""
+                    className={classes.largeProfile}
+                  />
+                </div>
+                <div className={classes.nameContainer}>
+                  <span className={classes.nameProfile}>{userName}</span>
+                </div>
               </div>
             </div>
-            <div className={classes.profilePic}>
-              <div className={classes.imageInput}>
-                <img
-                  src={profileLarge}
-                  alt=""
-                  className={classes.largeProfile}
-                />
-              </div>
-              <div className={classes.nameContainer}>
-                <span className={classes.nameProfile}>{userName}</span>
-              </div>
+            <div className={classes.editInfoCont}>
+              <span
+                className={classes.nameProfilePassword}
+                onClick={handleClickSecureAccount}
+              >
+                {t("ePassword")}
+              </span>
             </div>
+            {showResetPAssword && (
+              <ResetPassword onClose={handleClickSecureAccount} />
+            )}
           </div>
-          <div className={classes.editInfoCont}>
-            <span
-              className={classes.nameProfilePassword}
-              onClick={handleClickSecureAccount}
-            >
-              {t("ePassword")}
-            </span>
-          </div>
-          {showResetPAssword && (
-            <ResetPassword onClose={handleClickSecureAccount} />
-          )}
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 

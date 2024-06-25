@@ -7,6 +7,8 @@ import Loader from "../Loader/Loader";
 import classes from "./secureAccount.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
+import logo from "../../assets/images/logo.png";
 
 function SecureAccount(props) {
   const [showPicker, setShowPicker] = useState("close");
@@ -96,90 +98,129 @@ function SecureAccount(props) {
   };
 
   return (
-    <div className={classes.allContainer}>
-      <div className={classes.titleClose}>
-        <FontAwesomeIcon
-          icon={faArrowLeft}
-          className={classes.flashSign}
-          onClick={props.onClose}
+    <>
+      <Helmet>
+        <title>Daily Trading Bot - Secure Account</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          key="description"
+          content="Manage your security questions and enhance the privacy of your Daily Trading Bot account. Ensure the security of your personal information by setting up security questions."
         />
-        <span className={classes.title}>{t("SYA")}</span>
-      </div>
-      <div className={classes.lineSeperate} />
-      <div className={classes.inputAllCont}>
-        <div
-          // className={classes.textInputStyleQuetion}
-          className={`${classes.textInputStyleQuetion} ${[
-            showPicker === "open"
-              ? classes.textInputStyleQuetionNew
-              : classes.textInputStyleQuetion,
-          ]}`}
-        >
+        <meta
+          name="title"
+          key="title"
+          content="Daily Trading Bot - Secure Account"
+        />
+        <meta
+          property="og:title"
+          key="og:title"
+          content="Daily Trading Bot - Secure Account"
+        />
+        <meta property="og:site_name" content="Daily Trading Bot" />
+        <meta property="og:locale" key="og:locale" content="en_US" />
+        <meta charSet="utf-8" />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content="Manage your security questions and enhance the privacy of your Daily Trading Bot account. Ensure the security of your personal information by setting up security questions."
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={logo} // Assuming you have imported your logo as `logo`
+        />
+      </Helmet>
+      <div className={classes.allContainer}>
+        <div className={classes.titleClose}>
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            className={classes.flashSign}
+            onClick={props.onClose}
+          />
+          <span className={classes.title}>{t("SYA")}</span>
+        </div>
+        <div className={classes.lineSeperate} />
+        <div className={classes.inputAllCont}>
           <div
-            className={`${classes.firstBox} ${[
-              showPicker === "open" ? classes.secondBox : classes.firstBox,
+            // className={classes.textInputStyleQuetion}
+            className={`${classes.textInputStyleQuetion} ${[
+              showPicker === "open"
+                ? classes.textInputStyleQuetionNew
+                : classes.textInputStyleQuetion,
             ]}`}
-            onClick={onClickPicker}
           >
             <div
-              className={`${classes.inputStyleNew} ${[
-                showPicker === "open"
-                  ? classes.inputStyleNewOpen
-                  : classes.inputStyleNew,
+              className={`${classes.firstBox} ${[
+                showPicker === "open" ? classes.secondBox : classes.firstBox,
               ]}`}
+              onClick={onClickPicker}
             >
-              {selected || t("securityQuestion")}
+              <div
+                className={`${classes.inputStyleNew} ${[
+                  showPicker === "open"
+                    ? classes.inputStyleNewOpen
+                    : classes.inputStyleNew,
+                ]}`}
+              >
+                {selected || t("securityQuestion")}
+              </div>
+              <FontAwesomeIcon
+                className={classes.iconClose}
+                icon={faChevronDown}
+              />
             </div>
-            <FontAwesomeIcon
-              className={classes.iconClose}
-              icon={faChevronDown}
+            {options.map((option, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`${classes.secondBox} ${[
+                    showPicker === "open"
+                      ? classes.secondBox
+                      : classes.secondBoxHide,
+                  ]}`}
+                  onClick={(e) => {
+                    setSelected(option);
+                    setShowPicker("close");
+                  }}
+                >
+                  <span className={classes.textTest}>{option}</span>
+                  <div className={classes.lineSeperateNew} />
+                </div>
+              );
+            })}
+          </div>
+          <div className={classes.textInputStyleAnswer}>
+            <input
+              type="text"
+              className={classes.inputStyle}
+              placeholder={t("answerhere")}
+              onChange={answerHandler}
+              value={answerValue}
             />
           </div>
-          {options.map((option, index) => {
-            return (
-              <div
-                key={index}
-                className={`${classes.secondBox} ${[
-                  showPicker === "open"
-                    ? classes.secondBox
-                    : classes.secondBoxHide,
-                ]}`}
-                onClick={(e) => {
-                  setSelected(option);
-                  setShowPicker("close");
-                }}
-              >
-                <span className={classes.textTest}>{option}</span>
-                <div className={classes.lineSeperateNew} />
-              </div>
-            );
-          })}
         </div>
-        <div className={classes.textInputStyleAnswer}>
-          <input
-            type="text"
-            className={classes.inputStyle}
-            placeholder={t("answerhere")}
-            onChange={answerHandler}
-            value={answerValue}
-          />
+        <div className={classes.textBtnContainer}>
+          <div>
+            <button
+              className={classes.btnRejister}
+              onClick={completeSecurity}
+              disabled={loader}
+            >
+              {t("CSS")}
+            </button>
+          </div>
+          <div className={classes.messageLoaderCont}>
+            {message && <span className={classes.messageStyle}>{message}</span>}
+            <div className={classes.loaderPosition}>{loader && <Loader />}</div>
+          </div>
+          <span className={classes.secureText}>{t("accountLost")}</span>
         </div>
       </div>
-      <div className={classes.textBtnContainer}>
-        <div >
-          <button className={classes.btnRejister} onClick={completeSecurity}  disabled={loader}>
-            {t("CSS")}
-          </button>
-        </div>
-        <div className={classes.messageLoaderCont}>
-          {message && <span className={classes.messageStyle}>{message}</span>}
-          <div className={classes.loaderPosition}>{loader && <Loader />}</div>
-        </div>
-        <span className={classes.secureText}>{t("accountLost")}</span>
-      </div>
-    </div>
+    </>
   );
 }
-
 
 export default SecureAccount;

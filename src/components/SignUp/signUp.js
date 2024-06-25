@@ -8,6 +8,8 @@ import eyeClose from "../../assets/images/Vector (2).png";
 import { useEffect } from "react";
 import LogIn from "../LogIn/logIn";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
+import logo from "../../assets/images/logo.png";
 
 function SignUp(props) {
   const [showSecureAccount, setShowSecureAccount] = useState(false);
@@ -27,10 +29,10 @@ function SignUp(props) {
   const [refferlNew, setRefferlNew] = useState(referralCodeFromLocalStorage);
   const { t } = useTranslation();
 
-  const openLinkInNewTab = ( url ) => {
-    const newTab = window.open(url, '_blank', 'noopener,noreferrer');
-    if ( newTab ) newTab.opener = null;
-  }
+  const openLinkInNewTab = (url) => {
+    const newTab = window.open(url, "_blank", "noopener,noreferrer");
+    if (newTab) newTab.opener = null;
+  };
 
   const queryParams1 = new URLSearchParams(window.location.search);
   const vipCodeUrl = queryParams1.get("vipCode");
@@ -128,122 +130,158 @@ function SignUp(props) {
   // ]);
 
   return (
-    <div className={classes.allContainer}>
-      <div className={classes.titleClose}>
-        <span className={classes.title}>{t("signOutSent")}</span>
-        <span className={classes.closeSign} onClick={props.onClose}>
-          x
-        </span>
-      </div>
-      <div className={classes.lineSeperate} />
-      <div className={classes.textInputStyle}>
-        <span className={classes.textStyle}>{t("fN")}</span>
-        <input
-          type="text"
-          className={classes.inputStyle}
-          onChange={firstNameHandler}
-          value={firstName}
-          id="first-name-input"
+    <>
+      <Helmet>
+        <title>Daily Trading Bot - Sign Up</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          key="description"
+          content="Sign up for Daily Trading Bot and unlock the potential of making money from cryptocurrency. Join now to access exclusive features, benefits, and rewards!"
         />
-      </div>
-      <div className={classes.textInputStyle}>
-        <span className={classes.textStyle}>{t("lN")}</span>
-        <input
-          type="text"
-          id="last-name-input"
-          className={classes.inputStyle}
-          onChange={LastNameHandler}
-          value={lastName}
+        <meta name="title" key="title" content="Daily Trading Bot - Sign Up" />
+        <meta
+          property="og:title"
+          key="og:title"
+          content="Daily Trading Bot - Sign Up"
         />
-      </div>
-      <div className={classes.textInputStyle}>
-        <span className={classes.textStyle}>{t("eM")}</span>
-        <input
-          type="text"
-          className={classes.inputStyle}
-          onChange={EmailHandler}
-          value={emailName}
+        <meta property="og:site_name" content="Daily Trading Bot" />
+        <meta property="og:locale" key="og:locale" content="en_US" />
+        <meta charSet="utf-8" />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content="Sign up for Daily Trading Bot and unlock the potential of making money from cryptocurrency. Join now to access exclusive features, benefits, and rewards!"
         />
-      </div>
-      <div className={classes.textInputStyle}>
-        <span className={classes.textStyle}>
-          {t("PASSWORD")}
-          <span className={classes.textStyleInside}>{t("passwordLogic")}</span>
-        </span>
-        <input
-          type={showPassword ? "text" : "password"}
-          className={classes.inputStyle}
-          onChange={PasswordHandler}
-          value={passwordName}
+        <meta
+          property="og:image"
+          key="og:image"
+          content={logo} // Assuming you have imported your logo as `logo`
         />
-        {showPassword ? (
-          <img
-            src={eyeOpen}
-            className={classes.eyeOpenStyle}
-            onClick={handleClick}
-          />
-        ) : (
-          <img
-            src={eyeClose}
-            className={classes.eyeOpenStyleNew}
-            onClick={handleClick}
-          />
-        )}
-      </div>
-      <div className={classes.textInputStyle}>
-        <span className={classes.textStyle}> {t("cPassword")}</span>
-        <input
-          type={showPassword1 ? "text" : "password"}
-          className={classes.inputStyle}
-          onChange={ConfirmPasswordHandler}
-          value={confirmPassword}
-        />
-        {showPassword1 ? (
-          <img
-            src={eyeOpen}
-            className={classes.eyeCLoseStyle}
-            onClick={handleClick1}
-          />
-        ) : (
-          <img
-            src={eyeClose}
-            className={classes.eyeCLoseStyleNew}
-            onClick={handleClick1}
-          />
-        )}
-      </div>
-      <div className={classes.textInputStyle}>
-        <span className={classes.textStyle}> {t("rF")}</span>
-        <input
-          type="text"
-          className={classes.inputStyleLast}
-          onChange={RefferralCodeHandler}
-          value={
-            refferlNew != "null" && refferlNew != null
-              ? refferlNew
-              : refferralCode
-          }
-          // readOnly={!!refferlNew}
-          readOnly={refferlNew != null && refferlNew != "null" ? true : false}
-          // readOnly={false}
-        />
-      </div>
-      <div className={classes.checkInputStyle}>
-        {/* <input type="checkbox" className={classes.checkBox} /> */}
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={handleCheckboxChange}
-          className={classes.checkBox}
-        />
-        <span className={classes.textBox}>
-          {t("iHaveRead")}
-          <span className={classes.textBoxInside} onClick={ () => openLinkInNewTab('/support')}>
-            {t("tAC")}
+      </Helmet>
+      <div className={classes.allContainer}>
+        <div className={classes.titleClose}>
+          <span className={classes.title}>{t("signOutSent")}</span>
+          <span className={classes.closeSign} onClick={props.onClose}>
+            x
           </span>
-        </span>
-      </div>
-      {/* <div className={classes.secureCont}> */}
+        </div>
+        <div className={classes.lineSeperate} />
+        <div className={classes.textInputStyle}>
+          <span className={classes.textStyle}>{t("fN")}</span>
+          <input
+            type="text"
+            className={classes.inputStyle}
+            onChange={firstNameHandler}
+            value={firstName}
+            id="first-name-input"
+          />
+        </div>
+        <div className={classes.textInputStyle}>
+          <span className={classes.textStyle}>{t("lN")}</span>
+          <input
+            type="text"
+            id="last-name-input"
+            className={classes.inputStyle}
+            onChange={LastNameHandler}
+            value={lastName}
+          />
+        </div>
+        <div className={classes.textInputStyle}>
+          <span className={classes.textStyle}>{t("eM")}</span>
+          <input
+            type="text"
+            className={classes.inputStyle}
+            onChange={EmailHandler}
+            value={emailName}
+          />
+        </div>
+        <div className={classes.textInputStyle}>
+          <span className={classes.textStyle}>
+            {t("PASSWORD")}
+            <span className={classes.textStyleInside}>
+              {t("passwordLogic")}
+            </span>
+          </span>
+          <input
+            type={showPassword ? "text" : "password"}
+            className={classes.inputStyle}
+            onChange={PasswordHandler}
+            value={passwordName}
+          />
+          {showPassword ? (
+            <img
+              src={eyeOpen}
+              className={classes.eyeOpenStyle}
+              onClick={handleClick}
+            />
+          ) : (
+            <img
+              src={eyeClose}
+              className={classes.eyeOpenStyleNew}
+              onClick={handleClick}
+            />
+          )}
+        </div>
+        <div className={classes.textInputStyle}>
+          <span className={classes.textStyle}> {t("cPassword")}</span>
+          <input
+            type={showPassword1 ? "text" : "password"}
+            className={classes.inputStyle}
+            onChange={ConfirmPasswordHandler}
+            value={confirmPassword}
+          />
+          {showPassword1 ? (
+            <img
+              src={eyeOpen}
+              className={classes.eyeCLoseStyle}
+              onClick={handleClick1}
+            />
+          ) : (
+            <img
+              src={eyeClose}
+              className={classes.eyeCLoseStyleNew}
+              onClick={handleClick1}
+            />
+          )}
+        </div>
+        <div className={classes.textInputStyle}>
+          <span className={classes.textStyle}> {t("rF")}</span>
+          <input
+            type="text"
+            className={classes.inputStyleLast}
+            onChange={RefferralCodeHandler}
+            value={
+              refferlNew != "null" && refferlNew != null
+                ? refferlNew
+                : refferralCode
+            }
+            // readOnly={!!refferlNew}
+            readOnly={refferlNew != null && refferlNew != "null" ? true : false}
+            // readOnly={false}
+          />
+        </div>
+        <div className={classes.checkInputStyle}>
+          {/* <input type="checkbox" className={classes.checkBox} /> */}
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+            className={classes.checkBox}
+          />
+          <span className={classes.textBox}>
+            {t("iHaveRead")}
+            <span
+              className={classes.textBoxInside}
+              onClick={() => openLinkInNewTab("/support")}
+            >
+              {t("tAC")}
+            </span>
+          </span>
+        </div>
+        {/* <div className={classes.secureCont}> */}
         {showSecureAccount && (
           <SecureAccount
             onClose={handleClickSecureAccount}
@@ -256,25 +294,26 @@ function SignUp(props) {
             refferlNew={refferlNew}
           />
         )}
-      {/* </div> */}
-      <button className={classes.btnRejister} onClick={checkInfo}>
-        {t("cR")}
-      </button>
-      {message ? (
-        <span className={classes.messageStyle}>{message}</span>
-      ) : (
-        <></>
-      )}
-      <div className={classes.confirmContainer}>
-        <span className={classes.confirmMessage}>{t("alreacyHaveAn")}</span>
-        <span className={classes.logInStyle} onClick={handleClickLogIn}>
-          {t("LOGIN")}{" "}
-        </span>
-        <div className={classes.logInShow}>
-          {showLogIn && <LogIn onClose={handleClickLogIn} />}
+        {/* </div> */}
+        <button className={classes.btnRejister} onClick={checkInfo}>
+          {t("cR")}
+        </button>
+        {message ? (
+          <span className={classes.messageStyle}>{message}</span>
+        ) : (
+          <></>
+        )}
+        <div className={classes.confirmContainer}>
+          <span className={classes.confirmMessage}>{t("alreacyHaveAn")}</span>
+          <span className={classes.logInStyle} onClick={handleClickLogIn}>
+            {t("LOGIN")}{" "}
+          </span>
+          <div className={classes.logInShow}>
+            {showLogIn && <LogIn onClose={handleClickLogIn} />}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

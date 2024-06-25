@@ -9,6 +9,10 @@ import { useTranslation } from "react-i18next";
 import { resetUserPassApi } from "../../Api";
 import Loader from "../Loader/Loader";
 import axios from "axios";
+import { Helmet } from "react-helmet";
+
+import logo from "../../assets/images/logo.png";
+
 
 function ForgetPassword(props) {
   const [showAccountRecovered, setShowAccountRecovered] = useState(false);
@@ -24,7 +28,6 @@ function ForgetPassword(props) {
   const [message, setMessage] = useState("");
   const [loader, setLoader] = useState(false);
   const [status, setStatus] = useState(null);
-
 
   const { t } = useTranslation();
   const selectedLanguage = localStorage.getItem("myLanguage") || "ENGLISH";
@@ -95,7 +98,7 @@ function ForgetPassword(props) {
           if (response.data.status === 0) {
             setLoader(false);
             setUserName(response.data.message);
-            setStatus(response.data.status)
+            setStatus(response.data.status);
             handleClickRecovered();
             setMessage(null);
             setEmail("");
@@ -117,155 +120,203 @@ function ForgetPassword(props) {
           setLoader(false); // Reset loading state after API call is completed
         });
     }
-    if(status === 0){
-      setStatus(-1)
+    if (status === 0) {
+      setStatus(-1);
     }
   };
 
   return (
-    <div className={classes.allContainer}>
-      <div className={classes.titleClose}>
-        <span className={classes.title}>RESET PASSWORD</span>
-        <span className={classes.closeSign} onClick={props.onClose}>
-          x
-        </span>
-      </div>
-      <div className={classes.lineSeperate} />
-      <div className={classes.inputAllCont}>
-        <div className={classes.textInputStyle}>
-          <span className={classes.textStyle}>{t("eM")}</span>
-          <input
-            type="text"
-            className={classes.inputStyle}
-            onChange={emailHandler}
-            value={email}
-          />
+    <>
+      <Helmet>
+        <title>Daily Trading Bot - Forget Password</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          key="description"
+          content="Forgot your password? Recover it securely with Daily Trading Bot. Answer security questions and follow our secure password recovery process to regain access to your account."
+        />
+        <meta
+          name="title"
+          key="title"
+          content="Daily Trading Bot - Forget Password"
+        />
+        <meta
+          property="og:title"
+          key="og:title"
+          content="Daily Trading Bot - Forget Password"
+        />
+        <meta property="og:site_name" content="Daily Trading Bot" />
+        <meta property="og:locale" key="og:locale" content="en_US" />
+        <meta charSet="utf-8" />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content="Forgot your password? Recover it securely with Daily Trading Bot. Answer security questions and follow our secure password recovery process to regain access to your account."
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={logo} // Assuming you have imported your logo as `logo`
+        />
+      </Helmet>
+      <div className={classes.allContainer}>
+        <div className={classes.titleClose}>
+          <span className={classes.title}>RESET PASSWORD</span>
+          <span className={classes.closeSign} onClick={props.onClose}>
+            x
+          </span>
         </div>
-        <div className={classes.textInputStyle}>
-          <span className={classes.textStyle}> {t("newPassword")}</span>
-          <input
-            type={showPassword1 ? "text" : "password"}
-            className={classes.inputStyle}
-            onChange={passwordHandler}
-            value={password}
-          /> 
-          {showPassword1 ? (
-            <img
-              src={eyeOpen}
-              className={classes.eyeOpenStyle}
-              onClick={handleClick1}
-              alt=""
-            />
-          ) : (
-            <img
-              src={eyeClose}
-              className={classes.eyeOpenStyleNew}
-              onClick={handleClick1}
-              alt=""
-            />
-          )}
-        </div>
-        <div className={classes.textInputStyle}>
-          <span className={classes.textStyle}>{t("cPassword")}</span>
-          <input
-            type={showPassword ? "text" : "password"}
-            className={classes.inputStyle}
-            onChange={confirmPasswordHandler}
-            value={verifyPassword}
-          />
-          {showPassword ? (
-            <img
-              src={eyeOpen}
-              className={classes.eyeCLoseStyle}
-              onClick={handleClick}
-              alt=""
-            />
-          ) : (
-            <img
-              src={eyeClose}
-              className={classes.eyeCLoseStyleNew}
-              onClick={handleClick}
-              alt=""
-            />
-          )}
-        </div>
-        <div
-          // className={classes.textInputStyleQuetion}
-          className={`${classes.textInputStyleQuetion} ${[
-            showPicker === "open"
-              ? classes.textInputStyleQuetionNew
-              : classes.textInputStyleQuetion,
-          ]}`}
-        >
-          <div
-            className={`${classes.firstBox} ${[
-              showPicker === "open" ? classes.secondBox : classes.firstBox,
-            ]}`}
-            onClick={onClickPicker}
-          >
-            <div
-              className={`${classes.inputStyleNew} ${[
-                showPicker === "open"
-                  ? classes.inputStyleNewOpen
-                  : classes.inputStyleNew,
-              ]}`}
-            >
-              {selected || t("securityQuestion")}
-            </div>
-            <FontAwesomeIcon
-              className={classes.iconClose}
-              icon={faChevronDown}
+        <div className={classes.lineSeperate} />
+        <div className={classes.inputAllCont}>
+          <div className={classes.textInputStyle}>
+            <span className={classes.textStyle}>{t("eM")}</span>
+            <input
+              type="text"
+              className={classes.inputStyle}
+              onChange={emailHandler}
+              value={email}
             />
           </div>
-          {options.map((option,index) => {
-            return (
-              <div
-              key={index}
-                className={`${classes.secondBox} ${[
-                  showPicker === "open"
-                    ? classes.secondBox
-                    : classes.secondBoxHide,
-                ]}`}
-                onClick={(e) => {
-                  setSelected(option);
-                  setShowPicker("close");
-                }}
-              >
-                <span className={classes.textTest}>{option}</span>
-                <div className={classes.lineSeperateNew} />
-              </div>
-            );
-          })}
-        </div>
-        <div className={classes.textInputStyleAnswer}>
-          <input
-            type="text"
-            className={classes.inputStyle}
-            placeholder={t("answerhere")}
-            onChange={answerHandler}
-            value={securityAnswer}
-          />
-        </div>
-      </div>
-      <div className={classes.textBtnContainer}>
-        <span className={classes.secureText}>{t("passwordMust")}</span>
-        <div>
-          <button className={classes.btnRejister} onClick={confirmHandler} disabled={loader}>
-            {t("CONFIRM")}
-          </button>
-          {showAccountRecovered && (
-            <AccountRecovered
-              onClose={handleClickRecovered}
-              userName={userName}
+          <div className={classes.textInputStyle}>
+            <span className={classes.textStyle}> {t("newPassword")}</span>
+            <input
+              type={showPassword1 ? "text" : "password"}
+              className={classes.inputStyle}
+              onChange={passwordHandler}
+              value={password}
             />
-          )}
+            {showPassword1 ? (
+              <img
+                src={eyeOpen}
+                className={classes.eyeOpenStyle}
+                onClick={handleClick1}
+                alt=""
+              />
+            ) : (
+              <img
+                src={eyeClose}
+                className={classes.eyeOpenStyleNew}
+                onClick={handleClick1}
+                alt=""
+              />
+            )}
+          </div>
+          <div className={classes.textInputStyle}>
+            <span className={classes.textStyle}>{t("cPassword")}</span>
+            <input
+              type={showPassword ? "text" : "password"}
+              className={classes.inputStyle}
+              onChange={confirmPasswordHandler}
+              value={verifyPassword}
+            />
+            {showPassword ? (
+              <img
+                src={eyeOpen}
+                className={classes.eyeCLoseStyle}
+                onClick={handleClick}
+                alt=""
+              />
+            ) : (
+              <img
+                src={eyeClose}
+                className={classes.eyeCLoseStyleNew}
+                onClick={handleClick}
+                alt=""
+              />
+            )}
+          </div>
+          <div
+            // className={classes.textInputStyleQuetion}
+            className={`${classes.textInputStyleQuetion} ${[
+              showPicker === "open"
+                ? classes.textInputStyleQuetionNew
+                : classes.textInputStyleQuetion,
+            ]}`}
+          >
+            <div
+              className={`${classes.firstBox} ${[
+                showPicker === "open" ? classes.secondBox : classes.firstBox,
+              ]}`}
+              onClick={onClickPicker}
+            >
+              <div
+                className={`${classes.inputStyleNew} ${[
+                  showPicker === "open"
+                    ? classes.inputStyleNewOpen
+                    : classes.inputStyleNew,
+                ]}`}
+              >
+                {selected || t("securityQuestion")}
+              </div>
+              <FontAwesomeIcon
+                className={classes.iconClose}
+                icon={faChevronDown}
+              />
+            </div>
+            {options.map((option, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`${classes.secondBox} ${[
+                    showPicker === "open"
+                      ? classes.secondBox
+                      : classes.secondBoxHide,
+                  ]}`}
+                  onClick={(e) => {
+                    setSelected(option);
+                    setShowPicker("close");
+                  }}
+                >
+                  <span className={classes.textTest}>{option}</span>
+                  <div className={classes.lineSeperateNew} />
+                </div>
+              );
+            })}
+          </div>
+          <div className={classes.textInputStyleAnswer}>
+            <input
+              type="text"
+              className={classes.inputStyle}
+              placeholder={t("answerhere")}
+              onChange={answerHandler}
+              value={securityAnswer}
+            />
+          </div>
         </div>
-        <div className={classes.messageLoaderCont}>
-        {message && <span className={status == 0 ? classes.messageStyleFalse :classes.messageStyle}>{message}</span>}
-          <div className={classes.loaderPosition}>{loader && <Loader />}</div>
+        <div className={classes.textBtnContainer}>
+          <span className={classes.secureText}>{t("passwordMust")}</span>
+          <div>
+            <button
+              className={classes.btnRejister}
+              onClick={confirmHandler}
+              disabled={loader}
+            >
+              {t("CONFIRM")}
+            </button>
+            {showAccountRecovered && (
+              <AccountRecovered
+                onClose={handleClickRecovered}
+                userName={userName}
+              />
+            )}
+          </div>
+          <div className={classes.messageLoaderCont}>
+            {message && (
+              <span
+                className={
+                  status == 0 ? classes.messageStyleFalse : classes.messageStyle
+                }
+              >
+                {message}
+              </span>
+            )}
+            <div className={classes.loaderPosition}>{loader && <Loader />}</div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

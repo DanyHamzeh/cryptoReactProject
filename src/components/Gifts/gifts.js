@@ -21,6 +21,10 @@ import "../../sass/style.scss";
 import TopHeader from "../TopHeader/topHeader";
 import Footer from "../footer/footer";
 import LandingPage from "../LandingPage/landingPage";
+import { Helmet } from "react-helmet";
+
+import logo from "../../assets/images/logo.png";
+
 
 function Gifts(props) {
   const [balanceAmount, setBalanceAmount] = useState(null);
@@ -344,65 +348,111 @@ function Gifts(props) {
   };
 
   return (
-    <div>
-      <TopHeader />
-      <LandingPage />
-      <div className={classes.allContainer}>
-        <div className={classes.titleClose}>
-          <span className={classes.title}>{t("gifts")}</span>
+    <>
+      <Helmet>
+        <title>Daily Trading Bot - Gifts & Benefits</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          key="description"
+          content="Explore the various gifts, discounts, credits, points, and other benefits available to Daily Trading Bot users. Join now to start enjoying exclusive perks and rewards!"
+        />
+        <meta
+          name="title"
+          key="title"
+          content="Daily Trading Bot - Gifts & Benefits"
+        />
+        <meta
+          property="og:title"
+          key="og:title"
+          content="Daily Trading Bot - Gifts & Benefits"
+        />
+        <meta property="og:site_name" content="Daily Trading Bot" />
+        <meta property="og:locale" key="og:locale" content="en_US" />
+        <meta charSet="utf-8" />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content="Explore the various gifts, discounts, credits, points, and other benefits available to Daily Trading Bot users. Join now to start enjoying exclusive perks and rewards!"
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={logo} // Assuming you have imported your logo as `logo`
+        />
+      </Helmet>
+      <div>
+        <TopHeader />
+        <LandingPage />
+        <div className={classes.allContainer}>
+          <div className={classes.titleClose}>
+            <span className={classes.title}>{t("gifts")}</span>
+          </div>
+          <div className={classes.lineSeperate} />
+          <div className={classes.giftContainer}>
+            <div className={classes.firtBox}>
+              <span className={classes.textGift}> {t("BALANCE")}</span>
+              <div className={classes.inputGift}>{balanceAmount}</div>
+            </div>
+            <div className={classes.firtBox}>
+              <span className={classes.textGift}> {t("AMOUNT")} </span>
+              <input
+                type="text"
+                className={classes.inputGift}
+                onChange={amountHandler}
+                value={amount}
+              />
+            </div>
+            <div className={classes.firtBox}>
+              <span className={classes.textGift}> {t("address")}</span>
+              <Creatable
+                options={options}
+                value={selectedValue} // Set the value of the Select component
+                onChange={handleSelectChange}
+                styles={customStyles}
+              />
+            </div>
+            <div className={classes.textMessages}>
+              <span className={classes.giftMessage}>{t("minimumAmount")} </span>
+              <span className={classes.giftMessage}>
+                {t("investmentShould")}
+              </span>
+            </div>
+            <div className={classes.btnsGift}>
+              <button
+                className={classes.btnSubmit}
+                onClick={withDrawHandler}
+                disabled={loader}
+              >
+                {t("WITHDRAW")}
+              </button>
+              <button
+                className={classes.btnSubmit}
+                onClick={investHandler}
+                disabled={loader}
+              >
+                {t("INVEST")}
+              </button>
+            </div>
+          </div>
+          <div className={classes.messageLoaderCont}>
+            {message && (
+              <span
+                className={
+                  status == 0 ? classes.messageStyleFalse : classes.messageStyle
+                }
+              >
+                {message}
+              </span>
+            )}
+            <div className={classes.loaderPosition}>{loader && <Loader />}</div>
+          </div>
         </div>
-        <div className={classes.lineSeperate} />
-        <div className={classes.giftContainer}>
-          <div className={classes.firtBox}>
-            <span className={classes.textGift}> {t("BALANCE")}</span>
-            <div className={classes.inputGift}>{balanceAmount}</div>
-          </div>
-          <div className={classes.firtBox}>
-            <span className={classes.textGift}> {t("AMOUNT")} </span>
-            <input
-              type="text"
-              className={classes.inputGift}
-              onChange={amountHandler}
-              value={amount}
-            />
-          </div>
-          <div className={classes.firtBox}>
-            <span className={classes.textGift}> {t("address")}</span>
-            <Creatable
-              options={options}
-              value={selectedValue} // Set the value of the Select component
-              onChange={handleSelectChange}
-              styles={customStyles}
-            />
-          </div>
-          <div className={classes.textMessages}>
-            <span className={classes.giftMessage}>{t("minimumAmount")} </span>
-            <span className={classes.giftMessage}>{t("investmentShould")}</span>
-          </div>
-          <div className={classes.btnsGift}>
-            <button className={classes.btnSubmit} onClick={withDrawHandler} disabled={loader}>
-              {t("WITHDRAW")}
-            </button>
-            <button className={classes.btnSubmit} onClick={investHandler} disabled={loader}>
-              {t("INVEST")}
-            </button>
-          </div>
-        </div>
-        <div className={classes.messageLoaderCont}>
-          {message && (
-            <span
-              className={
-                status == 0 ? classes.messageStyleFalse : classes.messageStyle
-              }
-            >
-              {message}
-            </span>
-          )}
-          <div className={classes.loaderPosition}>{loader && <Loader />}</div>
-        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 

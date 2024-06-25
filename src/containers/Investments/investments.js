@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Loader from "../../components/Loader/Loader";
 import i18next from "i18next";
+import { Helmet } from "react-helmet";
+import logo from "../../assets/images/logo.png";
 
 function Investment(props) {
   const [showWarning, setShowWarning] = useState(false);
@@ -87,10 +89,10 @@ function Investment(props) {
     }
   }
 
-  function reinvestHandler(index, id,balance) {
+  function reinvestHandler(index, id, balance) {
     setShowReinvest((prev) => !prev);
     setId(id);
-    setBalance(balance)
+    setBalance(balance);
     if (token || tokenLogin) {
       let url = userInvestmentApi(selectedLanguage);
       let userInvestObject = {
@@ -162,169 +164,210 @@ function Investment(props) {
     }
   }, [token, tokenLogin, selectedLanguage, errorCode, navigate]);
 
-
   return (
-    <div>
-      <NewTopHeader />
-      <div className={classes.investmentContainer}>
-        <div className={classes.insideContainer}>
-          <table className={classes.allTable}>
-            <tbody>
-              <tr>
-                <th className={classes.headerTitle}>{t("InvestmentID")}</th>
-                <th className={classes.headerTitle}>{t("AMOUNT")}</th>
-                <th className={classes.headerTitle}>{t("BALANCE")}</th>
-                <th className={classes.headerTitle}>{t("BALANCEWithDraw")}</th>
-                <th className={classes.headerTitle}>{t("TYPE")}</th>
-                <th className={classes.headerTitle}>{t("waletType")}</th>
-                <th className={classes.headerTitle}>{t("DATE")}</th>
-              </tr>
-              <tr className={classes.lineSeperate}>
-                <th className={classes.lineSeperate}></th>
-                <th className={classes.lineSeperate}></th>
-                <th className={classes.lineSeperate}></th>
-                <th className={classes.lineSeperate}></th>
-                <th className={classes.lineSeperate}></th>
-                <th className={classes.lineSeperate}></th>
-                <th className={classes.lineSeperate}></th>
-              </tr>
-              {loader ? (
+    <>
+      <Helmet>
+        <title>Daily Trading Bot - Investment</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          key="description"
+          content="Invest and withdraw funds easily with Daily Trading Bot. Start investing any amount of USDT and enjoy the convenience of withdrawing profits or reinvesting them to maximize returns."
+        />
+        <meta
+          name="title"
+          key="title"
+          content="Daily Trading Bot - Investment"
+        />
+        <meta
+          property="og:title"
+          key="og:title"
+          content="Daily Trading Bot - Investment"
+        />
+        <meta property="og:site_name" content="Daily Trading Bot" />
+        <meta property="og:locale" key="og:locale" content="en_US" />
+        <meta charSet="utf-8" />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content="Invest and withdraw funds easily with Daily Trading Bot. Start investing any amount of USDT and enjoy the convenience of withdrawing profits or reinvesting them to maximize returns."
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={logo} // Assuming you have imported your logo as `logo`
+        />
+      </Helmet>
+      <div>
+        <NewTopHeader />
+        <div className={classes.investmentContainer}>
+          <div className={classes.insideContainer}>
+            <table className={classes.allTable}>
+              <tbody>
                 <tr>
-                  <td className={classes.messageLoaderCont} colSpan="6">
-                    {loader && <Loader />}
-                  </td>
+                  <th className={classes.headerTitle}>{t("InvestmentID")}</th>
+                  <th className={classes.headerTitle}>{t("AMOUNT")}</th>
+                  <th className={classes.headerTitle}>{t("BALANCE")}</th>
+                  <th className={classes.headerTitle}>
+                    {t("BALANCEWithDraw")}
+                  </th>
+                  <th className={classes.headerTitle}>{t("TYPE")}</th>
+                  <th className={classes.headerTitle}>{t("waletType")}</th>
+                  <th className={classes.headerTitle}>{t("DATE")}</th>
                 </tr>
-              ) : (
-                <>
-                  {invests.map((invest, index) => (
-                    <tr key={index}>
-                      <td className={classes.headerCells}>{invest.id}</td>
-                      <td className={classes.headerCells}>{invest.amount}</td>
-                      <td className={classes.headerCells}>{invest.balance}</td>
-                      <td className={classes.headerCells}>{invest.withdraw_only_balance}</td>
-                      <td className={classes.headerCells}>{invest.type}</td>
-                      <td className={classes.headerCells}>
-                        {invest.amount <= 98 ? (
-                          <span
-                            className={classes.Warning}
-                            onClick={handleClickWarning}
-                          >
-                            {t("WARNING")}
-                          </span>
-                        ) : (
-                          invest.walletType || "-"
-                        )}
-                      </td>
-                      <td className={classes.headerCells}>
-                        {invest.dateCreatedStr}
-                      </td>
-                      <td className={classes.btnStylelarge}>
-                        <button
-                          // className={classes.btnStyle}
-                          className={`${classes.btnStyle} ${[
-                            invest.amount < 99 || showBtn1 === "open"
-                              ? classes.btnStyle1
-                              : classes.btnStyle,
-                          ]}`}
-                          onClick={() =>
-                            withDrawHandler(
-                              index,
-                              invest.amountToUse,
-                              invest.id,
-                              invest.type
-                            )
-                          }
-                          disabled={loader}
-                        >
-                          {t("WITHDRAW")}
-                        </button>
-                        {invest.amount < 99 ? (
-                          ""
-                        ) : (
+                <tr className={classes.lineSeperate}>
+                  <th className={classes.lineSeperate}></th>
+                  <th className={classes.lineSeperate}></th>
+                  <th className={classes.lineSeperate}></th>
+                  <th className={classes.lineSeperate}></th>
+                  <th className={classes.lineSeperate}></th>
+                  <th className={classes.lineSeperate}></th>
+                  <th className={classes.lineSeperate}></th>
+                </tr>
+                {loader ? (
+                  <tr>
+                    <td className={classes.messageLoaderCont} colSpan="6">
+                      {loader && <Loader />}
+                    </td>
+                  </tr>
+                ) : (
+                  <>
+                    {invests.map((invest, index) => (
+                      <tr key={index}>
+                        <td className={classes.headerCells}>{invest.id}</td>
+                        <td className={classes.headerCells}>{invest.amount}</td>
+                        <td className={classes.headerCells}>
+                          {invest.balance}
+                        </td>
+                        <td className={classes.headerCells}>
+                          {invest.withdraw_only_balance}
+                        </td>
+                        <td className={classes.headerCells}>{invest.type}</td>
+                        <td className={classes.headerCells}>
+                          {invest.amount <= 98 ? (
+                            <span
+                              className={classes.Warning}
+                              onClick={handleClickWarning}
+                            >
+                              {t("WARNING")}
+                            </span>
+                          ) : (
+                            invest.walletType || "-"
+                          )}
+                        </td>
+                        <td className={classes.headerCells}>
+                          {invest.dateCreatedStr}
+                        </td>
+                        <td className={classes.btnStylelarge}>
                           <button
-                            className={classes.btnStyle}
+                            // className={classes.btnStyle}
+                            className={`${classes.btnStyle} ${[
+                              invest.amount < 99 || showBtn1 === "open"
+                                ? classes.btnStyle1
+                                : classes.btnStyle,
+                            ]}`}
                             onClick={() =>
-                              reinvestHandler(
+                              withDrawHandler(
                                 index,
+                                invest.amountToUse,
                                 invest.id,
-                                invest.balance,
+                                invest.type
                               )
                             }
                             disabled={loader}
                           >
-                            {t("REINVEST")}
+                            {t("WITHDRAW")}
                           </button>
-                        )}
-                        {showWarning && (
-                          <Warning onClose={handleClickWarning} />
-                        )}
-                        {showWithDraw && (
-                          <WithDraw
-                            onClose={withDrawHandler}
-                            amountToUse={amountToUse}
-                            id={id}
-                            gift={gift}
-                            setAmountToUse={setAmountToUse}
-                          />
-                        )}
-                        {showReinvest && (
-                          <Reinvest
-                            onClose={reinvestHandler}
-                            id={id}
-                            setBalance={setBalance}
-                            balance={balance}
-                          />
-                        )}
-                      </td>
-                      <td className={classes.btnMobile}>
-                        <button
-                          // className={classes.btnStyleMobile}
-                          className={`${classes.btnStyleMobile} ${[
-                            invest.amount < 99 || showBtn1 === "open"
-                              ? classes.btnStyleMobile1
-                              : classes.btnStyleMobile,
-                          ]}`}
-                          onClick={() =>
-                            withDrawHandler(
-                              index,
-                              invest.amountToUse,
-                              invest.id,
-                              invest.type
-                            )
-                          }
-                          disabled={loader}
-                        >
-                          {t("WITHDRAW")}
-                        </button>
-                        {invest.amount < 99 ? (
-                          ""
-                        ) : (
+                          {invest.amount < 99 ? (
+                            ""
+                          ) : (
+                            <button
+                              className={classes.btnStyle}
+                              onClick={() =>
+                                reinvestHandler(
+                                  index,
+                                  invest.id,
+                                  invest.balance
+                                )
+                              }
+                              disabled={loader}
+                            >
+                              {t("REINVEST")}
+                            </button>
+                          )}
+                          {showWarning && (
+                            <Warning onClose={handleClickWarning} />
+                          )}
+                          {showWithDraw && (
+                            <WithDraw
+                              onClose={withDrawHandler}
+                              amountToUse={amountToUse}
+                              id={id}
+                              gift={gift}
+                              setAmountToUse={setAmountToUse}
+                            />
+                          )}
+                          {showReinvest && (
+                            <Reinvest
+                              onClose={reinvestHandler}
+                              id={id}
+                              setBalance={setBalance}
+                              balance={balance}
+                            />
+                          )}
+                        </td>
+                        <td className={classes.btnMobile}>
                           <button
-                            className={classes.btnStyleMobile}
+                            // className={classes.btnStyleMobile}
+                            className={`${classes.btnStyleMobile} ${[
+                              invest.amount < 99 || showBtn1 === "open"
+                                ? classes.btnStyleMobile1
+                                : classes.btnStyleMobile,
+                            ]}`}
                             onClick={() =>
-                              reinvestHandler(
+                              withDrawHandler(
                                 index,
+                                invest.amountToUse,
                                 invest.id,
-                                invest.balance,
+                                invest.type
                               )
                             }
                             disabled={loader}
                           >
-                            {t("REINVEST")}
+                            {t("WITHDRAW")}
                           </button>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </>
-              )}
-            </tbody>
-          </table>
+                          {invest.amount < 99 ? (
+                            ""
+                          ) : (
+                            <button
+                              className={classes.btnStyleMobile}
+                              onClick={() =>
+                                reinvestHandler(
+                                  index,
+                                  invest.id,
+                                  invest.balance
+                                )
+                              }
+                              disabled={loader}
+                            >
+                              {t("REINVEST")}
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }
 export default Investment;

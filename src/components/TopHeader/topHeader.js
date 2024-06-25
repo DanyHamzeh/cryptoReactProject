@@ -14,6 +14,8 @@ import { logoutApi } from "../../Api";
 import axios from "axios";
 import i18next from "i18next";
 import ProfileSmall from "../../assets/images/Group 231 (1).png";
+import { Helmet } from "react-helmet";
+import logo from "../../assets/images/logo.png";
 
 function TopHeader() {
   const [mobilemenu, setmobilemenu] = useState("closed");
@@ -154,186 +156,231 @@ function TopHeader() {
   };
 
   return (
-    <div>
-      <div className={classes.HeaderStyle}>
-        <Link to="/">
-          <img src={Logo} alt="app Logo" className={classes.logo_trading} />
-        </Link>
+    <>
+      <Helmet>
+        <title>Daily Trading Bot </title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          key="description"
+          content="Sign in or register with Daily Trading Bot to explore the exciting world of cryptocurrency trading. Start your journey to financial success today!"
+        />
+        <meta
+          name="title"
+          key="title"
+          content="Daily Trading Bot - Sign In / Register"
+        />
+        <meta
+          property="og:title"
+          key="og:title"
+          content="Daily Trading Bot - Sign In / Register"
+        />
+        <meta property="og:site_name" content="Daily Trading Bot" />
+        <meta property="og:locale" key="og:locale" content="en_US" />
+        <meta charSet="utf-8" />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content="Sign in or register with Daily Trading Bot to explore the exciting world of cryptocurrency trading. Start your journey to financial success today!"
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={logo} // Assuming you have imported your logo as `logo`
+        />
+      </Helmet>
+      <div>
+        <div className={classes.HeaderStyle}>
+          <Link to="/">
+            <img src={Logo} alt="app Logo" className={classes.logo_trading} />
+          </Link>
 
-        <div className={classes.listHeader}>
-          <nav
-            className={`${
-              menulist === "visible"
-                ? classes.menulistVisible
-                : classes.menulistHiden
-            }`}
-          >
-            {token || tokenLogin ? (
-              <ul className={classes.ul_list}>
-                <div className={classes.menueHiddenStyle}>
-                  <div className={classes.lineSeperate} />
-                  <li className={classes.navigateTabs}>
-                    <Link to="/howItWorks" className={classes.list_word}>
-                      {t("howItWorks")}
-                    </Link>
-                  </li>
-                  <div className={classes.lineSeperateMobile} />
+          <div className={classes.listHeader}>
+            <nav
+              className={`${
+                menulist === "visible"
+                  ? classes.menulistVisible
+                  : classes.menulistHiden
+              }`}
+            >
+              {token || tokenLogin ? (
+                <ul className={classes.ul_list}>
+                  <div className={classes.menueHiddenStyle}>
+                    <div className={classes.lineSeperate} />
+                    <li className={classes.navigateTabs}>
+                      <Link to="/howItWorks" className={classes.list_word}>
+                        {t("howItWorks")}
+                      </Link>
+                    </li>
+                    <div className={classes.lineSeperateMobile} />
 
-                  <li className={classes.navigateTabs}>
-                    <Link to="/depPayment" className={classes.list_word}>
-                      {t("depositePay")}
-                    </Link>
-                  </li>
-                  <div className={classes.lineSeperateMobile} />
+                    <li className={classes.navigateTabs}>
+                      <Link to="/depPayment" className={classes.list_word}>
+                        {t("depositePay")}
+                      </Link>
+                    </li>
+                    <div className={classes.lineSeperateMobile} />
 
-                  <li className={classes.navigateTabs}>
-                    <Link  to="/gifts" 
-                      className={classes.list_word}
-                      // onClick={handleClickGifts}
-                    >
-                      {t("gifts")}
-                    </Link>
-                  </li>
-                  <div className={classes.lineSeperateMobile} />
-
-                  {/* {showGifts && <Gifts onClose={handleClickGifts} />} */}
-
-                  <li className={classes.navigateTabs}>
-                    <Link to="/investment" className={classes.list_word}>
-                      {t("INVESTMENTS")}
-                    </Link>
-                  </li>
-                  <div className={classes.lineSeperateMobile} />
-                </div>
-
-                <div className={classes.menueHiddenStyle}>
-                  <div className={classes.lineSeperate} />
-                  <li className={classes.navigateTabs}>
-                    <Link to="/profile" className={classes.list_word}>
-                      {t("PROFILE")}
-                    </Link>
-                  </li>
-                  <div className={classes.lineSeperateMobile} />
-
-                  <li className={classes.navigateTabs} onClick={logOutHandler}>
-                    <Link to="/" className={classes.list_word}>
-                      {t("signOut")}
-                    </Link>
-                  </li>
-                  <div className={classes.lineSeperateMobile} />
-                </div>
-              </ul>
-            ) : (
-              <span className={classes.noTokenMessage}>{t("menueClose")}</span>
-            )}
-          </nav>
-        </div>
-        <div className={classes.headerInfo}>
-          <div className={classes.btnBurger}>
-            {token || tokenLogin ? (
-              <></>
-            ) : (
-              <>
-                {!isTermsAndConditionsPage && (
-                  <div className={classes.testt}>
-                    <div className={classes.languageCont}>
-                      <span
-                        className={classes.languageStyle}
-                        onClick={onClickPicker}
+                    <li className={classes.navigateTabs}>
+                      <Link
+                        to="/gifts"
+                        className={classes.list_word}
+                        // onClick={handleClickGifts}
                       >
-                        {t("LANGUAGE")}
-                      </span>
-                    </div>
+                        {t("gifts")}
+                      </Link>
+                    </li>
+                    <div className={classes.lineSeperateMobile} />
 
-                    <div
-                      className={`${
-                        showPicker === "open"
-                          ? classes.languageDownCont
-                          : classes.languageDownContNew
-                      }`}
-                      style={{ borderRadius: "20px" }}
+                    {/* {showGifts && <Gifts onClose={handleClickGifts} />} */}
+
+                    <li className={classes.navigateTabs}>
+                      <Link to="/investment" className={classes.list_word}>
+                        {t("INVESTMENTS")}
+                      </Link>
+                    </li>
+                    <div className={classes.lineSeperateMobile} />
+                  </div>
+
+                  <div className={classes.menueHiddenStyle}>
+                    <div className={classes.lineSeperate} />
+                    <li className={classes.navigateTabs}>
+                      <Link to="/profile" className={classes.list_word}>
+                        {t("PROFILE")}
+                      </Link>
+                    </li>
+                    <div className={classes.lineSeperateMobile} />
+
+                    <li
+                      className={classes.navigateTabs}
+                      onClick={logOutHandler}
                     >
-                      {options.map((option, index) => (
-                        <div
-                          key={option.index}
-                          onClick={(index) => {
-                            setSelected(option);
-                            setShowPicker("close");
-                            changeLanguage(option.index); // Call changeLanguage when an option is clicked
-                          }}
+                      <Link to="/" className={classes.list_word}>
+                        {t("signOut")}
+                      </Link>
+                    </li>
+                    <div className={classes.lineSeperateMobile} />
+                  </div>
+                </ul>
+              ) : (
+                <span className={classes.noTokenMessage}>
+                  {t("menueClose")}
+                </span>
+              )}
+            </nav>
+          </div>
+          <div className={classes.headerInfo}>
+            <div className={classes.btnBurger}>
+              {token || tokenLogin ? (
+                <></>
+              ) : (
+                <>
+                  {!isTermsAndConditionsPage && (
+                    <div className={classes.testt}>
+                      <div className={classes.languageCont}>
+                        <span
+                          className={classes.languageStyle}
+                          onClick={onClickPicker}
                         >
-                          <div className={classes.inputContainer}>
-                            <span className={classes.downLanguages}>
-                              {option.name}
-                            </span>
-                            <div className={classes.lineSeperateNew} />
+                          {t("LANGUAGE")}
+                        </span>
+                      </div>
+
+                      <div
+                        className={`${
+                          showPicker === "open"
+                            ? classes.languageDownCont
+                            : classes.languageDownContNew
+                        }`}
+                        style={{ borderRadius: "20px" }}
+                      >
+                        {options.map((option, index) => (
+                          <div
+                            key={option.index}
+                            onClick={(index) => {
+                              setSelected(option);
+                              setShowPicker("close");
+                              changeLanguage(option.index); // Call changeLanguage when an option is clicked
+                            }}
+                          >
+                            <div className={classes.inputContainer}>
+                              <span className={classes.downLanguages}>
+                                {option.name}
+                              </span>
+                              <div className={classes.lineSeperateNew} />
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {!isTermsAndConditionsPage && (
-                  <div className={classes.mobileStyleBtn}>
-                    <div className={classes.refAllContNew} onClick={openDropDown}>
-                      <img
-                        src={ProfileSmall}
-                        alt=""
-                        className={classes.smallProfile}
-                      />
-                    </div>
-                    <div
-                      className={`${
-                        dropDownUser === "visible"
-                          ? classes.dropDownVisible
-                          : classes.dropDownHidden
-                      }`}
-                    >
-                      <button
-                        className={classes.btnStyle}
-                        onClick={handleClickSignUp}
+                  {!isTermsAndConditionsPage && (
+                    <div className={classes.mobileStyleBtn}>
+                      <div
+                        className={classes.refAllContNew}
+                        onClick={openDropDown}
                       >
-                        {t("signUp")}
-                      </button>
-                      <button
-                        className={classes.btnStyle}
-                        onClick={handleClickLogin}
+                        <img
+                          src={ProfileSmall}
+                          alt=""
+                          className={classes.smallProfile}
+                        />
+                      </div>
+                      <div
+                        className={`${
+                          dropDownUser === "visible"
+                            ? classes.dropDownVisible
+                            : classes.dropDownHidden
+                        }`}
                       >
-                        {t("LOGIN")}
-                      </button>
+                        <button
+                          className={classes.btnStyle}
+                          onClick={handleClickSignUp}
+                        >
+                          {t("signUp")}
+                        </button>
+                        <button
+                          className={classes.btnStyle}
+                          onClick={handleClickLogin}
+                        >
+                          {t("LOGIN")}
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {showSignup && <SignUp onClose={handleClickSignUp} />}
+                  {showSignup && <SignUp onClose={handleClickSignUp} />}
 
-                {showLogIn && <LogIn onClose={handleClickLogin} />}
-              </>
+                  {showLogIn && <LogIn onClose={handleClickLogin} />}
+                </>
+              )}
+            </div>
+            {!isTermsAndConditionsPage && (
+              <div className={classes.burgermenuContainer} onClick={openmenu}>
+                <i
+                  className={`${
+                    btnstate === "open" ? classes.openbtn : classes.closebtn
+                  }`}
+                ></i>
+                <i
+                  className={`${
+                    btnstate === "open" ? classes.openbtn : classes.closebtn
+                  }`}
+                ></i>
+                <i
+                  className={`${
+                    btnstate === "open" ? classes.openbtn : classes.closebtn
+                  }`}
+                ></i>
+              </div>
             )}
           </div>
-          {!isTermsAndConditionsPage && (
-            <div className={classes.burgermenuContainer} onClick={openmenu}>
-              <i
-                className={`${
-                  btnstate === "open" ? classes.openbtn : classes.closebtn
-                }`}
-              ></i>
-              <i
-                className={`${
-                  btnstate === "open" ? classes.openbtn : classes.closebtn
-                }`}
-              ></i>
-              <i
-                className={`${
-                  btnstate === "open" ? classes.openbtn : classes.closebtn
-                }`}
-              ></i>
-            </div>
-          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

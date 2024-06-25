@@ -7,13 +7,15 @@ import ProfileSmall from "../../assets/images/Group 231 (1).png";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Gifts from "../Gifts/gifts";
 import { useTranslation } from "react-i18next";
 import RefferalContainer from "../RefferralCont/refferalShow.js";
 
 import { useNavigate } from "react-router-dom";
 import { getUserInfoApi, logoutApi, getUserRefferalApi } from "../../Api";
 import axios from "axios";
+import { Helmet } from "react-helmet";
+import logo from "../../assets/images/logo.png";
+
 
 function NewTopHeader() {
   const [mobilemenu, setmobilemenu] = useState("closed");
@@ -135,138 +137,174 @@ function NewTopHeader() {
   }, [token, tokenLogin, selectedLanguage, errorCode, navigate]);
 
   return (
-    <div>
-      <div className={classes.HeaderStyle}>
-        <Link to="/">
-          <img src={Logo} alt="app Logo" className={classes.logo_trading} />
-        </Link>
-        <div className={classes.listHeader}>
-          <nav
-            className={`${
-              menulist === "visible"
-                ? classes.menulistVisible
-                : classes.menulistHiden
-            }`}
-          >
-            <ul className={classes.ul_list}>
-              <div className={classes.menueHiddenStyle}>
-                <div className={classes.lineSeperate} />
-                <li className={classes.navigateTabs}>
-                  <Link to="/howItWorks" className={classes.list_word}>
-                    {t("howItWorks")}
-                  </Link>
-                </li>
-                <div className={classes.lineSeperateMobile} />
-                <li className={classes.navigateTabs}>
-                  <Link to="/depPayment" className={classes.list_word}>
-                    {t("depositePay")}
-                  </Link>
-                </li>
-                <div className={classes.lineSeperateMobile} />
+    <>
+      <Helmet>
+        <title>Daily Trading Bot</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          key="description"
+          content="Sign in or register with Daily Trading Bot to explore the exciting world of cryptocurrency trading. Start your journey to financial success today!"
+        />
+        <meta
+          name="title"
+          key="title"
+          content="Daily Trading Bot - Sign In / Register"
+        />
+        <meta
+          property="og:title"
+          key="og:title"
+          content="Daily Trading Bot - Sign In / Register"
+        />
+        <meta property="og:site_name" content="Daily Trading Bot" />
+        <meta property="og:locale" key="og:locale" content="en_US" />
+        <meta charSet="utf-8" />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content="Sign in or register with Daily Trading Bot to explore the exciting world of cryptocurrency trading. Start your journey to financial success today!"
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={logo} // Assuming you have imported your logo as `logo`
+        />
+      </Helmet>
+      <div>
+        <div className={classes.HeaderStyle}>
+          <Link to="/">
+            <img src={Logo} alt="app Logo" className={classes.logo_trading} />
+          </Link>
+          <div className={classes.listHeader}>
+            <nav
+              className={`${
+                menulist === "visible"
+                  ? classes.menulistVisible
+                  : classes.menulistHiden
+              }`}
+            >
+              <ul className={classes.ul_list}>
+                <div className={classes.menueHiddenStyle}>
+                  <div className={classes.lineSeperate} />
+                  <li className={classes.navigateTabs}>
+                    <Link to="/howItWorks" className={classes.list_word}>
+                      {t("howItWorks")}
+                    </Link>
+                  </li>
+                  <div className={classes.lineSeperateMobile} />
+                  <li className={classes.navigateTabs}>
+                    <Link to="/depPayment" className={classes.list_word}>
+                      {t("depositePay")}
+                    </Link>
+                  </li>
+                  <div className={classes.lineSeperateMobile} />
 
-                <li className={classes.navigateTabs}>
-                  <Link
-                    to="/gifts"
-                    className={classes.list_word}
-                    // onClick={handleClickGifts}
-                  >
-                    {t("gifts")}
-                  </Link>
-                </li>
-                <div className={classes.lineSeperateMobile} />
+                  <li className={classes.navigateTabs}>
+                    <Link
+                      to="/gifts"
+                      className={classes.list_word}
+                      // onClick={handleClickGifts}
+                    >
+                      {t("gifts")}
+                    </Link>
+                  </li>
+                  <div className={classes.lineSeperateMobile} />
 
-                {/* {showGifts && <Gifts onClose={handleClickGifts} />} */}
+                  {/* {showGifts && <Gifts onClose={handleClickGifts} />} */}
 
-                <li className={classes.navigateTabs}>
-                  <Link to="/investment" className={classes.list_word}>
-                    {t("INVESTMENTS")}
-                  </Link>
-                </li>
-                <div className={classes.lineSeperateMobile} />
-              </div>
+                  <li className={classes.navigateTabs}>
+                    <Link to="/investment" className={classes.list_word}>
+                      {t("INVESTMENTS")}
+                    </Link>
+                  </li>
+                  <div className={classes.lineSeperateMobile} />
+                </div>
 
-              <div className={classes.menueHiddenStyle}>
-                <div className={classes.lineSeperate} />
-                <li className={classes.navigateTabs}>
-                  <Link to="/profile" className={classes.list_word}>
-                    {t("PROFILE")}
-                  </Link>
-                </li>
-                <div className={classes.lineSeperateMobile} />
+                <div className={classes.menueHiddenStyle}>
+                  <div className={classes.lineSeperate} />
+                  <li className={classes.navigateTabs}>
+                    <Link to="/profile" className={classes.list_word}>
+                      {t("PROFILE")}
+                    </Link>
+                  </li>
+                  <div className={classes.lineSeperateMobile} />
 
-                <li className={classes.navigateTabs} onClick={logOutHandler}>
-                  <Link to="/" className={classes.list_word}>
-                    {t("signOut")}
-                  </Link>
-                </li>
-                <div className={classes.lineSeperateMobile} />
-              </div>
-            </ul>
-          </nav>
-        </div>
-        <div className={classes.headerInfo}>
-          <div className={classes.btnBurger}>
-            <div className={classes.refAllCont} onClick={handleRefferalSHow}>
-              <img
-                src={referralPic}
-                alt="app Logo"
-                className={classes.refStyle}
-              />
-              <span className={classes.btReffferalStyle}> {t("rF")}</span>
-              <div>
-                {showReferralCode && (
-                  <RefferalContainer
-                    onClose={handleRefferalSHow}
-                    refferalUrl={refferalUrl}
-                  />
-                )}
-              </div>
-            </div>
-            <Link to="/">
-              <div className={classes.refAllCont} onClick={logOutHandler}>
+                  <li className={classes.navigateTabs} onClick={logOutHandler}>
+                    <Link to="/" className={classes.list_word}>
+                      {t("signOut")}
+                    </Link>
+                  </li>
+                  <div className={classes.lineSeperateMobile} />
+                </div>
+              </ul>
+            </nav>
+          </div>
+          <div className={classes.headerInfo}>
+            <div className={classes.btnBurger}>
+              <div className={classes.refAllCont} onClick={handleRefferalSHow}>
                 <img
-                  src={LogInLogo}
+                  src={referralPic}
                   alt="app Logo"
-                  className={classes.logInstyle}
+                  className={classes.refStyle}
                 />
-                <span className={classes.logInstyleText}>{t("LOGOUT")}</span>
+                <span className={classes.btReffferalStyle}> {t("rF")}</span>
+                <div>
+                  {showReferralCode && (
+                    <RefferalContainer
+                      onClose={handleRefferalSHow}
+                      refferalUrl={refferalUrl}
+                    />
+                  )}
+                </div>
               </div>
-            </Link>
-            <div className={classes.mobileUserCont}>
-              <div>
-                <span className={classes.userStyle}>{userName} </span>
-              </div>
-              <Link to="/profile">
-                <div className={classes.refAllContNew}>
+              <Link to="/">
+                <div className={classes.refAllCont} onClick={logOutHandler}>
                   <img
-                    src={ProfileSmall}
-                    alt=""
-                    className={classes.smallProfile}
+                    src={LogInLogo}
+                    alt="app Logo"
+                    className={classes.logInstyle}
                   />
+                  <span className={classes.logInstyleText}>{t("LOGOUT")}</span>
                 </div>
               </Link>
+              <div className={classes.mobileUserCont}>
+                <div>
+                  <span className={classes.userStyle}>{userName} </span>
+                </div>
+                <Link to="/profile">
+                  <div className={classes.refAllContNew}>
+                    <img
+                      src={ProfileSmall}
+                      alt=""
+                      className={classes.smallProfile}
+                    />
+                  </div>
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className={classes.burgermenuContainer} onClick={openmenu}>
-            <i
-              className={`${
-                btnstate === "open" ? classes.openbtn : classes.closebtn
-              }`}
-            ></i>
-            <i
-              className={`${
-                btnstate === "open" ? classes.openbtn : classes.closebtn
-              }`}
-            ></i>
-            <i
-              className={`${
-                btnstate === "open" ? classes.openbtn : classes.closebtn
-              }`}
-            ></i>
+            <div className={classes.burgermenuContainer} onClick={openmenu}>
+              <i
+                className={`${
+                  btnstate === "open" ? classes.openbtn : classes.closebtn
+                }`}
+              ></i>
+              <i
+                className={`${
+                  btnstate === "open" ? classes.openbtn : classes.closebtn
+                }`}
+              ></i>
+              <i
+                className={`${
+                  btnstate === "open" ? classes.openbtn : classes.closebtn
+                }`}
+              ></i>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

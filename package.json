@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-dropdown": "^1.11.0",
     "react-dropdown-now": "^6.0.1",
+    "react-helmet": "^6.1.0",
     "react-i18next": "^13.2.2",
     "react-native-dropdown-select-list": "^2.0.4",
     "react-router-dom": "^6.14.2",

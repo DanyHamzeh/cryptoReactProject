@@ -6,6 +6,8 @@ import { reinvestApi, userInvestmentApi } from "../../Api";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
+import logo from "../../assets/images/logo.png";
 
 function WithDraw(props) {
   const [errorCode, setErrorCode] = useState(null);
@@ -32,7 +34,6 @@ function WithDraw(props) {
     props.setBalance(total);
   };
 
-
   const investHandler = () => {
     const investmentAmount = parseFloat(amount);
     if (isNaN(investmentAmount)) {
@@ -56,7 +57,7 @@ function WithDraw(props) {
             if (response.data.status === 0) {
               setLoader(false);
               setMessage(response.data.message);
-              setStatus(response.data.status)
+              setStatus(response.data.status);
               setAmount("");
               balanceAmount();
             } else {
@@ -80,47 +81,92 @@ function WithDraw(props) {
           });
       }
     }
-    if(status === 0){
-      setStatus(-1)
+    if (status === 0) {
+      setStatus(-1);
     }
   };
 
-useEffect(()=>{
-console.log(props.balance);
-},[props.balance])
+  useEffect(() => {
+    console.log(props.balance);
+  }, [props.balance]);
 
   return (
-    <div className={classes.allContainer}>
-      <div className={classes.titleClose}>
-        <span className={classes.title}>{t("BALANCE")}</span>
-        <span className={classes.title}>{props.balance} USDT</span>
-        <span className={classes.closeSign} onClick={props.onClose}>
-          x
-        </span>
-      </div>
-      <div className={classes.lineSeperate} />
-      <div className={classes.giftContainer}>
-        <div className={classes.firtBox}>
-          <span className={classes.textGift}> {t("AMOUNT")}</span>
-          <input
-            type="text"
-            className={classes.inputGift}
-            onChange={amountHandler}
-            value={amount}
-          />
-        </div>
+    <>
+      <Helmet>
+        <title>Daily Trading Bot - Reinvest</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          key="description"
+          content="Reinvest your earnings with Daily Trading Bot and maximize your returns. Explore the benefits of compounding your profits and growing your investment portfolio."
+        />
+        <meta name="title" key="title" content="Daily Trading Bot - Reinvest" />
+        <meta
+          property="og:title"
+          key="og:title"
+          content="Daily Trading Bot - Reinvest"
+        />
+        <meta property="og:site_name" content="Daily Trading Bot" />
+        <meta property="og:locale" key="og:locale" content="en_US" />
+        <meta charSet="utf-8" />
+        <meta property="og:type" key="og:type" content="website" />
+        <meta
+          property="og:description"
+          key="og:description"
+          content="Reinvest your earnings with Daily Trading Bot and maximize your returns. Explore the benefits of compounding your profits and growing your investment portfolio."
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={logo} // Assuming you have imported your logo as `logo`
+        />
+      </Helmet>
 
-        <div className={classes.btnsGift}>
-          <button className={classes.btnSubmit} onClick={investHandler} disabled={loader}>
-            {t("INVEST")}
-          </button>
+      <div className={classes.allContainer}>
+        <div className={classes.titleClose}>
+          <span className={classes.title}>{t("BALANCE")}</span>
+          <span className={classes.title}>{props.balance} USDT</span>
+          <span className={classes.closeSign} onClick={props.onClose}>
+            x
+          </span>
+        </div>
+        <div className={classes.lineSeperate} />
+        <div className={classes.giftContainer}>
+          <div className={classes.firtBox}>
+            <span className={classes.textGift}> {t("AMOUNT")}</span>
+            <input
+              type="text"
+              className={classes.inputGift}
+              onChange={amountHandler}
+              value={amount}
+            />
+          </div>
+
+          <div className={classes.btnsGift}>
+            <button
+              className={classes.btnSubmit}
+              onClick={investHandler}
+              disabled={loader}
+            >
+              {t("INVEST")}
+            </button>
+          </div>
+        </div>
+        <div className={classes.messageLoaderCont}>
+          {message && (
+            <span
+              className={
+                status == 0 ? classes.messageStyleFalse : classes.messageStyle
+              }
+            >
+              {message}
+            </span>
+          )}
+          <div className={classes.loaderPosition}> {loader && <Loader />}</div>
         </div>
       </div>
-      <div className={classes.messageLoaderCont}>
-        {message && <span className={status == 0 ? classes.messageStyleFalse :classes.messageStyle}>{message}</span>}
-        <div className={classes.loaderPosition}> {loader && <Loader />}</div>
-      </div>
-    </div>
+    </>
   );
 }
 
